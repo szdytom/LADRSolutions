@@ -1,0 +1,23 @@
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python3
+        uses: actions/setup-python@v5.4.0
+      - name: Build PDF
+        run: |
+          pip install -r requirements.txt
+          python3 make.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Output
+          path: 'main.pdf'
+          
