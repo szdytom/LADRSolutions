@@ -1,0 +1,26 @@
+[[fonts]]
+url = "https://github.com/notofonts/noto-cjk/releases/download/Serif2.003/09_NotoSerifCJKsc.zip"
+patterns = [".otf"]
+
+[[fonts]]
+url = "https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/08_NotoSansCJKsc.zip"
+patterns = [".otf"]
+
+[[fonts]]
+url = "https://github.com/TrionesType/zhuque/releases/download/v0.211/ZhuqueFangsong-v0.211.zip"
+patterns = [".ttf"]
+
+#[[fonts]]
+#url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+#patterns = [".ttf"]
+
+[typst]
+version = "0.13.1"
+aarch64-darwin = "https://github.com/typst/typst/releases/download/v0.13.1/typst-aarch64-apple-darwin.tar.xz"
+aarch64-windows = "https://github.com/typst/typst/releases/download/v0.13.1/typst-aarch64-pc-windows-msvc.zip"
+aarch64-linux = "https://github.com/typst/typst/releases/download/v0.13.1/typst-aarch64-unknown-linux-musl.tar.xz"
+armv7-linux = "https://github.com/typst/typst/releases/download/v0.13.1/typst-armv7-unknown-linux-musleabi.tar.xz"
+riscv64-linux = "https://github.com/typst/typst/releases/download/v0.13.1/typst-riscv64gc-unknown-linux-gnu.tar.xz"
+x86_64-darwin = "https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-apple-darwin.tar.xz"
+x86_64-windows = "https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-pc-windows-msvc.zip"
+x86_64-linux = "https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz"

@@ -1,0 +1,5 @@
+*.pdf
+build/
+.vscode
+*.swp
+fonts/
