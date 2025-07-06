@@ -13,10 +13,10 @@
 #{
 
 for i in range(0, toc.len()) {
-	pagebreak(weak: true)
 	let chapter = toc.at(i)
 	heading(chapter.title, level: 1)
 	for j in range(0, chapter.sections) {
+		pagebreak(weak: true)
 		include "sections/" + numbering("1A", i + 1, j + 1) + ".typ"
 	}
 }
