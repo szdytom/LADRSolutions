@@ -15,20 +15,24 @@
 #let ee = "e"
 #let ii = "i"
 
-#let showy_wrapper(title: "", wrap-border: none, ..args) = {
+#let margin-wrapper(margin: 2.5em, body) = {
+	set align(center)
+	block(inset: (
+		left: margin,
+	), width: 100%, body)
+}
+
+#let showy_wrapper(title: "", margin: none, ..args) = {
 	let b = if title != "" {
 		showybox(title: text(font: zhfont_sans, title), ..args)
 	} else {
 		showybox(title: title, ..args)
 	}
 
-	if wrap-border == none {
+	if margin == none {
 		b
 	} else {
-		set align(center)
-		block(inset: (
-			left: wrap-border,
-		), width: 100%, b)
+		margin-wrapper(b)
 	}
 }
 
@@ -39,7 +43,6 @@
 		color: theme_color.darken(40%),
 		sep-thickness: 0pt,
 		font: zhfont_sans
-		//align: center
 	),
 	frame: (
 		title-color: theme_color.lighten(80%),
@@ -92,6 +95,7 @@
 	set highlight(fill: none, stroke: (
 		bottom: 4pt + theme_color.lighten(80%)
 	))
+	set footnote(numbering: "注1")
 
 	v(10fr)
 	h(2fr)
