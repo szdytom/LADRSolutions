@@ -3,10 +3,10 @@
 #import "@preview/cetz:0.3.2"
 #import "@preview/cetz-plot:0.1.1": plot
 
-#let zhfont_sans = ("Noto Sans CJK SC")
-#let zhfont_serif = ("Noto Serif CJK SC")
+#let zhfont_sans = ("Noto Sans CJK SC",)
+#let zhfont_serif = ("Noto Serif CJK SC",)
 #let zhfont_fangsong = ("Zhuque Fangsong (technical preview)", "Noto Serif CJK SC")
-#let monofont = ("Fira Code")
+#let monofont = ("Fira Code",)
 
 #let theme_color = color.green
 
@@ -66,6 +66,7 @@
 #let unset-list-indent(body) = {
 	set list(indent: 0.5em)
 	set enum(indent: 0.5em)
+	set terms(indent: 0.5em)
 	body
 }
 
@@ -82,9 +83,11 @@
 		spacing: 1.2em,
 		leading: 0.75em,
 	)
-	set list(marker: (sym.square.filled.small, [--]), indent: 2.5em)
+	set list(marker: (text(sym.square.filled.small, fill: theme_color), text([--], fill: theme_color)), indent: 2.5em)
 	set enum(indent: 2.5em)
+	set terms(indent: 2.5em)
 	show heading: set text(font: zhfont_sans, weight: "semibold")
+	show strong: set text(fill: theme_color.darken(40%))
 	set par(justify: true)
 	set text(11pt)
 	show heading.where(level: 3): set text(14pt)
@@ -96,6 +99,7 @@
 		bottom: 4pt + theme_color.lighten(80%)
 	))
 	set footnote(numbering: "注1")
+	show math.equation: set text(font: ("New Computer Modern Math", ..zhfont_serif))
 
 	v(10fr)
 	h(2fr)
@@ -223,7 +227,7 @@
 	let splt = (
 		"proof": "证明",
 		"answer": "解答",
-		"explain": "说明",
+		"explain": "解释",
 	)
 	tab
 	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: theme_color.darken(40%))

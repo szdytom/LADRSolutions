@@ -4,7 +4,7 @@
 
 #let toc = ((
 	title: [向量空间],
-	sections: 1
+	sections: 2,
 ),)
 
 #[
@@ -13,10 +13,13 @@
 #{
 
 for i in range(0, toc.len()) {
+	pagebreak(weak: true)
 	let chapter = toc.at(i)
 	heading(chapter.title, level: 1)
 	for j in range(0, chapter.sections) {
-		pagebreak(weak: true)
+		if j > 0 {
+			pagebreak(weak: true)
+		}
 		include "sections/" + numbering("1A", i + 1, j + 1) + ".typ"
 	}
 }

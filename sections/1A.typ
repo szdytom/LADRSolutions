@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, ii, note, tab, simple_box
+#import "../styles.typ": exercise_sol, ii, note, tab, simple_box, unset-list-indent
 
 == $RR^n$ 和 $CC^n$
 
@@ -168,6 +168,7 @@
 ]
 
 #simple_box(title: [$FF^n$ 是向量空间])[
+	#show: unset-list-indent
 	#tab 在原书的下一个小节（1B 向量空间的定义）中，正式给出了向量空间的定义。其实上面的习题就是在引导我们去验证：$FF^n$ 是一个向量空间。具体而言，原书定义1.13和定义1.18分别给出的 $FF^n$ 上的加法和标量乘法的定义，而其所需满足的性质：
 	/ 可交换性: \
 		原书定理1.14
