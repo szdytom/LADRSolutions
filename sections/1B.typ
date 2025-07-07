@@ -163,11 +163,11 @@
 	/ 可结合性: 对于所有 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，都有 $((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) = (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3))$。 \
 		证明：由加法的可结合性，$(u_1 + u_2) + u_3 = u_1 + (u_2 + u_3)$
 		且 $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$，因此
-		$ ((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3)
-			&= ((u_1 + u_2) + ii (v_1 + v_2)) + (u_3 + ii v_3) \
-			&= (u_1 + u_2 + u_3) + ii (v_1 + v_2 + v_3) \
-			&= (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3)) \
-			&= (u_1 + ii v_1) + (u_2 + u_3) + ii (v_2 + v_3) $
+		$ &((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) \
+			=& ((u_1 + u_2) + ii (v_1 + v_2)) + (u_3 + ii v_3) \
+			=& (u_1 + u_2 + u_3) + ii (v_1 + v_2 + v_3) \
+			=& (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3)) \
+			=& (u_1 + ii v_1) + (u_2 + u_3) + ii (v_2 + v_3) $
 	/ 加法单位元: 存在 $0 in complexification(V)$ 使得对于所有 $u,v in V$，都有 $(u + ii v) + 0 = u + ii v$。 \
 		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于所有 $u,v in V$，都有
 		$ (u + ii v) + 0 = (u + ii v) + (0 + ii 0) \
@@ -185,17 +185,17 @@
 			= u + ii v $
 	/ 分配性质: 对于所有 $u_1,v_1,u_2,v_2 in V$ 以及所有 $a,b in RR$，都有 $(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) = (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2)$ 且 $(a + b ii)(u + ii v) = a(u + ii v) + b(u + ii v)$。 \
 		证明：对于所有 $u_1,v_1,u_2,v_2 in V$ 和所有 $a,b in RR$，都有
-		$ (a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2))
-			&= (a + b ii)((u_1 + u_2) + ii (v_1 + v_2)) \
-			&= (a(u_1 + u_2) - b(v_1 + v_2)) + ii (a(v_1 + v_2) + b(u_1 + u_2)) \
-			&= (a u_1 - b v_1) + ii (a v_1 + b u_1) + (a u_2 - b v_2) + ii (a v_2 + b u_2) \
-			&= (a u_1 - b v_1 + a u_2 - b v_2) + ii (a v_1 + b u_1 + a v_2 + b u_2) \
-			&= (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2) $
+		$ &(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) \
+			=& (a + b ii)((u_1 + u_2) + ii (v_1 + v_2)) \
+			=& (a(u_1 + u_2) - b(v_1 + v_2)) + ii (a(v_1 + v_2) + b(u_1 + u_2)) \
+			=& (a u_1 - b v_1) + ii (a v_1 + b u_1) + (a u_2 - b v_2) + ii (a v_2 + b u_2) \
+			=& (a u_1 - b v_1 + a u_2 - b v_2) + ii (a v_1 + b u_1 + a v_2 + b u_2) \
+			=& (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2) $
 		另一方面，对于所有 $u,v in V$ 和所有 $a,b in RR$
-		$ (a + b ii)(u + ii v) = (a u - b v) + ii (a v + b u) \
-			= a(u + ii v) + b(u + ii v) \
-			= (a u + a ii v) + (b u + b ii v) \
-			= a(u + ii v) + b(u + ii v) $
+		$ (a + b ii)(u + ii v) &= (a u - b v) + ii (a v + b u) \
+			&= a(u + ii v) + b(u + ii v) \
+			&= (a u + a ii v) + (b u + b ii v) \
+			&= a(u + ii v) + b(u + ii v) $
 	
 	#tab 综上所述，$complexification(V)$ 满足向量空间的所有要求，因此 $complexification(V)$ 是 $CC$ 上的向量空间。
 ]
