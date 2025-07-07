@@ -8,7 +8,7 @@
 #let zhfont_fangsong = ("Zhuque Fangsong (technical preview)", "Noto Serif CJK SC")
 #let monofont = ("Fira Code")
 
-#let theme_color = color.blue
+#let theme_color = color.green
 
 #let tab = h(2em)
 #let halftab = h(1em)
@@ -108,7 +108,11 @@
 	body
 }
 
-#let note(body) = {
+#let note(body, supplement: "注") = {
+	if supplement != none {
+		text(supplement, 9pt, font: zhfont_sans, weight: "medium", fill: theme_color.darken(40%))
+		h(0.5em)
+	}
     text(body, 9pt, font: zhfont_fangsong)
 }
 
@@ -214,7 +218,7 @@
 	body
 }
 
-#let exercise_sol(e, s, type: "proof") = {
+#let exercise_sol(e, s, type: "proof", label: none) = {
 	figure(e, kind: "exercise-problem", supplement: "习题")
 	s
 }

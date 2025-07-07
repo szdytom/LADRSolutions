@@ -30,7 +30,7 @@
 		&= alpha (beta lambda) $
 ]
 
-#note[注：复数乘法的交换律由原书例1.4给出。]
+#note[复数乘法的交换律由原书例1.4给出。]
 
 #exercise_sol(type: "proof")[
 	#tab 证明：$lambda (alpha + beta) = lambda alpha + lambda beta$ 对所有 $lambda,alpha,beta in CC$ 成立。
@@ -68,7 +68,7 @@
 	$ beta = beta dot 1 = beta (alpha beta') = (beta alpha) beta' = 1 dot beta' = beta' $
 ]
 
-#note[注：上面习题说明，$CC$ 构成一个域。]
+#note[上面习题说明，$CC$ 构成一个域。]
 
 #exercise_sol(type: "proof")[
 	证明：
@@ -116,7 +116,7 @@
 #exercise_sol(type: "proof")[
 	证明：$(x+y)+z=x+(y+z)$ 对所有 $x,y,z in FF^n$ 成立。
 
-	#note[注：沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
+	#note[沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
 ][
 	#tab 根据定义，令 $x = (x_1, x_2, dots, x_n)$，$y = (y_1, y_2, dots, y_n)$，$z = (z_1, z_2, dots, z_n)$，则有：
 	$ (x+y)+z &= ((x_1+y_1, x_2+y_2, dots, x_n+y_n) + (z_1, z_2, dots, z_n)) \
@@ -125,7 +125,7 @@
 		&= x+(y+z) $
 ]
 
-#note[注：$FF^n$ 上向量的加法交换律由原书定理1.14给出。]
+#note[$FF^n$ 上向量的加法交换律由原书定理1.14给出。]
 
 #exercise_sol(type: "proof")[
 	证明：$(a b)x = a(b x)$ 对所有 $x in FF^n$ 和 $a,b in FF$ 成立。
@@ -173,11 +173,11 @@
 		原书定理1.14
 	/ 可结合性: \
 		习题11
-	/ 加法恒等元: \
+	/ 加法单位元: \
 		原书记号1.15定义了 $0$，其性质容易验证
 	/ 加法逆元: \
 		原书定义1.17
-	/ 乘法恒等元: \
+	/ 乘法单位元: \
 		习题13
 	/ 分配性质: \
 		习题14和习题15
