@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, ee, ii, note, tab, simple_box
+#import "../styles.typ": exercise_sol, ii, note, tab, simple_box
 
 == $RR^n$ 和 $CC^n$
 
@@ -115,6 +115,8 @@
 
 #exercise_sol(type: "proof")[
 	证明：$(x+y)+z=x+(y+z)$ 对所有 $x,y,z in FF^n$ 成立。
+
+	#note[注：沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
 ][
 	#tab 根据定义，令 $x = (x_1, x_2, dots, x_n)$，$y = (y_1, y_2, dots, y_n)$，$z = (z_1, z_2, dots, z_n)$，则有：
 	$ (x+y)+z &= ((x_1+y_1, x_2+y_2, dots, x_n+y_n) + (z_1, z_2, dots, z_n)) \
