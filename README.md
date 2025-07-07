@@ -1,6 +1,10 @@
 # 《线性代数应该这样学（第四版）》习题解答
 
-## 构建 PDF
+## 在线查看 PDF
+
+本仓库使用 GitHub Actions 自动构建 PDF 文档，并部署到 GitHub Pages 上。由 `main` 分支的最新提交触发构建。[查看 PDF 文档](https://szdytom.github.io/LADRSolutions/main.pdf)
+
+## 本地构建 PDF
 
 1. 安装 [Python 3](https://www.python.org/downloads/)，请不要安装过于老旧的版本；
 1. 安装 Python 依赖：`pip install -r requirements.txt`；
