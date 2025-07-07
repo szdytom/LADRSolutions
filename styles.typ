@@ -220,7 +220,19 @@
 
 #let exercise_sol(e, s, type: "proof", label: none) = {
 	figure(e, kind: "exercise-problem", supplement: "习题")
+	let splt = (
+		"proof": "证明",
+		"answer": "解答",
+		"explain": "说明",
+	)
+	tab
+	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: theme_color.darken(40%))
+	h(0.5em)
 	s
+	if type == "proof" {
+		h(1fr)
+		text(sym.square.filled, fill: theme_color)
+	}
 }
 
 #let ploting-styles = (
