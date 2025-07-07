@@ -15,9 +15,17 @@ jobs:
         run: |
           pip install -r requirements.txt
           python3 make.py
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Move PDF to public directory
+        run: |
+          mkdir -p public
+          mv main.pdf public/
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: Output
-          path: 'main.pdf'
-          
+          path: public
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
