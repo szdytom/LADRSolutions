@@ -4,7 +4,7 @@
 
 #let toc = ((
 	title: [向量空间],
-	sections: 2,
+	sections: 3,
 ),)
 
 #[
