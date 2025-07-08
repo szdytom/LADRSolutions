@@ -3,12 +3,12 @@
 #import "@preview/cetz:0.3.2"
 #import "@preview/cetz-plot:0.1.1": plot
 
+#import "color.typ": theme_color_set, text_color_set, aux_color_set
+
 #let zhfont_sans = ("Noto Sans CJK SC",)
 #let zhfont_serif = ("Noto Serif CJK SC",)
 #let zhfont_fangsong = ("Zhuque Fangsong (technical preview)", "Noto Serif CJK SC")
 #let monofont = ("Fira Code",)
-
-#let theme_color = color.green
 
 #let tab = h(2em)
 #let halftab = h(1em)
@@ -16,7 +16,7 @@
 #let ii = "i"
 
 #let margin-wrapper(margin: 2.5em, body) = {
-	set align(center)
+	// set align(center)
 	block(inset: (
 		left: margin,
 	), width: 100%, body)
@@ -40,14 +40,15 @@
 	breakable: true,
 	title-style: (
 		weight: 900,
-		color: theme_color.darken(40%),
+		color: text_color_set.at("100"),
 		sep-thickness: 0pt,
-		font: zhfont_sans
+		font: zhfont_sans,
 	),
 	frame: (
-		title-color: theme_color.lighten(80%),
-		border-color: theme_color.darken(40%),
-		thickness: (left: 1pt),
+		title-color: theme_color_set.at("20"),
+		border-color: theme_color_set.at("100"),
+		body-color: aux_color_set.at("10"),
+		thickness: (left: 3pt),
 		radius: 0pt
 	),
 )
@@ -55,9 +56,9 @@
 #let problem_box = showy_wrapper.with(
 	breakable: false,
 	frame: (
-		title-color: theme_color.lighten(80%),
-		border-color: theme_color.darken(40%),
-		thickness: (left: 1pt),
+		body-color: aux_color_set.at("10"),
+		border-color: theme_color_set.at("100"),
+		thickness: (left: 3pt),
 		radius: 0pt,
 		align: left,
 	),
@@ -83,38 +84,30 @@
 		spacing: 1.2em,
 		leading: 0.75em,
 	)
-	set list(marker: (text(sym.square.filled.small, fill: theme_color), text([--], fill: theme_color)), indent: 2.5em)
+	set list(marker: (text(sym.square.filled.small, fill: theme_color_set.at("100")), text([--], fill: theme_color_set.at("100"))), indent: 2.5em)
 	set enum(indent: 2.5em)
 	set terms(indent: 2.5em)
-	show heading: set text(font: zhfont_sans, weight: "semibold")
-	show strong: set text(fill: theme_color.darken(40%))
+	show heading: set text(font: zhfont_sans, weight: "semibold", text_color_set.at("100"))
+	show strong: set text(fill: theme_color_set.at("100"))
 	set par(justify: true)
 	set text(11pt)
-	show heading.where(level: 3): set text(14pt)
 	show figure.caption: set text(9pt, font: zhfont_fangsong)
 	show footnote.entry: set text(9pt, font: zhfont_fangsong)
-	set table(stroke: 1pt + theme_color, inset: 5pt)
-	set grid(stroke: 1pt + theme_color)
+	set table(stroke: 1pt + theme_color_set.at("100"), inset: 5pt)
+	set grid(stroke: 1pt + theme_color_set.at("100"))
 	set highlight(fill: none, stroke: (
-		bottom: 4pt + theme_color.lighten(80%)
+		bottom: 4pt + theme_color_set.at("10")
 	))
 	set footnote(numbering: "注1")
 	show math.equation: set text(font: ("New Computer Modern Math", ..zhfont_serif))
-
-	v(10fr)
-	h(2fr)
-	[
-		#set text(2em, weight: "light", font: zhfont_sans)
-		#title <book-title>
-	]
-	v(3fr)
+	hide[#title <book-title>]
 
 	body
 }
 
 #let note(body, supplement: "注") = {
 	if supplement != none {
-		text(supplement, 9pt, font: zhfont_sans, weight: "medium", fill: theme_color.darken(40%))
+		text(supplement, 9pt, font: zhfont_sans, weight: "medium", fill: theme_color_set.at("100"))
 		h(0.5em)
 	}
     text(body, 9pt, font: zhfont_fangsong)
@@ -124,15 +117,15 @@
 	// TODO: wrap placed figures: https://github.com/typst/typst/issues/5181
 	figure(box(
 		inset: 5pt,
-		stroke: 1pt + theme_color,
+		stroke: 1pt + theme_color_set.at("100"),
 		body
 	), ..args)
 }
 
 #let fancy_term_box(title, value) = {
 	box(baseline: 3pt,{
-		box(fill: theme_color.lighten(80%), inset: 3pt, text([#title], fill: theme_color.darken(40%), font: zhfont_sans, weight: "medium"))
-		box(fill: theme_color.lighten(20%), inset: 3pt, text([#value], fill: white, font: zhfont_sans, weight: "medium"))},
+		box(fill: theme_color_set.at("20"), inset: 3pt, text([#title], fill: theme_color_set.at("100"), font: zhfont_sans, weight: "medium"))
+		box(fill: theme_color_set.at("60"), inset: 3pt, text([#value], fill: white, font: zhfont_sans, weight: "medium"))},
 	)
 }
 
@@ -149,7 +142,7 @@
 				inset: 0.4em,
 				stroke: none,
 				grid.cell(
-					fill: theme_color.lighten(20%),
+					fill: theme_color_set.at("80"),
 				{
 					set text(fill: white)
 					"第"
@@ -157,7 +150,7 @@
 					"章"
 				}),
 				grid.cell(
-					fill: theme_color.lighten(80%),
+					fill: theme_color_set.at("20"),
 				{
 					it.body
 				})
@@ -170,8 +163,8 @@
 		counter("section_N").step()
 		counter(figure.where(kind: "exercise-problem")).update(0)
 		block(width: 100%, {
-			set text(30pt, font: zhfont_sans, weight: "light")
-			block(stroke: (bottom: 10pt + theme_color.lighten(80%),), inset: -2pt)[
+			set text(30pt, font: zhfont_sans, weight: "regular")
+			block(stroke: (bottom: 10pt + theme_color_set.at("20"),), inset: -2pt)[
 				#context{
 					counter("chapter_N").display("1")
 					counter("section_N").display("A")
@@ -188,7 +181,7 @@
 		let isleft = calc.even(this_page)
 		set align(left) if isleft
 		set align(right) if not isleft
-		set text(9pt, font: zhfont_sans, fill: theme_color.darken(20%))
+		set text(9pt, font: zhfont_sans, fill: text_color_set.at("100"), weight: "semibold")
 
 		let prev_headers = query(selector(<section-title>).before(here()))
 		let book_title = query(selector(<book-title>)).first().text
@@ -230,30 +223,21 @@
 		"explain": "解释",
 	)
 	tab
-	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: theme_color.darken(40%))
+	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: theme_color_set.at("100"))
 	h(0.5em)
 	s
 	if type == "proof" {
 		h(1fr)
-		text(sym.square.filled, fill: theme_color)
+		text(sym.square.filled, fill: theme_color_set.at("60"))
 	}
 }
 
 #let ploting-styles = (
-	mark: (fill: theme_color.lighten(80%), stroke: theme_color),
+	mark: (fill: theme_color_set.at("10"), stroke: theme_color_set.at("80")),
 
 	nothing: (fill: none, stroke: none),
 
-	s_l20: (stroke: theme_color.lighten(20%)),
-	s: (stroke: theme_color),
-	s_d20: (stroke: theme_color.darken(20%)),
-	s_hl: (stroke: theme_color.darken(20%) + 2pt),
-	s_hl_l20: (stroke: theme_color.lighten(20%) + 2pt),
-	s_black: (stroke: black),
-
-	f_l80: (stroke: none, fill: theme_color.lighten(80%)),
-	f_l90: (stroke: none, fill: theme_color.lighten(90%)),
-	f_l95: (stroke: none, fill: theme_color.lighten(95%)),
+	s: (stroke: theme_color_set.at("100")),
 
 	axis: cetz.draw.set-style(axes: (stroke: .5pt, tick: (stroke: .5pt))),
 )

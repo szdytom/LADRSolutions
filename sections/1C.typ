@@ -1,7 +1,5 @@
 #import "../styles.typ": exercise_sol, ii, note, tab, unset-list-indent
 
-== 子空间
-
 #exercise_sol(type: "answer")[
 	对于 $FF^3$ 的下列各个子集，判断其是否是 $FF^3$ 的子空间：
 
@@ -221,4 +219,10 @@
 	$ U = {(a, 0) : a in RR} union {(0, a) : a in RR} subset.eq RR^2 $
 
 	#tab 这个集合满足对标量数乘封闭，但不满足对加法封闭。比如，取 $u = (1, 0) in U$，$v = (0, 1) in U$，则 $u+v=(1, 1) in.not U$。因此 $U$ 不是 $RR^2$ 的子空间。
+]
+
+#exercise_sol(type: "answer")[
+	函数 $f: RR -> RR$ 被成为*周期的（periodic）*，是指存在一正数 $p$，使得 $f(x) = f(x + p)$ 对所有 $x in RR$ 成立。$RR -> RR$ 上的周期函数构成的集合是不是 $RR^RR$ 的子空间？请作解释。
+][
+	不是。取 $f(x) = sin x$，$g(x) = sin (sqrt(2) x)$，并令 $h=f+g$。下面说明 $h$ 不是周期函数。
 ]

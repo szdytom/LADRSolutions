@@ -1,7 +1,5 @@
 #import "../styles.typ": exercise_sol, ii, note, tab
 
-== 向量空间的定义
-
 #exercise_sol(type: "proof")[
 	证明：$-(-v)=v$ 对任一 $v in V$ 都成立。
 	

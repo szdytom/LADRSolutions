@@ -1,7 +1,5 @@
 #import "../styles.typ": exercise_sol, ii, note, tab, simple_box, unset-list-indent
 
-== $RR^n$ 和 $CC^n$
-
 #exercise_sol(type: "proof")[
 	证明：$alpha + beta = beta + alpha$ 对所有 $alpha,beta in CC$ 成立。
 ][
