@@ -315,10 +315,22 @@
 ][
 	设 $V_1,dots,V_n$ 都是 $V$ 的子空间，记 $S=V_1 inter dots inter V_n$。我们关于 $n$ 使用数学归纳法。
 
-	/ 第一步: \
+	/ 第 $1$ 步: \
 		当 $n=1$ 时，$S=V_1$，显然是 $V$ 的子空间。
 	/ 第 $k+1$ 步: \
-		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。由@1C-inter-of-subspace-is-subspace 可知，$V_1 inter dots V_(k+1)$ 是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
+		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。又因为 $V_(k+1)$ 是 $V$ 的子空间，由@1C-inter-of-subspace-is-subspace 可知，$(V_1 inter dots inter V_k) inter V_(k+1)$ 也是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
 
 	#tab 综上所述，$V$ 的任意一族子空间的交集是 $V$ 的子空间。
+]
+
+#exercise_sol(type: "proof")[
+	证明：$V$ 的两个子空间的并集是 $V$ 的子空间，当且仅当其中一个子空间是另一个的子集。
+][
+	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间，记 $S=V_1 union V_2$。我们首先说明充分性。不妨设 $V_1 subset.eq V_2$，则 $S=V_2$ 是 $V$ 的子空间。
+
+	#tab 下面说明必要性。使用反证法，假设 $S$ 是 $V$ 的子空间，以及 $V_1 subset.eq.not V_2$ 且 $V_2 subset.eq.not V_1$。设 $v_1 in V_1$ 且 $v_1 in.not V_2$，同时 $v_2 in V_2$ 且 $v_2 in.not V_2$。
+
+	#tab 令 $u = v_1 + v_2$。由于 $v_1 in V_1$ 且 $v_2 in V_2$，因此 $u in S$。设 $u in V_i$（$i=1,2$），则 $v_(3-i) = u - v_i in V_i$，矛盾，故假设不成立。
+
+	#tab 综上所述，$V$ 的两个子空间的并集是 $V$ 的子空间，当且仅当其中一个子空间是另一个的子集。
 ]
