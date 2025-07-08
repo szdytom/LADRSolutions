@@ -1,4 +1,7 @@
-#import "../styles.typ": exercise_sol, ii, note, tab, unset-list-indent
+#import "@preview/cetz:0.4.0"
+#import "@preview/cetz-plot:0.1.2": plot
+
+#import "../styles.typ": exercise_sol, ii, note, tab, ploting-styles, math_numbering
 
 #exercise_sol(type: "answer")[
 	对于 $FF^3$ 的下列各个子集，判断其是否是 $FF^3$ 的子空间：
@@ -150,7 +153,7 @@
 
 	$ ii v = (ii, 0) in.not RR^2 $
 
-	#tab 这违反子空间的条件（原书定理1.34）中对“数乘封闭性”的要求。由此，$RR^2$ 不是 $CC^2$ 的子空间。
+	#tab 这违反了子空间的条件（原书定理1.34）中对“数乘封闭性”的要求。由此，$RR^2$ 不是 $CC^2$ 的子空间。
 ]
 
 #exercise_sol(type: "proof")[
@@ -198,13 +201,13 @@
 
 	$ u + v = (-1, 2, 0) in.not S_CC $
 
-	#tab 这违反子空间的条件（原书定理1.34）中对“加法封闭性”的要求。由此，$S_CC$ 不是 $CC^3$ 的子空间。
+	#tab 这违反了子空间的条件（原书定理1.34）中对“加法封闭性”的要求。由此，$S_CC$ 不是 $CC^3$ 的子空间。
 ]
 
 #exercise_sol(type: "proof")[
 	证明或推翻：如果 $U$ 是 $RR^2$ 的非空子集，满足对加法封闭和对“取加法逆元”封闭（即 $u in U$ 意味着 $-u in U$），那么 $U$ 是 $RR^2$ 的子空间。
 ][
-	取 $U = {(1, 0), (0, 0), (-1, 0)}$，容易验证 $U$ 满足对加法封闭和对“取加法逆元”封闭。但是，取 $u = (1, 0) in U$, $2u = (2, 0) in.not U$，这违反子空间的条件（原书定理1.34）中对“数乘封闭性”的要求。由此，$U$ 不是 $RR^2$ 的子空间。
+	取 $U = {(1, 0), (0, 0), (-1, 0)}$，容易验证 $U$ 满足对加法封闭和对“取加法逆元”封闭。但是，取 $u = (1, 0) in U$, $2u = (2, 0) in.not U$，这违反了子空间的条件（原书定理1.34）中对“数乘封闭性”的要求。由此，$U$ 不是 $RR^2$ 的子空间。
 
 	#tab 我们找到了一个反例，这说明题目中的命题不成立。
 ]
@@ -221,8 +224,69 @@
 	#tab 这个集合满足对标量数乘封闭，但不满足对加法封闭。比如，取 $u = (1, 0) in U$，$v = (0, 1) in U$，则 $u+v=(1, 1) in.not U$。因此 $U$ 不是 $RR^2$ 的子空间。
 ]
 
-#exercise_sol(type: "answer")[
+#exercise_sol(type: "answer", label: "tricky")[
 	函数 $f: RR -> RR$ 被成为*周期的（periodic）*，是指存在一正数 $p$，使得 $f(x) = f(x + p)$ 对所有 $x in RR$ 成立。$RR -> RR$ 上的周期函数构成的集合是不是 $RR^RR$ 的子空间？请作解释。
 ][
-	不是。取 $f(x) = sin x$，$g(x) = sin (sqrt(2) x)$，并令 $h=f+g$。下面说明 $h$ 不是周期函数。
+	不是。取 $f(x) = sin(x)$，$g(x) = sin(sqrt(2) x)$。容易验证，对于任意 $x in RR$，
+
+	$ f(x + 2 pi) &= f(x) \
+		g(x + sqrt(2) pi) &= g(x) $
+
+	因此 $f$ 和 $g$ 都是 $RR^RR$ 中的周期函数。现在令 $h=f+g$。下面说明 $h$ 不是周期函数。
+
+	#figure(cetz.canvas({
+		import cetz.draw: *
+		ploting-styles.axis
+		plot.plot(
+			size: (12, 3),
+			x-tick-step: calc.pi,
+			x-format: plot.formats.multiple-of,
+			axis-style: "scientific",
+			y-tick-step: 2,
+			x-min: -10.4,
+			x-max: 10.4,
+			y-min: -2.4,
+			y-max: 2.4,
+			x-grid: true,
+			y-grid: true,
+			x-label: none,
+			y-label: none,
+		{
+			let domain = (-10.4, 10.4)
+			plot.add(
+				x => calc.sin(x) + calc.sin(calc.sqrt(2) * x),
+				domain: domain,
+				samples: 1000,
+				style: ploting-styles.s,
+			)
+		})
+	}), caption: [函数 $h(x) = sin(pi x) + sin(sqrt(2) pi x)$ 的图像。])
+
+	#show: math_numbering(true)
+
+	#tab 使用反证法，假设存在实数 $p > 0$，满足 $h(x) = h(x + p)$ 对所有 $x in RR$ 成立，即
+
+	$ sin(x) + sin(sqrt(2) x) = sin(x + p) + sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq>
+
+	#tab 对@1B-h-periodic-assume-eq 两边同时求导两次，得到
+
+	$ -sin(x) - 2 sin(sqrt(2) x) = - sin(x + p) - 2 sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq-dd>
+
+	#tab 将@1B-h-periodic-assume-eq 与@1B-h-periodic-assume-eq-dd 相加并化简，得到
+
+	$ sin(sqrt(2) x) = sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq-res-sqrt2>
+
+	#tab 进一步将@1B-h-periodic-assume-eq 减去@1B-h-periodic-assume-eq-res-sqrt2，得到
+
+	$ sin(x) = sin(x + p) $ <1B-h-periodic-assume-eq-res-1>
+
+	#show: math_numbering(false)
+
+	#tab 向@1B-h-periodic-assume-eq-res-sqrt2 与@1B-h-periodic-assume-eq-res-1 中代入 $x=0$，得到
+
+	$ sin(p) = sin(sqrt(2) p) = 0 $
+
+	#tab 这意味着存在 $k_1,k_2 in ZZ$，使得 $sqrt(2) p = 2 k_1 pi$ 且 $p = 2 k_2 pi$。联立消去 $p$，得到 $sqrt(2) = k_1 slash k_2$，这与我们熟知的 $sqrt(2) in.not QQ$ 矛盾，故假设不成立。
+
+	#tab 综上所述，$h$ 不是 $RR^RR$ 上的周期函数。这表明 $RR -> RR$ 上的周期函数构成的集合并不符合子空间的条件（原书定理1.34）中对“加法封闭性”的要求，因此其不是 $RR^RR$ 的子空间。
 ]

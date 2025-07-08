@@ -1,7 +1,7 @@
 #import "@preview/showybox:2.0.4": showybox
 #import "@preview/tableau-icons:0.1.0" as tbl
-#import "@preview/cetz:0.3.2"
-#import "@preview/cetz-plot:0.1.1": plot
+#import "@preview/cetz:0.4.0"
+#import "@preview/cetz-plot:0.1.2": plot
 
 #import "color.typ": theme_color_set, text_color_set, aux_color_set
 
@@ -215,7 +215,22 @@
 	body
 }
 
+#let math_numbering(flag) = {
+	if flag {
+		return body => {
+			set math.equation(numbering: "（式1）")
+			body
+		}
+	} else {
+		return body => {
+			set math.equation(numbering: none)
+			body
+		}
+	}
+}
+
 #let exercise_sol(e, s, type: "proof", label: none) = {
+	counter(math.equation).update(0)
 	figure(e, kind: "exercise-problem", supplement: "习题")
 	let splt = (
 		"proof": "证明",
@@ -238,8 +253,9 @@
 	nothing: (fill: none, stroke: none),
 
 	s: (stroke: theme_color_set.at("100")),
+	s_20: (stroke: theme_color_set.at("20")),
 
-	axis: cetz.draw.set-style(axes: (stroke: .5pt, tick: (stroke: .5pt))),
+	axis: cetz.draw.set-style(axes: (grid: (stroke: 1pt + aux_color_set.at("100")))),
 )
 
 #let plot-point(x, y) = plot.add(((x, y),), mark: "o", mark-style: ploting-styles.mark, style: ploting-styles.s)

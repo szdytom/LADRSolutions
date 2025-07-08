@@ -20,6 +20,7 @@
 
 #let aux_color_set = (
 	"100": cmyk(70%, 0%, 35%, 0%),
+	"80": rgb("#55c4c2"),
 	"20": rgb("#d4f0ef"),
 	"10": rgb("#eaf7f7"),
 )
