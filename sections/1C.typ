@@ -291,7 +291,7 @@
 	#tab 综上所述，$h$ 不是 $RR^RR$ 上的周期函数。这表明 $RR -> RR$ 上的周期函数构成的集合并不符合子空间的条件（原书定理1.34）中对“加法封闭性”的要求，因此其不是 $RR^RR$ 的子空间。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1C-inter-of-subspace-is-subspace>)[
 	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间，证明：交集 $V_1 inter V_2$ 是 $V$ 的子空间。
 ][
 	记 $S=V_1 inter V_2$，我们逐条验证其满足子空间的条件（原书定理1.34）：
@@ -308,4 +308,17 @@
 		因此 $a u in V_1$ 且 $a u in V_2$，从而 $a u in S$。
 
 	#tab 综上所述，$V_1 inter V_2$ 是 $V$ 的子空间。
+]
+
+#exercise_sol(type: "proof")[
+	证明：$V$ 的任意一族子空间的交集是 $V$ 的子空间。
+][
+	设 $V_1,dots,V_n$ 都是 $V$ 的子空间，记 $S=V_1 inter dots inter V_n$。我们关于 $n$ 使用数学归纳法。
+
+	/ 第一步: \
+		当 $n=1$ 时，$S=V_1$，显然是 $V$ 的子空间。
+	/ 第 $k+1$ 步: \
+		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。由@1C-inter-of-subspace-is-subspace 可知，$V_1 inter dots V_(k+1)$ 是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
+
+	#tab 综上所述，$V$ 的任意一族子空间的交集是 $V$ 的子空间。
 ]
