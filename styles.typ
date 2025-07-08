@@ -229,9 +229,13 @@
 	}
 }
 
-#let exercise_sol(e, s, type: "proof", label: none) = {
+#let exercise_sol(e, s, type: "proof", label: none, ref: none) = {
 	counter(math.equation).update(0)
-	figure(e, kind: "exercise-problem", supplement: "习题")
+	if ref == none {
+		figure(e, kind: "exercise-problem", supplement: "习题")
+	} else [
+		#figure(e, kind: "exercise-problem", supplement: "习题") #ref
+	]
 	let splt = (
 		"proof": "证明",
 		"answer": "解答",

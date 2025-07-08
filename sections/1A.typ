@@ -111,7 +111,7 @@
 	#tab 因此，这样的 $lambda$ 不存在。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1A-ffn-add-assoc>)[
 	证明：$(x+y)+z=x+(y+z)$ 对所有 $x,y,z in FF^n$ 成立。
 
 	#note[沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
@@ -135,7 +135,7 @@
 		&= a(b x) $
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1A-ffn-mul-unit>)[
 	证明：$1 x=x$ 对所有 $x in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, x_2, dots, x_n)$，则有：
@@ -145,7 +145,7 @@
 		&= x $
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1A-ffn-distri-2v1s>)[
 	证明：$lambda (x+y) = lambda x + lambda y$ 对所有 $lambda in FF$ 和 $x,y in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, x_2, dots, x_n)$，$y = (y_1, y_2, dots, y_n)$，则有：
@@ -155,7 +155,7 @@
 		&= lambda x + lambda y $
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1A-ffn-distri-1v2s>)[
 	证明：$(a+b)x = a x + b x$ 对所有 $a,b in FF$ 和 $x in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, x_2, dots, x_n)$，则有：
@@ -167,17 +167,17 @@
 
 #simple_box(title: [$FF^n$ 是向量空间])[
 	#show: unset-list-indent
-	#tab 在原书的下一个小节（1B 向量空间的定义）中，正式给出了向量空间的定义。其实上面的习题就是在引导我们去验证：$FF^n$ 是一个向量空间。具体而言，原书定义1.13和定义1.18分别给出的 $FF^n$ 上的加法和标量乘法的定义，而其所需满足的性质：
+	#tab 在原书的下一个小节（1B 向量空间的定义）中，正式给出了向量空间的定义。其实上面的习题就是在引导我们去验证：$FF^n$ 是一个向量空间。具体而言，原书定义1.13和定义1.18分别给出的 $FF^n$ 上的加法和标量乘法的定义，而我们已经证明了其所需满足的性质：
 	/ 可交换性: \
 		原书定理1.14
 	/ 可结合性: \
-		习题11
+		@1A-ffn-add-assoc
 	/ 加法单位元: \
 		原书记号1.15定义了 $0$，其性质容易验证
 	/ 加法逆元: \
 		原书定义1.17
 	/ 乘法单位元: \
-		习题13
+		@1A-ffn-mul-unit
 	/ 分配性质: \
-		习题14和习题15
+		@1A-ffn-distri-2v1s 和@1A-ffn-distri-1v2s
 ]
