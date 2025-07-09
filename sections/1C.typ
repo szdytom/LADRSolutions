@@ -367,7 +367,7 @@
 	
 	#tab 我们首先说明，任意一个 $V_j$ 都不是另外两个的并集的子集。否则，不妨设 $V_1 subset.eq V_2 union V_3$，则 $V_1 union V_2 union V_3 = V_2 union V_3$ 是 $V$ 的子空间。应用@1C-when-union-of-two-subspaces-is-subspace，可以推出 $V_2 subset.eq V_3$ 或 $V_3 subset.eq V_2$，这说明 $V_2$ 或 $V_3$ 包含另外两个，矛盾，故假设不成立。因此，
 
-	$ V_1 subset.eq.not V_2 union V_3 tab and tab V_2 union V_3 subset.eq.not V_1 $
+	$ V_1 subset.eq.not V_2 union V_3 wide and wide V_2 union V_3 subset.eq.not V_1 $
 
 	#tab 所以可以找到 $u, v in V$ 使得 $u in V_1$ 且 $u in.not V_2 union V_3$，以及 $v in V_2 union V_3$ 且 $v in.not V_1$。由于 $V_1$，$V_2$ 和 $V_3$ 都包含 $0$，因此 $u != 0$ 且 $v != 0$。我们取集合 $v + span(u)$#footnote[记号 $span$ 在后续的2A节中由原书定义2.19定义，而记号 $v + V$ 表示平移，由后续3E节原书定义3.97定义。但是这里无需明白这些定义，将其当作一个集合的名字即可。]，
 
@@ -577,4 +577,25 @@
 	) $
 
 	#tab 这个方程组的唯一解是 $a = b = c = d = e = 0$，这说明 $0$ 只有唯一的表示方式。根据直和的条件（原书定理1.45），我们确认 $FF^5 = U plus.circle W_1 plus.circle W_2 plus.circle W_3$。
+]
+
+#exercise_sol(type: "answer")[
+	证明或证伪：如果 $V_1$，$V_2$，$U$ 都是 $V$ 的子空间，且
+
+	$ V = V_1 plus.circle U wide and wide V = V_2 plus.circle U $
+
+	则有 $V_1 = V_2$。
+
+	#note(supplement: "提示")[在尝试确认线性代数中的一个命题是否成立时，先在 $FF^2$ 中试试，通常时很有帮助的。]
+][
+	令
+
+	$ V &= FF^2 \
+		U &= {(0, x) in FF^2 : x in FF} \
+		V_1 &= {(x, 0) in FF^2 : x in FF} \
+		V_2 &= {(x, x) in FF^2 : x in FF} $
+
+	#tab 容易验证，$V = V_1 plus.circle U$ 且 $V = V_2 plus.circle U$，但 $V_1 != V_2$。
+
+	#tab 该反例说明，题目中的命题不成立。
 ]

@@ -63,12 +63,12 @@
 	令 $infinity$ 和 $-infinity$ 是不在 $RR$ 中的不同对象。以最符合直觉的方式定义 $RR union {infinity, -infinity}$ 上的加法和标量乘法。具体而言，两个实数的和和积照常定义，而对于 $t in RR$，我们定义
 
 	$ t infinity = cases(
-		-infinity tab& "若 " t<0 "，",
+		-infinity wide& "若 " t<0 "，",
 		0 &"若 " t=0 "，",
 		infinity &"若 " t>0 "；")
-		tab
+		wide
 		t (-infinity) = cases(
-			infinity tab& "若 " t<0 "，",
+			infinity wide& "若 " t<0 "，",
 			0 &"若 " t=0 "，",
 			-infinity &"若 " t>0 "；") $
 	
