@@ -429,7 +429,7 @@
 	由子空间加法封闭性可知，$U + U = U$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "answer")[
 	$V$ 的“子空间求和”运算可交换吗？换句话说，设 $U$ 和 $W$ 都是 $V$ 的子空间，那么 $U + W = W + U$ 是否成立？
 ][
 	是的。我们有
@@ -437,4 +437,18 @@
 	$ U + W = {u + w : u in U, w in W} = {w + u : u in U, w in W} = W + U $
 
 	#tab 这说明 $U + W = W + U$ 成立。
+]
+
+#exercise_sol(type: "answer")[
+	$V$ 的“子空间求和”运算可结合吗？换句话说，设 $V_1, V_2, V_3$ 都是 $V$ 的子空间，那么 $(V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)$ 是否成立？
+][
+	是的。我们有
+
+	$ (V_1 + V_2) + V_3 
+		&= {u + w : u in V_1 + V_2, w in V_3} \
+		&= {u + w : u in {v_1 + v_2 : v_1 in V_1, v_2 in V_2}, w in V_3} \
+		&= {v_1 + v_2 + w : v_1 in V_1, v_2 in V_2, w in V_3} \
+		&= V_1 + (V_2 + V_3) $
+
+	#tab 这说明 $(V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)$ 成立。
 ]
