@@ -1,4 +1,5 @@
-#import "../styles.typ": exercise_sol, ii, note, tab
+#import "../styles.typ": exercise_sol, note, tab
+#import "../math.typ": ii
 
 #exercise_sol(type: "proof")[
 	证明：$-(-v)=v$ 对任一 $v in V$ 都成立。

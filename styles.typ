@@ -13,8 +13,6 @@
 
 #let tab = h(2em)
 #let halftab = h(1em)
-#let ee = "e"
-#let ii = "i"
 
 #let margin-wrapper(margin: 2.5em, body) = {
 	// set align(center)
