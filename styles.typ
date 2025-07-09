@@ -23,7 +23,7 @@
 
 #let showy_wrapper(title: "", margin: none, ..args) = {
 	let b = if title != "" {
-		showybox(title: text(font: zhfont_sans, title), ..args)
+		showybox(title: text(font: zhfont_sans, title, weight: "regular"), ..args)
 	} else {
 		showybox(title: title, ..args)
 	}
