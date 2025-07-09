@@ -9,6 +9,7 @@
 #let zhfont_serif = ("Noto Serif CJK SC",)
 #let zhfont_fangsong = ("Zhuque Fangsong (technical preview)", "Noto Serif CJK SC")
 #let monofont = ("Fira Code",)
+#let mathfont = ("Concrete Math", ..zhfont_serif)
 
 #let tab = h(2em)
 #let halftab = h(1em)
@@ -99,7 +100,8 @@
 		bottom: 4pt + theme_color_set.at("10")
 	))
 	set footnote(numbering: "注1")
-	show math.equation: set text(font: ("New Computer Modern Math", ..zhfont_serif))
+	show math.equation: set text(font: mathfont)
+
 	hide[#title <book-title>]
 
 	body
@@ -249,6 +251,7 @@
 		h(1fr)
 		text(sym.square.filled, fill: theme_color_set.at("60"))
 	}
+	place.flush()
 }
 
 #let ploting-styles = (

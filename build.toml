@@ -7,12 +7,16 @@ url = "https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/08_Noto
 patterns = [".otf"]
 
 [[fonts]]
-url = "https://github.com/TrionesType/zhuque/releases/download/v0.211/ZhuqueFangsong-v0.211.zip"
+url = "https://github.com/TrionesType/zhuque/releases/download/v0.212/ZhuqueFangsong-v0.212.zip"
 patterns = [".ttf"]
 
-#[[fonts]]
-#url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
-#patterns = [".ttf"]
+[[fonts]]
+url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+patterns = [".ttf"]
+
+[[fonts]]
+url = "https://mirrors.ctan.org/fonts/concmath-otf.zip"
+patterns = [".otf"]
 
 [typst]
 version = "0.13.1"
