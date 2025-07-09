@@ -1,7 +1,8 @@
 #import "@preview/cetz:0.4.0"
 #import "@preview/cetz-plot:0.1.2": plot
 
-#import "../styles.typ": exercise_sol, ii, note, tab, ploting-styles, math_numbering
+#import "../styles.typ": exercise_sol, note, tab, ploting-styles, math_numbering
+#import "../math.typ": ii, span
 
 #exercise_sol(type: "answer")[
 	对于 $FF^3$ 的下列各个子集，判断其是否是 $FF^3$ 的子空间：
@@ -234,17 +235,21 @@
 
 	因此 $f$ 和 $g$ 都是 $RR^RR$ 中的周期函数。现在令 $h=f+g$。下面说明 $h$ 不是周期函数。
 
-	#figure(cetz.canvas({
+	#figure(
+		caption: [函数 $h(x) = sin(pi x) + sin(sqrt(2) pi x)$ 的图像。],
+		placement: auto,
+	cetz.canvas({
 		import cetz.draw: *
 		ploting-styles.axis
+		let domain = (0, 10.7 * calc.pi)
 		plot.plot(
 			size: (12, 3),
 			x-tick-step: calc.pi,
 			x-format: plot.formats.multiple-of,
 			axis-style: "scientific",
 			y-tick-step: 2,
-			x-min: -10.4,
-			x-max: 10.4,
+			x-min: domain.at(0),
+			x-max: domain.at(1),
 			y-min: -2.4,
 			y-max: 2.4,
 			x-grid: true,
@@ -252,7 +257,6 @@
 			x-label: none,
 			y-label: none,
 		{
-			let domain = (-10.4, 10.4)
 			plot.add(
 				x => calc.sin(x) + calc.sin(calc.sqrt(2) * x),
 				domain: domain,
@@ -260,7 +264,7 @@
 				style: ploting-styles.s,
 			)
 		})
-	}), caption: [函数 $h(x) = sin(pi x) + sin(sqrt(2) pi x)$ 的图像。])
+	}))
 
 	#show: math_numbering(true)
 
@@ -323,14 +327,56 @@
 	#tab 综上所述，$V$ 的任意一族子空间的交集是 $V$ 的子空间。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <1C-when-union-of-two-subspaces-is-subspace>)[
 	证明：$V$ 的两个子空间的并集是 $V$ 的子空间，当且仅当其中一个子空间是另一个的子集。
 ][
-	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间，记 $S=V_1 union V_2$。我们首先说明充分性。不妨设 $V_1 subset.eq V_2$，则 $S=V_2$ 是 $V$ 的子空间。
+	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间。我们首先说明充分性。不妨设 $V_1 subset.eq V_2$，则 $V_1 union V_2 = V_2$ 是 $V$ 的子空间。
 
-	#tab 下面说明必要性。使用反证法，假设 $S$ 是 $V$ 的子空间，以及 $V_1 subset.eq.not V_2$ 且 $V_2 subset.eq.not V_1$。设 $v_1 in V_1$ 且 $v_1 in.not V_2$，同时 $v_2 in V_2$ 且 $v_2 in.not V_2$。
+	#tab 下面说明必要性。使用反证法，假设 $V_1 union V_2$ 是 $V$ 的子空间，以及 $V_1 subset.eq.not V_2$ 且 $V_2 subset.eq.not V_1$。则可以找到 $v_1, v_2 in V$，使得 $v_1 in V_1$ 且 $v_1 in.not V_2$，以及 $v_2 in V_2$ 且 $v_2 in.not V_1$。
 
-	#tab 令 $u = v_1 + v_2$。由于 $v_1 in V_1$ 且 $v_2 in V_2$，因此 $u in S$。设 $u in V_i$（$i=1,2$），则 $v_(3-i) = u - v_i in V_i$，矛盾，故假设不成立。
+	#tab 令 $u = v_1 + v_2$。由于 $v_1,v_2 in V_1 union V_2$，因此 $u in V_1 union V_2$。不妨设 $u in V_1$，则 $v_2 = u - v_1 in V_1$，矛盾，故假设不成立。
 
 	#tab 综上所述，$V$ 的两个子空间的并集是 $V$ 的子空间，当且仅当其中一个子空间是另一个的子集。
+]
+
+#exercise_sol(type: "proof", label: "hard")[
+	证明：$V$ 的三个子空间的并集是 $V$ 的子空间，当且仅当其中一个包含另外两个。
+
+	#note[令人惊讶的是，这道习题比@1C-when-union-of-two-subspaces-is-subspace 难不少，也许是因为如果我们把 $FF$ 换成只包含两个元素的域，这道习题的结论就不成立了。]
+][
+	设 $V_1, V_2, V_3$ 都是 $V$ 的子空间。我们首先说明充分性。不妨设 $V_1 subset.eq V_3$ 且 $V_2 subset.eq V_3$，则 $V_1 union V_2 union V_3 = V_3$ 是 $V$ 的子空间。
+
+	#tab 下面说明必要性。使用反证法，假设 $V_1 union V_2 union V_3$ 是 $V$ 的子空间，以及任意一个 $V_j$ 都不包含另外两个。
+	
+	#tab 我们首先说明，任意一个 $V_j$ 都不是另外两个的并集的子集。否则，不妨设 $V_1 subset.eq V_2 union V_3$，则 $V_1 union V_2 union V_3 = V_2 union V_3$ 是 $V$ 的子空间。应用@1C-when-union-of-two-subspaces-is-subspace，可以推出 $V_2 subset.eq V_3$ 或 $V_3 subset.eq V_2$，这说明 $V_2$ 或 $V_3$ 包含另外两个，矛盾，故假设不成立。因此，
+
+	$ V_1 subset.eq.not V_2 union V_3 tab and tab V_2 union V_3 subset.eq.not V_1 $
+
+	#tab 所以可以找到 $u, v in V$ 使得 $u in V_1$ 且 $u in.not V_2 union V_3$，以及 $v in V_2 union V_3$ 且 $v in.not V_1$。由于 $V_1$，$V_2$ 和 $V_3$ 都包含 $0$，因此 $u != 0$ 且 $v != 0$。我们取集合 $v + span(u)$#footnote[记号 $span$ 在后续的2A节中由原书定义2.19定义，而记号 $v + V$ 表示平移，由后续3E节原书定义3.97定义。但是这里无需明白这些定义，将其当作一个集合的名字即可。]，
+
+	$ v + span(u) = {v + lambda u : lambda in FF} $
+
+	#tab 下面我们说明 $V_1 inter (v + span(u)) = nothing$。使用反证法，假设存在 $w = v + k_1 u in V_1$，则 $v = w - k_1 u$。又因为 $w in V_1$ 且 $u in V_1$，因此 $v in V_1$，矛盾，故假设不成立，即 $V_1 inter (v + span(u)) = nothing$。
+
+	#tab 根据反证假设 $V_1 union V_2 union V_3$ 是向量空间，因此 $v + span(u) subset.eq V_1 union V_2 union V_3$。又因为 $V_1 inter (v + span(u)) = nothing$，所以
+
+	$ v + span(u) subset.eq V_2 union V_3 $
+
+	#tab 现在，我们说明 $v + span(u)$ 中包含至少 $3$ 个元素。我们取函数
+
+	$ f:& FF -> v + span(u) \ &x |-> v + x u $
+
+	#tab 对于任意的 $x_1, x_2 in FF$，我们有
+
+	$ f(x_1) - f(x_2) = (v + x_1 u) - (v + x_2 u) = (x_1 - x_2)u $
+
+	#tab 由于 $u != 0$，因此 $f(x_1) = f(x_2)$ 当且仅当 $x_1 = x_2$。这说明 $f$ 是单射，即 $v + span(u)$ 至少和 $FF$ 一样大，因此 $v + span(u)$ 至少包含 $3$ 个元素。
+
+	#tab 根据抽屉原理#footnote[抽屉原理的一种通俗的说法是：若将 $n$ 个物品放在 $r$ 个盒子里，$r<n$，那么至少有一个盒子包含多于一个物品。在这里，相当于是将 $v + span(u)$ 中的大于等于 $3$ 个物品放入 $V_2$ 和 $V_3$ 两个盒子中。]，在 $V_2$ 与 $V_3$ 中至少有一个包含 $v + span(u)$ 中的两个元素。不妨设 $V_2$ 包含 $v + span(u)$ 中的两个元素 $w_1 = v + mu_1 u$ 和 $w_2 = v + mu_2 u$，其中 $mu_1, mu_2 in FF$ 且 $mu_1 != mu_2$。由于 $V_2$ 是向量空间，故 
+	
+	$ w_1 - w_2 = (v + mu_1 u) - (v + mu_2 u) = (mu_1 - mu_2)u in V_2 $
+
+	#tab 由于 $mu_1 != mu_2$，我们立即得到 $u in V_2$，而这与 $u in.not V_2 union V_3$ 矛盾，故假设不成立。
+
+	#tab 综上所述，$V$ 的三个子空间的并集是 $V$ 的子空间，当且仅当其中一个包含另外两个。
 ]
