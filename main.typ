@@ -36,8 +36,8 @@
 				let ns = numbering("1A", i + 1, j + 1)
 				let slabel = label("section-heading" + ns)
 				let sloc = query(selector(slabel)).first().location()
-				link(cloc, {
-					set text(11pt, fill: text_color_set.at("100"))
+				link(sloc, {
+					set text(11pt)
 					ns
 					h(1em)
 					chapter.sections.at(j)
