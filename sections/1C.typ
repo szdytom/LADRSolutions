@@ -502,9 +502,79 @@
 
 	$ (a, a, b, b) = v = (c, 0, d, 0) $
 
-	#tab 这解得 $a = b = c = d = 0$，故 $U inter W = {0}$。
+	#tab 解得 $a = b = c = d = 0$，故 $U inter W = {0}$。
 
 	#tab 综上所述，$FF^4 = U plus.circle W$。
 ]
 
-#note[这并不是 $W$ 唯一的构造方案。]
+#note[$W$ 还有其他符合题意的构造方案，例如 $W = {(0, x, 0, y) in FF^4 : x,y in FF}$。]
+
+#exercise_sol(type: "answer")[
+	令
+
+	$ U = {(x, y, x + y, x - y, 2x) in FF^5 : x,y in FF} $
+
+	求 $FF^5$ 的一个子空间 $W$，使得 $FF^5 = U plus.circle W$。
+][
+	取
+
+	$ W &= {(x, y, z, 0, 0) in FF^5 : x,y,z in FF} $
+
+	#tab 我们首先说明，$FF^5 = U + W$。任取 $u = (a, b, c, d, e, f) in FF^5$，注意到 $u = w + v$，其中
+
+	$ w &= (e / 2, -d + e / 2, -d + e, d, e) \
+		v &= (a - e / 2, b + d - e / 2, c + d - e, 0, 0) $
+
+	#tab 进一步地，我们说明这个和是直和。我们将 $0$ 分解为两个向量的和，使得每个向量都来自于一个子空间。具体地，我们设
+
+	$ 0 = (a, b, a + b, a - b, 2a) + (c, d, e, 0, 0) $
+
+	#tab 其中 $a, b, c, d, e in FF$。这给出一个五元一次方程组
+
+	$ cases(
+		a + c = 0,
+		b + d = 0,
+		a + b + e = 0,
+		a - b = 0,
+		2a = 0
+	) $
+
+	#tab 这个方程组的唯一解是 $a = b = c = d = e = 0$，这说明 $0$ 只有唯一的表示方式。根据直和的条件（原书定理1.45），我们确认 $FF^5 = U plus.circle W$。
+]
+
+#exercise_sol(type: "answer")[
+	令
+
+	$ U = {(x, y, x + y, x - y, 2x) in FF^5 : x,y in FF} $
+
+	求 $FF^5$ 的三个都不为 ${0}$ 的子空间 $W_1$，$W_2$ 和 $W_3$，使得 $FF^5 = U plus.circle W_1 plus.circle W_2 plus.circle W_3$。
+][
+	对于 $i in {1,2,3}$，取
+
+	$ W_1 &= {(x, 0, 0, 0, 0) in FF^5 : x in FF} \
+		W_2 &= {(0, x, 0, 0, 0) in FF^5 : x in FF} \
+		W_3 &= {(0, 0, x, 0, 0) in FF^5 : x in FF} $
+
+	#tab 我们首先说明，$FF^5 = U + W_1 + W_2 + W_3$。任取 $u = (a, b, c, d, e, f) in FF^5$，注意到 $u = w + v_1 + v_2 + v_3$，其中
+
+	$ w &= (e / 2, -d + e / 2, -d + e, d, e) \
+		v_1 &= (a - e / 2, 0, 0, 0, 0) \
+		v_2 &= (0, b + d - e / 2, 0, 0, 0) \
+		v_3 &= (0, 0, c + d - e, 0, 0) $
+
+	#tab 进一步地，我们说明这个和是直和。我们将 $0$ 分解为四个向量的和，使得每个向量都来自于一个子空间。具体地，我们设
+
+	$ 0 = (a, b, a + b, a - b, 2a) + (c, 0, 0, 0, 0) + (0, d, 0, 0, 0) + (0, 0, e, 0, 0) $
+
+	#tab 其中 $a, b, c, d, e in FF$。这给出一个五元一次方程组
+
+	$ cases(
+		a + c = 0,
+		b + d = 0,
+		a + b + e = 0,
+		a - b = 0,
+		2a = 0
+	) $
+
+	#tab 这个方程组的唯一解是 $a = b = c = d = e = 0$，这说明 $0$ 只有唯一的表示方式。根据直和的条件（原书定理1.45），我们确认 $FF^5 = U plus.circle W_1 plus.circle W_2 plus.circle W_3$。
+]
