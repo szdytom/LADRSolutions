@@ -481,3 +481,30 @@
 
 	#tab 该反例说明，题目中的命题不成立。
 ]
+
+#exercise_sol(type: "answer")[
+	令
+
+	$ U = {(x, x, y, y) in FF^4 : x,y in FF} $
+
+	求 $FF^4$ 的一个子空间 $W$，使得 $FF^4 = U plus.circle W$。
+][
+	取
+
+	$ W = {(x, 0, y, 0) in FF^4 : x,y in FF} $
+
+	#tab 我们首先证明 $FF^4 = U + W$。任取 $u = (a, b, c, d) in FF^4$，注意到 $u = v_1 + v_2$，其中，
+
+	$ v_1 &= (b, b, d, d) in U \
+		v_2 &= (a - b, 0, c - d, 0) in W $
+
+	#tab 进一步地，我们说明这个和是直和。根据两个子空间的直和的条件（原书定理1.46），我们只需说明 $U inter W = {0}$。设 $v in U inter W$，那么存在 $a, b, c, d in FF$，使得
+
+	$ (a, a, b, b) = v = (c, 0, d, 0) $
+
+	#tab 这解得 $a = b = c = d = 0$，故 $U inter W = {0}$。
+
+	#tab 综上所述，$FF^4 = U plus.circle W$。
+]
+
+#note[这并不是 $W$ 唯一的构造方案。]
