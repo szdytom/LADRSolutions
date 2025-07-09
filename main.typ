@@ -55,11 +55,8 @@
 )
 ]
 
-#[
-#show: setup_main_text
-
 #{
-
+show: setup_main_text
 for i in range(0, toc.len()) {
 	pagebreak(weak: true)
 	let chapter = toc.at(i)
@@ -73,7 +70,11 @@ for i in range(0, toc.len()) {
 		include "sections/" + n + ".typ"
 	}
 }
+} // main text
 
-}
+#{
 
-]
+pagebreak(weak: true, to: "even")
+include "back-cover.typ"
+
+} // back cover
