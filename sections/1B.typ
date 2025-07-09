@@ -99,10 +99,12 @@
 		$ (lambda f)(x) = lambda f(x) $
 
 	#tab 我们现在证明 $V^S$ 是 $FF$ 上的向量空间。具体而言，我们逐条验证向量空间的定义（原书定义1.20）中的要求：
+
 	/ 可交换性: 对于所有 $f, g in V^S$，都有 $f + g = g + f$。 \
 		证明：对于所有 $x in S$，有
 		$ (f + g)(x) = f(x) + g(x) = g(x) + f(x) = (g + f)(x) $
 		因此 $f + g = g + f $。
+
 	/ 可结合性: 对于所有 $f, g, h in V^S$，都有 $(f + g) + h = f + (g + h)$。 \
 		证明：对于所有 $x in S$，有
 		$ ((f + g) + h)(x) &= (f + g)(x) + h(x) 、
@@ -110,18 +112,22 @@
 			&= f(x) + (g + h)(x) \
 			&= (f + (g + h))(x) $
 		因此 $(f + g) + h = f + (g + h)$。
+
 	/ 加法单位元: 存在 $0 in V^S$ 使得对于所有 $f in V^S$，都有 $f + 0 = f$。 \
 		证明：取 $0: x |-> 0$ 为 $V^S$ 中的加法单位元。对于所有 $f in V^S$，都有
 		$ (f + 0)(x) = f(x) + 0 = f(x) = (f)(x) $
 		因此 $f + 0 = f$。
+
 	/ 加法逆元: 对于所有 $f in V^S$，存在 $g in V^S$ 使得 $f + g = 0$。 \
 		证明：取 $g: x |-> -f(x)$ 为 $f$ 的加法逆元。对于所有 $x in S$，都有
 		$ (f + g)(x) = f(x) + g(x) = f(x) - f(x) = 0 $
 		因此 $f + g = 0$。
+
 	/ 乘法单位元: 对于所有 $f in V^S$，都有 $1f = f$。 \
 		证明：对于所有 $x in S$，都有
 		$ (1f)(x) = 1 f(x) = f(x) $
 		因此 $1f = f$。
+
 	/ 分配性质: 对于所有 $f, g in V^S$ 以及所有 $a, b in FF$，都有 $a(f + g) = a f + a g$ 且 $(a + b)f = a f + b f$。 \
 		证明：对于所有 $x in S$，有
 		$ (a(f + g))(x) &= a((f + g)(x)) = a(f(x) + g(x)) \
@@ -154,11 +160,13 @@
 	#note[将 $u in V$ 等同于 $u + ii 0$，从而将 $V$ 视为 $complexification(V)$ 的一个子集。这样一来，由 $V$ 构造 $complexification(V)$ 就可以视作由 $RR^n$ 构造 $CC^n$ 的推广。]
 ][
 	我们将说明 $complexification(V)$ 是 $CC$ 上的向量空间。具体而言，我们逐条验证向量空间的定义（原书定义1.20）中的要求：
+
 	/ 可交换性: 对于所有 $u_1,v_1,u_2,v_2 in V$，都有 $(u_1 + ii v_1) + (u_2 + ii v_2) = (u_2 + ii v_2) + (u_1 + ii v_1)$。 \
 		证明：由加法的可交换性，$u_1 + u_2 = u_2 + u_1$ 且 $v_1 + v_2 = v_2 + v_1$，因此
 		$ (u_1 + ii v_1) + (u_2 + ii v_2) &= (u_1 + u_2) + ii (v_1 + v_2) \
 			&= (u_2 + u_1) + ii (v_2 + v_1) \
 			&= (u_2 + ii v_2) + (u_1 + ii v_1) $
+
 	/ 可结合性: 对于所有 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，都有 $((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) = (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3))$。 \
 		证明：由加法的可结合性，$(u_1 + u_2) + u_3 = u_1 + (u_2 + u_3)$
 		且 $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$，因此
@@ -167,21 +175,25 @@
 			=& (u_1 + u_2 + u_3) + ii (v_1 + v_2 + v_3) \
 			=& (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3)) \
 			=& (u_1 + ii v_1) + (u_2 + u_3) + ii (v_2 + v_3) $
+
 	/ 加法单位元: 存在 $0 in complexification(V)$ 使得对于所有 $u,v in V$，都有 $(u + ii v) + 0 = u + ii v$。 \
 		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于所有 $u,v in V$，都有
 		$ (u + ii v) + 0 = (u + ii v) + (0 + ii 0) \
 			= (u + 0) + ii (v + 0) \
 			= u + ii v $
+
 	/ 加法逆元: 对于所有 $u,v in V$，存在 $w in complexification(V)$ 使得 $(u + ii v) + w = 0$。 \
 		证明：取 $w = -u + ii (-v)$ 为 $(u + ii v)$ 的加法逆元。对于所有 $u,v in V$，都有
 		$ (u + ii v) + w = (u + ii v) + (-u + ii (-v)) \
 			= (u - u) + ii (v - v) \
 			= 0 + ii 0 \
 			= 0 $
+
 	/ 乘法单位元: 对于所有 $u,v in V$，都有 $(1 + ii 0)(u + ii v) = u + ii v$。 \
 		证明：对于所有 $u,v in V$，都有
 		$ (1 + ii 0)(u + ii v) = (1 u - 0 v) + ii (1 v + 0 u) \
 			= u + ii v $
+
 	/ 分配性质: 对于所有 $u_1,v_1,u_2,v_2 in V$ 以及所有 $a,b in RR$，都有 $(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) = (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2)$ 且 $(a + b ii)(u + ii v) = a(u + ii v) + b(u + ii v)$。 \
 		证明：对于所有 $u_1,v_1,u_2,v_2 in V$ 和所有 $a,b in RR$，都有
 		$ &(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) \
