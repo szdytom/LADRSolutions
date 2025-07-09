@@ -123,9 +123,9 @@
 }
 
 #let fancy_term_box(title, value) = {
-	box(baseline: 3pt,{
-		box(fill: theme_color_set.at("20"), inset: 3pt, text([#title], fill: theme_color_set.at("100"), font: zhfont_sans, weight: "medium"))
-		box(fill: theme_color_set.at("60"), inset: 3pt, text([#value], fill: white, font: zhfont_sans, weight: "medium"))},
+	box(baseline: 3pt, {
+		box(fill: theme_color_set.at("30"), inset: 3pt, text([#title], fill: text_color_set.at("100"), font: zhfont_sans, weight: "medium"))
+		box(fill: theme_color_set.at("80"), inset: 3pt, text([#value], fill: white, font: zhfont_sans, weight: "medium"))},
 	)
 }
 
@@ -242,12 +242,12 @@
 		"explain": "解释",
 	)
 	tab
-	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: theme_color_set.at("100"))
+	text(splt.at(type), font: zhfont_sans, weight: "medium", fill: text_color_set.at("100"))
 	h(0.5em)
 	s
 	if type == "proof" {
 		h(1fr)
-		text(sym.square.filled, fill: theme_color_set.at("60"))
+		text(sym.square.filled, fill: theme_color_set.at("80"))
 	}
 	place.flush()
 }
