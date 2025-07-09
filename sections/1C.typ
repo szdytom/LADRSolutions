@@ -599,3 +599,39 @@
 
 	#tab 该反例说明，题目中的命题不成立。
 ]
+
+#exercise_sol(type: "proof")[
+	函数 $f: RR -> RR$ 被成为*偶的（even）*，是指
+
+	$ f(-x) = f(x) $
+
+	对所有 $x in RR$ 成立。函数 $f: RR -> RR$ 被成为*奇的（odd）*，是指
+
+	$ f(-x) = -f(x) $
+	
+	对所有 $x in RR$ 成立。令 $V_"e"$ 代表 $RR$ 上的实值偶函数构成的集合，$V_"o"$ 代表 $RR$ 上的实值奇函数构成的集合。证明：$RR^RR = V_"e" + V_"o"$。
+][
+	#let ve = $V_"e"$
+	#let vo = $V_"o"$
+	#let fe = $f_"e"$
+	#let fo = $f_"o"$
+	我们首先说明 $RR^RR = ve + vo$。任意一个函数 $f: RR -> RR$ 都可以写成 $f = fe + fo$，其中
+
+	$ fe(x) &= 1/2(f(x) + f(-x)) \
+		fo(x) &= 1/2(f(x) - f(-x)) $
+
+	#tab 注意到
+	
+	$ fe(-x) &= 1/2(f(-x) + f(x)) &= fe(x) \
+		fo(-x) &= 1/2(f(-x) - f(x)) &= fo(x) $
+		
+	#tab 因此 $fe in ve$ 且 $fo in vo$。这说明 $f = fe + fo in ve + vo$，即 $RR^RR = ve + vo$。
+
+	#tab 下面说明 $ve inter vo = {0}$。设 $f in ve inter vo$，则 $f$ 是偶函数且奇函数。我们有
+
+	$ f(-x) = f(x) wide and wide f(-x) = -f(x) $
+
+	#tab 这说明 $f(x) = -f(x)$ 对所有 $x in RR$ 成立，因此 $f(x) = 0$ 对所有 $x in RR$ 成立，即 $f = 0$。因此 $ve inter vo = {0}$。
+
+	#tab 根据两个子空间的直和的条件（原书定理1.46），我们确认 $RR^RR = ve plus.circle vo$。
+]
