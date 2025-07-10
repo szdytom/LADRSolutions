@@ -16,7 +16,8 @@ v(5fr)
 		box(width: 10 * 22pt, {
 			line(end: (100%, 0%), stroke: 3pt + theme_color_set.at("100"))
 			line(end: (38.2%, 0%), stroke: 3pt + text_color_set.at("100"))
-		})
+		}),
+		text([对应原书第四版], 11pt)
 	)
 }
 v(2fr)
