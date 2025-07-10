@@ -284,23 +284,23 @@
 
 	#tab 使用反证法，假设存在实数 $p > 0$，满足 $h(x) = h(x + p)$ 对所有 $x in RR$ 成立，即
 
-	$ sin(x) + sin(sqrt(2) x) = sin(x + p) + sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq>
+	$ sin(x) + sin(sqrt(2) x) = sin(x + p) + sin(sqrt(2) x + sqrt(2) p) $ <1C-h-periodic-assume-eq>
 
-	#tab 对@1B-h-periodic-assume-eq 两边同时求导两次，得到
+	#tab 对@1C-h-periodic-assume-eq 两边同时求导两次，得到
 
-	$ -sin(x) - 2 sin(sqrt(2) x) = - sin(x + p) - 2 sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq-dd>
+	$ -sin(x) - 2 sin(sqrt(2) x) = - sin(x + p) - 2 sin(sqrt(2) x + sqrt(2) p) $ <1C-h-periodic-assume-eq-dd>
 
-	#tab 将@1B-h-periodic-assume-eq 与@1B-h-periodic-assume-eq-dd 相加并化简，得到
+	#tab 将@1C-h-periodic-assume-eq 与@1C-h-periodic-assume-eq-dd 相加并化简，得到
 
-	$ sin(sqrt(2) x) = sin(sqrt(2) x + sqrt(2) p) $ <1B-h-periodic-assume-eq-res-sqrt2>
+	$ sin(sqrt(2) x) = sin(sqrt(2) x + sqrt(2) p) $ <1C-h-periodic-assume-eq-res-sqrt2>
 
-	#tab 进一步将@1B-h-periodic-assume-eq 减去@1B-h-periodic-assume-eq-res-sqrt2，得到
+	#tab 进一步将@1C-h-periodic-assume-eq 减去@1C-h-periodic-assume-eq-res-sqrt2，得到
 
-	$ sin(x) = sin(x + p) $ <1B-h-periodic-assume-eq-res-1>
+	$ sin(x) = sin(x + p) $ <1C-h-periodic-assume-eq-res-1>
 
 	#show: math_numbering(false)
 
-	#tab 向@1B-h-periodic-assume-eq-res-sqrt2 与@1B-h-periodic-assume-eq-res-1 中代入 $x=0$，得到
+	#tab 向@1C-h-periodic-assume-eq-res-sqrt2 与@1C-h-periodic-assume-eq-res-1 中代入 $x=0$，得到
 
 	$ sin(p) = sin(sqrt(2) p) = 0 $
 
