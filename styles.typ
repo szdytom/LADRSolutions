@@ -151,9 +151,9 @@
 				}),
 				grid.cell(
 					fill: theme_color_set.at("20"),
-				{
-					it.body
-				})
+				[
+					#it.body <chapter-title>
+				])
 			)
 			v(0.5em)
 		})
@@ -183,13 +183,17 @@
 		set align(right) if not isleft
 		set text(9pt, font: zhfont_sans, fill: text_color_set.at("100"), weight: "semibold")
 
-		let prev_headers = query(selector(<section-title>).before(here()))
-		let book_title = query(selector(<book-title>)).first().text
+		let prev_secs = query(selector(<section-title>).before(here()))
+		let pre_chaps = query(selector(<chapter-title>).before(here()))
 		let footer_content = if isleft {
-			book_title
+			if pre_chaps.len() > 0 {
+				pre_chaps.last()
+			} else {
+				""
+			}
 		} else {
-		    if prev_headers.len() > 0 {
-				prev_headers.last()
+		    if prev_secs.len() > 0 {
+				prev_secs.last()
 			} else {
 				""
 			}
@@ -200,6 +204,14 @@
 			str(this_page),
 			footer_content,
 		)
+	}, header: context {
+		let this_page = counter(page).get().at(0)
+		let isleft = calc.even(this_page)
+		set align(left) if isleft
+		set align(right) if not isleft
+		set text(9pt, font: zhfont_sans, fill: text_color_set.at("100"), weight: "semibold")
+
+		query(selector(<book-title>)).first().text
 	})
 
 	show figure.where(kind: "exercise-problem"): it => {
