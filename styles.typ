@@ -252,6 +252,19 @@
 	place.flush()
 }
 
+#let exercise_ref(l) = {
+	context {
+		let el = query(selector(l))
+		if el.len() == 0 {
+			return text("Error: 未找到习题", fill: color.red)
+		}
+		let e = el.first()
+		numbering("1A", counter("chapter_N").at(e.location()).at(0), counter("section_N").at(e.location()).at(0))
+		"节"
+		ref(l)
+	}
+}
+
 #let ploting-styles = (
 	mark: (fill: theme_color_set.at("10"), stroke: theme_color_set.at("80")),
 

@@ -9,7 +9,7 @@
 	根据定义 $v + (-v) = 0$，由可交换性，得 $(-v) + v = 0$，即 $v$ 是 $-v$ 的加法逆元。由加法逆元的唯一性（原书定理1.27），得 $-(-v) = v$。
 ]
 
-#exercise_sol(type: "proof", label: "tricky")[
+#exercise_sol(type: "proof", label: "tricky", ref: <1B-vec-zero-product-property>)[
 	设 $a in FF$，$v in V$ 且 $a v=0$，证明：$a=0$ 或 $v=0$。
 ][
 	我们使用反证法，假设 $a != 0$ 且 $v != 0$，同时 $a v = 0$。由于 $a != 0$ 故存在 $a^(-1) in FF$（$a^(-1) != 0$），使得 $a^(-1) a = 1$。因此有
