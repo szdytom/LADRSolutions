@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, tab, exercise_ref
+#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering
 #import "../math.typ": span, ii
 
 #exercise_sol(type: "answer")[
@@ -274,4 +274,40 @@
 	$ 1(v_1 + w_1) + (-1)(v_2 + w_2) = 1(1, 1) + (-1)(1, 1) = 0 $
 
 	#tab 根据线性无关的定义（原书定义2.15），这表明向量组 $v_1 + w_1, v_2 + w_2$ 不是线性无关的，因此原命题不成立。
+]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 中的线性无关向量组，且 $w in V$。证明：若向量组
+
+	$ v_1 + w, dots, v_m + w $
+
+	线性相关，则 $w in span(v_1, dots, v_m)$。
+][
+	由于向量组 $v_1 + w, dots, v_m + w$ 线性相关，根据线性相关的定义（原书定义2.17），存在 $a_1, dots, a_m in FF$，使得
+
+	#show: math_numbering(true)
+	$ a_1 (v_1 + w) + dots.c + a_m (v_m + w) = 0 $ <2A-vi-plus-w-is-dependent-def>
+	#show: math_numbering(false)
+
+	#tab 其中 $a_1, dots, a_m$ 中至少有一个不为 $0$。
+	
+	#tab 下面我们说明 $a_1 + dots.c + a_m != 0$。整理@2A-vi-plus-w-is-dependent-def 可得
+
+	$ a_1 v_1 + dots.c + a_m v_m + (a_1 + dots.c + a_m) w = 0 $
+
+	#tab 反证假设 $a_1 + dots.c + a_m = 0$，则 $a_1 v_1 + dots.c + a_m v_m = 0$，而这与线性无关的定义（原书定义2.15）矛盾。因此，我们只能有 $a_1 + dots.c + a_m != 0$。
+
+	#tab 所以，我们可以将@2A-vi-plus-w-is-dependent-def 改写为
+
+	$ w = -(a_1 v_1 + dots.c + a_m v_m) / (a_1 + dots.c + a_m) $
+
+	#tab 更进一步地，对于 $k in {1, dots, m}$，令
+
+	$ b_k = -a_k / (a_1 + dots.c + a_m) $
+
+	#tab 则有
+
+	$ w = b_1 v_1 + dots.c + b_m v_m $
+
+	#tab 根据张成空间的定义（原书定义2.4），这表明 $w in span(v_1, dots, v_m)$。
 ]
