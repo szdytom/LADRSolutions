@@ -19,7 +19,7 @@
 		let clabel = label("chapter-heading" + nc)
 		let cloc = query(selector(clabel)).first().location()
 		link(cloc, {
-			set text(15pt, fill: text_color_set.at("100"))
+			set text(15pt)
 			numbering("第1章", i + 1)
 			h(1em)
 			chapter.title
@@ -37,7 +37,7 @@
 				let slabel = label("section-heading" + ns)
 				let sloc = query(selector(slabel)).first().location()
 				link(sloc, {
-					set text(11pt)
+					set text(11pt, fill: text_color_set.at("100"))
 					ns
 					h(1em)
 					chapter.sections.at(j)
