@@ -139,11 +139,11 @@
 
 	#note[沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
 ][
-	根据定义，令 $x = (x_1, x_2, dots, x_n)$，$y = (y_1, y_2, dots, y_n)$，$z = (z_1, z_2, dots, z_n)$，则有
+	根据定义，令 $x = (x_1, dots, x_n)$，$y = (y_1, dots, y_n)$，$z = (z_1, dots, z_n)$，则有
 
-	$ (x+y)+z &= ((x_1+y_1, x_2+y_2, dots, x_n+y_n) + (z_1, z_2, dots, z_n)) \
-		&= (x_1+y_1+z_1, x_2+y_2+z_2, dots, x_n+y_n+z_n) \
-		&= ((x_1, x_2, dots, x_n) + (y_1+z_1, y_2+z_2, dots, y_n+z_n)) \
+	$ (x+y)+z &= ((x_1+y_1, dots, x_n+y_n) + (z_1, dots, z_n)) \
+		&= (x_1+y_1+z_1, dots, x_n+y_n+z_n) \
+		&= ((x_1, dots, x_n) + (y_1+z_1, dots, y_n+z_n)) \
 		&= x+(y+z) $
 ]
 
@@ -152,44 +152,44 @@
 #exercise_sol(type: "proof")[
 	证明：$(a b)x = a(b x)$ 对所有 $x in FF^n$ 和 $a,b in FF$ 成立。
 ][
-	根据定义，令 $x = (x_1, x_2, dots, x_n)$，则有
+	根据定义，令 $x = (x_1, dots, x_n)$，则有
 
-	$ (a b)x &= (a b)(x_1, x_2, dots, x_n) \
-		&= (a b x_1, a b x_2, dots, a b x_n) \
-		&= a(b x_1, b x_2, dots, b x_n)) \
+	$ (a b)x &= (a b)(x_1, dots, x_n) \
+		&= (a b x_1, dots, a b x_n) \
+		&= a(b x_1, dots, b x_n)) \
 		&= a(b x) $
 ]
 
 #exercise_sol(type: "proof", ref: <1A-ffn-mul-unit>)[
 	证明：$1 x=x$ 对所有 $x in FF^n$ 成立。
 ][
-	根据定义，令 $x = (x_1, x_2, dots, x_n)$，则有
+	根据定义，令 $x = (x_1, dots, x_n)$，则有
 
-	$ 1 x &= 1(x_1, x_2, dots, x_n) \
-		&= (1 dot x_1, 1 dot x_2, dots, 1 dot x_n) \
-		&= (x_1, x_2, dots, x_n) \
+	$ 1 x &= 1(x_1, dots, x_n) \
+		&= (1 dot x_1, dots, 1 dot x_n) \
+		&= (x_1, dots, x_n) \
 		&= x $
 ]
 
 #exercise_sol(type: "proof", ref: <1A-ffn-distri-2v1s>)[
 	证明：$lambda (x+y) = lambda x + lambda y$ 对所有 $lambda in FF$ 和 $x,y in FF^n$ 成立。
 ][
-	根据定义，令 $x = (x_1, x_2, dots, x_n)$，$y = (y_1, y_2, dots, y_n)$，则有
+	根据定义，令 $x = (x_1, dots, x_n)$，$y = (y_1, dots, y_n)$，则有
 
-	$ lambda (x+y) &= lambda ((x_1+y_1, x_2+y_2, dots, x_n+y_n)) \
-		&= (lambda(x_1+y_1), lambda(x_2+y_2), dots, lambda(x_n+y_n)) \
-		&= (lambda x_1 + lambda y_1, lambda x_2 + lambda y_2, dots, lambda x_n + lambda y_n) \
+	$ lambda (x+y) &= lambda ((x_1+y_1, dots, x_n+y_n)) \
+		&= (lambda(x_1+y_1), dots, lambda(x_n+y_n)) \
+		&= (lambda x_1 + lambda y_1, dots, lambda x_n + lambda y_n) \
 		&= lambda x + lambda y $
 ]
 
 #exercise_sol(type: "proof", ref: <1A-ffn-distri-1v2s>)[
 	证明：$(a+b)x = a x + b x$ 对所有 $a,b in FF$ 和 $x in FF^n$ 成立。
 ][
-	根据定义，令 $x = (x_1, x_2, dots, x_n)$，则有
+	根据定义，令 $x = (x_1, dots, x_n)$，则有
 
-	$ (a+b)x &= (a+b)(x_1, x_2, dots, x_n) \
-		&= (a x_1 + b x_1, a x_2 + b x_2, dots, a x_n + b x_n) \
-		&= (a x_1, a x_2, dots, a x_n) + (b x_1, b x_2, dots, b x_n) \
+	$ (a+b)x &= (a+b)(x_1, dots, x_n) \
+		&= (a x_1 + b x_1, dots, a x_n + b x_n) \
+		&= (a x_1, dots, a x_n) + (b x_1, dots, b x_n) \
 		&= a x + b x $
 ]
 
