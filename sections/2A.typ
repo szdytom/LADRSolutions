@@ -311,3 +311,47 @@
 
 	#tab 根据张成空间的定义（原书定义2.4），这表明 $w in span(v_1, dots, v_m)$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 中的线性无关向量组，且 $w in V$。证明：
+
+	$ v_1, dots, v_m, w "线性无关" quad <==> quad w in.not span(v_1, dots, v_m) $
+][
+	首先说明充分性：现在 $v_1, dots, v_m, w$ 线性无关。反证假设 $w in span(v_1, dots, v_m)$，则根据张成空间的定义（原书定义2.4），存在 $a_1, dots, a_m in FF$，使得
+
+	$ w = a_1 v_1 + dots.c + a_m v_m $
+
+	#tab 整理得到
+
+	$ a_1 v_1 + dots.c + a_m v_m + (-1)w = 0 $
+
+	#tab 根据线性无关的定义（原书定义2.15），这与 $v_1, dots, v_m, w$ 线性无关矛盾，因此，$w in.not span(v_1, dots, v_m)$。
+
+	#tab 然后说明必要性：现在 $w in.not span(v_1, dots, v_m)$。反证假设 $v_1, dots, v_m, w$ 线性相关。根据线性相关的定义（原书定义2.17），存在 $a_1, dots, a_(m+1) in FF$，使得
+
+	#show: math_numbering(true)
+	$ a_1 v_1 + dots.c + a_m v_m + a_(m+1) w = 0 $ <2A-v-plus-w-is-dependent-def>
+	#show: math_numbering(false)
+
+	#tab 其中 $a_1, dots, a_(m+1)$ 中至少有一个不为 $0$。我们有 $a_(m+1) != 0$。这是因为，如果 $a_(m+1) = 0$，则我们可以将@2A-v-plus-w-is-dependent-def 改写为
+
+	$ a_1 v_1 + dots.c + a_m v_m = 0 $
+
+	#tab 这与题目条件中 $v_1, dots, v_m$ 线性无关矛盾。因此，$a_(m+1) != 0$。
+	
+	#tab 所以，我们可以将@2A-v-plus-w-is-dependent-def 改写为
+
+	$ w = -(a_1 v_1 + dots.c + a_m v_m) / a_(m+1) $
+
+	#tab 更进一步地，对于 $k in {1, dots, m}$，令
+
+	$ b_k = -a_k / a_(m+1) $
+
+	#tab 则有
+
+	$ w = b_1 v_1 + dots.c + b_m v_m $
+	
+	#tab 这表明 $w in span(v_1, dots, v_m)$，与反证假设 $w in.not span(v_1, dots, v_m)$ 矛盾。因此，$v_1, dots, v_m, w$ 线性无关。
+	
+	#tab 综上所述，$v_1, dots, v_m, w$ 线性无关当且仅当 $w in.not span(v_1, dots, v_m)$。
+]
