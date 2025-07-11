@@ -28,7 +28,7 @@
 
 	$ (alpha beta) lambda &= ((a + b ii)(c + d ii))(e + f ii) \
 		&= (a c - b d + (a d + b c) ii)(e + f ii) \
-		&= (a c e - b d f - (a d + b c)f + (a d + b c)e) + ((a d + b c)e + (a c - b d)f) ii \
+		&= (a c e - b d e - (a d + b c)f) + ((a d + b c)e + (a c - b d)f) ii \
 		&= alpha (beta lambda) $
 ]
 
@@ -69,7 +69,7 @@
 	根据定义，令 $alpha = a + b ii$（其中 $a,b in RR$），则取 $beta = (a / (a^2 + b^2)) - (b / (a^2 + b^2)) ii$，则有
 
 	$ alpha beta &= (a + b ii)(a/(a^2 + b^2) - b/(a^2 + b^2) ii) \
-		&= (a^2 + b^2)(a^2 + b^2) \
+		&= (a^2 + b^2) / (a^2 + b^2) \
 		&= 1 $
 
 	#tab 因此，这样的 $beta$ 存在。为了说明其唯一性，我们假设存在另一个 $beta'$，也满足 $alpha beta' = 1$，则有
