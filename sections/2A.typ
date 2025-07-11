@@ -1,4 +1,7 @@
-#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering
+#import "@preview/cetz:0.4.0"
+#import "@preview/cetz-plot:0.1.2": plot
+
+#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering, ploting-styles
 #import "../math.typ": span, ii, Poly
 
 #exercise_sol(type: "answer")[
@@ -500,7 +503,7 @@
 
 	#tab 这立即给出 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $v_1, dots, v_m$ 是线性无关的。
 
-	#tab 根据@2A-when-is-V-inf-dim 中的结论，$FF^infinity$ 是无限维的。
+	#tab 所以，根据@2A-when-is-V-inf-dim 中的结论，$FF^infinity$ 是无限维的。
 ]
 
 #exercise_sol(type: "proof")[
@@ -511,17 +514,64 @@
 
 	#tab 对于 $k in NN^+$，我们令函数
 
-	$ f_k:& [0, 1] -> RR \ &x |-> x^k $
+	$ f_k:& [0, 1] -> RR \ &x |-> max{0, (k^2 - k^4) x^2 + 2 k^3 x - k^2} $
 
-	#tab 论证 $f_k$ 是连续函数超出了“代数”的范围，但我们可以论证 $f_k in #fun-notation$。我们现在论证，对于任意正整数 $m$，函数组 $f_1, dots, f_m$ 是线性无关的。设 $a_1, dots a_m in RR$，使得
+	#figure(
+		kind: image,
+		caption: [$k = 1, 2, 3, 4$ 时，$f$ 的图像。],
+	table(
+		columns: 4,
+		stroke: none,
+		align: top + left,
+	..for k in range(1, 5) {
+		(box(cetz.canvas({
+			import cetz.draw: *
+			ploting-styles.axis
+			let domain = (0, 1)
+			plot.plot(
+				size: (2, 2),
+				x-ticks: if k == 1 { () } else {((1 / k, $1 slash #k$),)},
+				x-tick-step: 1,
+				y-tick-step: 1,
+				axis-style: "scientific",
+				x-min: domain.at(0),
+				x-max: domain.at(1),
+				y-min: -0.2,
+				y-max: 1.2,
+				x-grid: true,
+				y-grid: true,
+				x-label: none,
+				y-label: none,
+			{
+				plot.add(
+					x => calc.max(
+						0,
+						(calc.pow(k, 2) - calc.pow(k, 4)) * calc.pow(x, 2) + 2 * calc.pow(k, 3) * x - calc.pow(k, 2)
+					),
+					domain: domain,
+					samples: 200,
+					style: ploting-styles.s,
+				)
+			})
+		})),)
+	}))
+
+	#tab 注意到，$f_k (1/k) = 1$。另一方面 $f_k$ 定义中 $max$ 运算内的二次函数恰在 $x = 1/(k+1)$ 和 $x = 1/ (k-1)$（$k=1$ 时除外）时值为 $0$。因此，$f_k in #fun-notation$。更进一步，我们得到，对于 $i, j in NN^+$，
+
+	$ f_i (1 / j) = cases(
+		1 wide &i = j,
+		0 &i != j
+	) $
+
+	#tab 设 $a_1, dots a_m in RR$，使得
 
 	$ a_1 f_1 + dots.c + a_m f_m = 0 $
 
 	#tab 即对于任意 $x in [0, 1]$，有
 
-	$ a_1 x + dots.c + a_m x^m = 0 $
+	$ a_1 f_1 (x) + dots.c + a_m f_m (x) = 0 $
 
-	#tab 根据“次数为 $m$ 的多项式最多有 $m$ 个零点”（原书定理4.8#footnote[一般而言，我们不应该引用后面的定理，因为这将带来循环论证的风险。但是第4章多项式相对独立，从逻辑上说，这里引用原书定理4.8是没有问题的。]），我们可以得出结论，$a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），函数组 $f_1, dots, f_m$ 是线性无关的。
+	#tab 对于 $k in {1, dots, m}$，我们代入 $x = 1/k$ 即可说明 $a_k = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $f_1, dots, f_m$ 是线性无关的。
 
-	#tab 根据@2A-when-is-V-inf-dim 中的结论，#fun-notation 是无限维的。
+	#tab 所以，根据@2A-when-is-V-inf-dim 中的结论，#fun-notation 是无限维的。
 ]
