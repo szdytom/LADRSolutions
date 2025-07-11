@@ -171,13 +171,20 @@ def prepare_typst():
 	print(f"Typst downloaded and extracted to {typst_bin_path}.")
 	return True
 
-def invoke_typst(mode="c"):
+def invoke_typst(mode="c", mem_mode=False):
 	"""调用 typst 命令"""
 	if not typst_bin_path.exists():
 		print("Typst executable not found.")
 		return False
 
 	command = [str(typst_bin_path), mode, "--font-path", str(fonts_dir), "--ignore-system-fonts", "main.typ"]
+	if mem_mode:
+		if platform.system().lower() == "linux":
+			command.extend(["/dev/shm/main.pdf"])
+		else:
+			print("Memory mode is only supported on Linux.")
+			return False
+	
 	print("Executing command: ", " ".join(command))
 	try:
 		os.execv(str(typst_bin_path), command)
@@ -189,6 +196,8 @@ def main():
 	parser = argparse.ArgumentParser(description="Run Typst with specified mode.")
 	parser.add_argument('--mode', type=str, choices=['w', 'c'], default='c',
 						help="Mode to run Typst: 'w' for watch mode, 'c' for compile mode.")
+	parser.add_argument('--mem', action='store_true',
+						help="Generate PDF to memory (/dev/shm) instead of file system. (Linux only)")
 	args = parser.parse_args()
 
 	if not prepare_fonts():
@@ -196,7 +205,7 @@ def main():
 	if not prepare_typst():
 		return
 	
-	invoke_typst(mode=args.mode)
+	invoke_typst(mode=args.mode, mem_mode=args.mem)
 
 if __name__ == "__main__":
 	main()
