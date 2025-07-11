@@ -132,11 +132,12 @@
 		证明：对于所有 $x in S$，有
 		$ (a(f + g))(x) &= a((f + g)(x)) = a(f(x) + g(x)) \
 			&= a f(x) + a g(x) = (a f)(x) + (a g)(x) \
-			= (a f + a g)(x) $
+			&= (a f + a g)(x) $
 		因此 $a(f + g) = a f + a g$。另一方面，有
 		$ ((a + b)f)(x) &= (a + b) f(x) \
-			&= a f(x) + b f(x) = (a f)(x) + (b f)(x) \
-			= (a f + b f)(x) $
+			&= a f(x) + b f(x) \
+			&= (a f)(x) + (b f)(x) \
+			&= (a f + b f)(x) $
 		因此 $(a + b)f = a f + b f$。
 	
 	#tab 综上所述，$V^S$ 满足向量空间的所有要求，因此 $V^S$ 是 $FF$ 上的向量空间。
@@ -178,21 +179,20 @@
 
 	/ 加法单位元: 存在 $0 in complexification(V)$ 使得对于所有 $u,v in V$，都有 $(u + ii v) + 0 = u + ii v$。 \
 		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于所有 $u,v in V$，都有
-		$ (u + ii v) + 0 = (u + ii v) + (0 + ii 0) \
-			= (u + 0) + ii (v + 0) \
-			= u + ii v $
+		$ (u + ii v) + 0 &= (u + ii v) + (0 + ii 0) \
+			&= (u + 0) + ii (v + 0) \
+			&= u + ii v $
 
 	/ 加法逆元: 对于所有 $u,v in V$，存在 $w in complexification(V)$ 使得 $(u + ii v) + w = 0$。 \
 		证明：取 $w = -u + ii (-v)$ 为 $(u + ii v)$ 的加法逆元。对于所有 $u,v in V$，都有
-		$ (u + ii v) + w = (u + ii v) + (-u + ii (-v)) \
-			= (u - u) + ii (v - v) \
-			= 0 + ii 0 \
-			= 0 $
+		$ (u + ii v) + w &= (u + ii v) + (-u + ii (-v)) \
+			&= (u - u) + ii (v - v) \
+			&= 0 + ii 0 \
+			&= 0 $
 
 	/ 乘法单位元: 对于所有 $u,v in V$，都有 $(1 + ii 0)(u + ii v) = u + ii v$。 \
 		证明：对于所有 $u,v in V$，都有
-		$ (1 + ii 0)(u + ii v) = (1 u - 0 v) + ii (1 v + 0 u) \
-			= u + ii v $
+		$ (1 + ii 0)(u + ii v) = (1 u - 0 v) + ii (1 v + 0 u) = u + ii v $
 
 	/ 分配性质: 对于所有 $u_1,v_1,u_2,v_2 in V$ 以及所有 $a,b in RR$，都有 $(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) = (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2)$ 且 $(a + b ii)(u + ii v) = a(u + ii v) + b(u + ii v)$。 \
 		证明：对于所有 $u_1,v_1,u_2,v_2 in V$ 和所有 $a,b in RR$，都有
