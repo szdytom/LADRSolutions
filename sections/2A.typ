@@ -312,7 +312,7 @@
 	#tab 根据张成空间的定义（原书定义2.4），这表明 $w in span(v_1, dots, v_m)$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <2A-when-vecs-append-remains-indep>)[
 	设 $v_1, dots, v_m$ 是 $V$ 中的线性无关向量组，且 $w in V$。证明：
 
 	$ v_1, dots, v_m, w "线性无关" quad <==> quad w in.not span(v_1, dots, v_m) $
@@ -467,4 +467,22 @@
 	#tab 解得 $a_0 = a_1 = a_2 = a_3 = a_4 = 0$，因此向量组 $p_0, dots, p_4$ 是线性无关的。
 
 	#tab 因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$Poly_4(FF)$ 上的张成组的长度不少于 $5$。因此，由四个多项式构成的向量组不可能张成 $Poly_4(FF)$。
+]
+
+#exercise_sol(type: "proof")[
+	证明：$V$ 是无限维的，当且仅当 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。
+][
+	首先说明充分性：现在假设 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。反证假设 $V$ 是有限维的，即存在一个向量组 $u_1, dots, u_ell$ 张成 $V$。根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），必然有向量组 $v_1, dots, v_(ell + 1)$ 线性相关，这与条件矛盾。因此，$V$ 是无限维的。
+
+	#tab 然后说明必要性：现在假设 $V$ 是无限维的。我们现在构造题目所要求的序列 $v_1, v_2, dots$ 如下
+
+	/ 第 $1$ 步: \
+		任取 $v_1 in V$，使得 $v_1 != 0$。根据@2A-when-1-or-2-vecs-are-indep 中的结论，向量组 $v_1$ 是线性无关的。
+	
+	/ 第 $k$ 步: \
+		由于 $V$ 是无限维的，存在一个向量 $v_k in V$，使得 $v_k in.not span(v_1, dots, v_(k-1))$。根据@2A-when-vecs-append-remains-indep 中的结论，向量组 $v_1, dots, v_k$ 线性无关。
+
+	#tab 所以，$V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。必要性得证。
+
+	#tab 综上所述，$V$ 是无限维的，当且仅当 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。
 ]
