@@ -12,3 +12,5 @@
 1. 得到输出文件 `main.pdf`。
 
 如需要使用 `watch` 模式监听 Typst 源代码变化，可以用命令：`python3 make.py --mode w`
+
+另外，在 Linux 下，可以使用 `--mem` 选项，输出生成的 PDF 到 `/dev/shm/main.pdf`（内存模拟文件系统），这对节省磁盘寿命有一定帮助，尤其是在边编写边预览时。
