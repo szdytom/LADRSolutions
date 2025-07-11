@@ -117,7 +117,7 @@
 #note[对于 (g)，值得一提的是，上面证明的核心部分表明，多项式的系数是唯一的。这个巧妙的证明来自原书第三版的正文（定理4.7），然而在第四版中被删除了，取而代之的是不那么直接的原书定理4.8。]
 
 #exercise_sol(type: "answer")[
-	+ 设 $U$ 为 $RR^5$ 的子空间，定义为
+	+ 设 $U$ 为 $RR^5$ 的子空间，定义为#h(1fr) //https://github.com/typst/typst/issues/529
 		$ U = {(x_1, x_2, x_3, x_4, x_5) in RR^5 : x_1 = 3x_2 and x_3 = 7x_4} $
 		求 $U$ 的一个基；
 
@@ -185,7 +185,7 @@
 ]
 
 #exercise_sol(type: "answer")[
-	+ 设 $U$ 为 $CC^5$ 的子空间，定义为
+	+ 设 $U$ 为 $CC^5$ 的子空间，定义为#h(1fr) //https://github.com/typst/typst/issues/529
 		$ U = {(z_1, z_2, z_3, z_4, z_5) in CC^5 : 6z_1 = z_2 and z_3 + 2z_4 + 3z_5 = 0} $
 		求 $U$ 的一个基；
 

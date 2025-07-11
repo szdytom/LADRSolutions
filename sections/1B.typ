@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab
-#import "../math.typ": ii
+#import "../math.typ": ii, complexification
 
 #exercise_sol(type: "proof")[
 	证明：$-(-v)=v$ 对任一 $v in V$ 都成立。
@@ -143,15 +143,15 @@
 	#tab 综上所述，$V^S$ 满足向量空间的所有要求，因此 $V^S$ 是 $FF$ 上的向量空间。
 ]
 
-#let complexification(vv) = $vv_upright(C)$
-
 #exercise_sol(type: "proof")[
 	设 $V$ 是实向量空间。
 	
 	- $V$ 的*复化（complexification）*记为 $complexification(V)$，等于 $V times V$。$complexification(V)$ 中的所有元素为有序对 $(u,v)$，其中 $u,v in V$，不过我们将其记作 $u + ii v$。
+
 	- $complexification(V)$ 上的加法定义为
 		$ (u_1 + ii v_1) + (u_2 + ii v_2) = (u_1 + u_2) + ii (v_1 + v_2) $
 		对所有 $u_1,v_1,u_2,v_2 in V$ 都成立。
+
 	- $complexification(V)$ 上的标量乘法定义为
 		$ (a + b ii)(u + ii v) = (a u - b v) + ii (a v + b u) $
 		对所有 $a,b in RR$ 和所有 $u,v in V$ 都成立。
