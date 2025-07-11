@@ -502,3 +502,26 @@
 
 	#tab 根据@2A-when-is-V-inf-dim 中的结论，$FF^infinity$ 是无限维的。
 ]
+
+#exercise_sol(type: "proof")[
+	证明：由区间 $[0, 1]$ 上的所有连续实值函数构成的 $RR$ 上的向量空间是无限维的。
+][
+	#let fun-notation = $RR^[0, 1]_cancel(arrow.dotted)$
+	记 #fun-notation 为由区间 $[0, 1]$ 上的所有连续实值函数构成的 $RR$ 上的向量空间。
+
+	#tab 对于 $k in NN^+$，我们令函数
+
+	$ f_k:& [0, 1] -> RR \ &x |-> x^k $
+
+	#tab 论证 $f_k$ 是连续函数超出了“代数”的范围，但我们可以论证 $f_k in #fun-notation$。我们现在论证，对于任意正整数 $m$，函数组 $f_1, dots, f_m$ 是线性无关的。设 $a_1, dots a_m in RR$，使得
+
+	$ a_1 f_1 + dots.c + a_m f_m = 0 $
+
+	#tab 即对于任意 $x in [0, 1]$，有
+
+	$ a_1 x + dots.c + a_m x^m = 0 $
+
+	#tab 根据“次数为 $m$ 的多项式最多有 $m$ 个零点”（原书定理4.8#footnote[一般而言，我们不应该引用后面的定理，因为这将带来循环论证的风险。但是第4章多项式相对独立，从逻辑上说，这里引用原书定理4.8是没有问题的。]），我们可以得出结论，$a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），函数组 $f_1, dots, f_m$ 是线性无关的。
+
+	#tab 根据@2A-when-is-V-inf-dim 中的结论，#fun-notation 是无限维的。
+]

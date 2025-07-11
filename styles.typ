@@ -135,6 +135,7 @@
 	show heading.where(level: 1): it => {
 		counter("chapter_N").step()
 		counter("section_N").update(0)
+		counter(footnote).update(0)
 		block(width: 100%, {
 			set text(15pt, font: zhfont_sans, weight: "medium")
 			grid(
