@@ -330,16 +330,16 @@
 	#tab 然后说明必要性：现在 $w in.not span(v_1, dots, v_m)$。反证假设 $v_1, dots, v_m, w$ 线性相关。根据线性相关的定义（原书定义2.17），存在 $a_1, dots, a_(m+1) in FF$，使得
 
 	#show: math_numbering(true)
-	$ a_1 v_1 + dots.c + a_m v_m + a_(m+1) w = 0 $ <2A-v-plus-w-is-dependent-def>
+	$ a_1 v_1 + dots.c + a_m v_m + a_(m+1) w = 0 $ <2A-v-union-w-is-dependent-def>
 	#show: math_numbering(false)
 
-	#tab 其中 $a_1, dots, a_(m+1)$ 中至少有一个不为 $0$。我们有 $a_(m+1) != 0$。这是因为，如果 $a_(m+1) = 0$，则我们可以将@2A-v-plus-w-is-dependent-def 改写为
+	#tab 其中 $a_1, dots, a_(m+1)$ 中至少有一个不为 $0$。我们有 $a_(m+1) != 0$。这是因为，如果 $a_(m+1) = 0$，则我们可以将@2A-v-union-w-is-dependent-def 改写为
 
 	$ a_1 v_1 + dots.c + a_m v_m = 0 $
 
 	#tab 这与题目条件中 $v_1, dots, v_m$ 线性无关矛盾。因此，$a_(m+1) != 0$。
 	
-	#tab 所以，我们可以将@2A-v-plus-w-is-dependent-def 改写为
+	#tab 所以，我们可以将@2A-v-union-w-is-dependent-def 改写为
 
 	$ w = -(a_1 v_1 + dots.c + a_m v_m) / a_(m+1) $
 
@@ -354,4 +354,71 @@
 	#tab 这表明 $w in span(v_1, dots, v_m)$，与反证假设 $w in.not span(v_1, dots, v_m)$ 矛盾。因此，$v_1, dots, v_m, w$ 线性无关。
 	
 	#tab 综上所述，$v_1, dots, v_m, w$ 线性无关当且仅当 $w in.not span(v_1, dots, v_m)$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 中的向量组。对于 $k in {1, dots, m}$，令
+
+	$ w_k = v_1 + dots.c + v_k $
+
+	证明：如果向量组 $v_1, dots, v_m$ 线性无关，当且仅当向量组 $w_1, dots, w_m$ 线性无关。
+][
+	#tab 首先说明充分性：现在 $w_1, dots, w_m$ 线性无关。设 $a_1, dots, a_m in FF$ 使得
+
+	$ a_1 v_1 + dots.c + a_m v_m = 0 $
+
+	#tab 我们可以将其改写为
+
+	$ b_1 w_1 + dots.c + b_m w_m = 0 $
+
+	#tab 其中对于 $k in {1, dots, m}$，$b_k = a_k - a_(k + 1)$（方便起见，我们令 $a_(m+1) = 0$）。为了验证这一点，我们带入 $b_i$ 和 $w_i$ 的定义，得到
+
+	$ b_1 w_1 + dots.c + b_m w_m
+		&= sum_(i=1)^m (a_i - a_(i + 1))sum_(j=1)^i v_j \
+		&= sum_(i=1)^m sum_(j=1)^i (a_i - a_(i + 1))v_j \
+		&= sum_(j=1)^m sum_(i=j)^m (a_i - a_(i + 1))v_j \
+		&= sum_(j=1)^m (sum_(i=j)^m a_i - sum_(i=j)^m a_(i + 1)) v_j \
+		&= sum_(j=1)^m a_j v_j = 0 $
+
+	#tab 这说明 $b_1 = dots.c = b_m = 0$，也即
+
+	$ cases(
+		a_1 - a_2 = 0,
+		dots.c,
+		a_(m-1) - a_m = 0,
+		a_m = 0
+	) $
+
+	#tab 这解得 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $v_1, dots, v_m$ 线性无关。
+
+	#tab 然后说明必要性：现在 $v_1, dots, v_m$ 线性无关。设 $a_1, dots, a_m in FF$ 使得
+
+	$ a_1 w_1 + dots.c + a_m w_m = 0 $
+
+	#tab 我们可以将其改写为
+
+	$ b_1 v_1 + dots.c + b_m v_m = 0 $
+
+	#tab 其中对于 $k in {1, dots, m}$，$b_k = a_k + dots.c + a_m$。为了验证这一点，我们带入 $b_i$ 和 $w_i$ 的定义，得到
+
+	$ b_1 v_1 + dots.c + b_m v_m 
+		&= sum_(i=1)^m (sum_(j=i)^m a_j) v_i \
+		&= sum_(i=1)^m sum_(j=i)^m a_j v_i \
+		&= sum_(j=1)^m sum_(i=1)^j a_j v_i \
+		&= sum_(j=1)^m a_j sum_(i=1)^j v_i \
+		&= sum_(j=1)^m a_j w_j = 0 $
+
+	#tab 这说明 $b_1 = dots.c = b_m = 0$，也即
+
+	$ cases(
+		a_1 + dots.c + a_m = 0,
+		a_2 + dots.c + a_m = 0,
+		dots.c,
+		a_(m-1) + a_m = 0,
+		a_m = 0	
+	) $
+
+	#tab 这解得 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $w_1, dots, w_m$ 线性无关。
+
+	#tab 综上所述，向量组 $v_1, dots, v_m$ 线性无关当且仅当向量组 $w_1, dots, w_m$ 线性无关。
 ]
