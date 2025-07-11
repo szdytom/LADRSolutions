@@ -469,7 +469,7 @@
 	#tab 因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$Poly_4(FF)$ 上的张成组的长度不少于 $5$。因此，由四个多项式构成的向量组不可能张成 $Poly_4(FF)$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <2A-when-is-V-inf-dim>)[
 	证明：$V$ 是无限维的，当且仅当 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。
 ][
 	首先说明充分性：现在假设 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。反证假设 $V$ 是有限维的，即存在一个向量组 $u_1, dots, u_ell$ 张成 $V$。根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），必然有向量组 $v_1, dots, v_(ell + 1)$ 线性相关，这与条件矛盾。因此，$V$ 是无限维的。
@@ -485,4 +485,20 @@
 	#tab 所以，$V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。必要性得证。
 
 	#tab 综上所述，$V$ 是无限维的，当且仅当 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。
+]
+
+#exercise_sol(type: "proof")[
+	证明：$FF^infinity$ 是无限维的。
+][
+	对于 $k in NN^+$，我们令
+
+	$ v_k = "("underbrace(0 comma dots comma 0, k - 1 "个" 0), 1, 0, dots")" $
+
+	#tab 其中 $v_k in FF^infinity$。我们现在论证，对于任意正整数 $m$，向量组 $v_1, dots, v_m$ 是线性无关的。设 $a_1, dots a_m in FF$，使得
+
+	$ a_1 v_1 + dots.c + a_m v_m = 0 $
+
+	#tab 这立即给出 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $v_1, dots, v_m$ 是线性无关的。
+
+	#tab 根据@2A-when-is-V-inf-dim 中的结论，$FF^infinity$ 是无限维的。
 ]
