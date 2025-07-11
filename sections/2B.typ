@@ -187,6 +187,7 @@
 #exercise_sol(type: "answer")[
 	+ 设 $U$ 为 $CC^5$ 的子空间，定义为
 		$ U = {(z_1, z_2, z_3, z_4, z_5) in CC^5 : 6z_1 = z_2 and z_3 + 2z_4 + 3z_5 = 0} $
+		求 $U$ 的一个基；
 
 	+ 将 (a) 中的基扩充为 $CC^5$ 的一个基；
 
@@ -249,4 +250,18 @@
 	$ a_1 u_1 + a_2 u_2 + a_3 u_3 - a_4 u_4 - a_5 u_5 = 0 $
 
 	#tab 由于 $u_1, dots, u_5$ 是线性无关的（见上面 (b) 的证明），因此 $a_1 = dots = a_5 = 0$。这表明 $v = 0$，因此 $U inter W = {0}$。根据“两个子空间的直和”（原书定理1.46），我们得到 $CC^5 = U plus.circle W$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$U, W$ 是 $V$ 的子空间，且 $V = U + W$。证明：$V$ 有一个由 $U union W$ 中的向量组成的基。
+][
+	设 $u_1, dots, u_m in U$ 是 $U$ 的一组基，$w_1, dots, w_ell in W$ 是 $W$ 的一组基。由于 $V = U + W$，因此任意向量 $v in V$ 都可以被表示为
+
+	$ v = (a_1 u_1 + dots + a_m u_m) + (b_1 w_1 + dots + b_n w_ell) $
+
+	#tab 其中 $a_1, dots, a_m, b_1, dots, b_ell in FF$。这表明
+
+	$ V = span(u_1, dots, u_m, w_1, dots w_ell) $
+
+	#tab 由于每个张成组都包含基（原书定理2.30），因此 $V$ 有一个由 $U union W$ 中的向量组成的基。 
 ]
