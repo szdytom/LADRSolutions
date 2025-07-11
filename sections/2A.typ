@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering
-#import "../math.typ": span, ii
+#import "../math.typ": span, ii, Poly
 
 #exercise_sol(type: "answer")[
 	求 $FF^3$ 中的四个不同的向量，其张成空间为
@@ -421,4 +421,20 @@
 	#tab 这解得 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $w_1, dots, w_m$ 线性无关。
 
 	#tab 综上所述，向量组 $v_1, dots, v_m$ 线性无关当且仅当向量组 $w_1, dots, w_m$ 线性无关。
+]
+
+#exercise_sol(type: "explain")[
+	解释为什么在 $Poly_4(FF)$ 上不存在由六个多项式组成的线性无关组。
+][
+	对于 $k in {1, dots, 4}$，令
+
+	$ p_k:& FF -> FF \ &z |-> z^k $
+
+	#tab 我们现在论证向量组 $p_1, dots, p_4$ 张成 $Poly_4(FF)$：对于任意 $p in Poly_4(FF)$，设对于任意 $z in FF$，$p(z) = a_0 + a_1 z + a_2 z^2 + a_3 z^3 + a_4 z^4$，则可以将其表示为
+
+	$ p = a_0 p_0 + a_1 p_1 + a_2 p_2 + a_3 p_3 + a_4 p_4 $
+
+	#tab 这说明 $Poly_4(FF) = span(p_0, p_1, p_2, p_3, p_4)$。因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），我们可以得出结论，$Poly_4(FF)$ 上的线性无关组的长度不能超过 $4$。
+	
+	#tab 所以，在 $Poly_4(FF)$ 上不存在由六个多项式组成的线性无关组。
 ]
