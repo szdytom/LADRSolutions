@@ -7,8 +7,6 @@
 #exercise_sol(type: "answer")[
 	对于 $FF^3$ 的下列各个子集，判断其是否是 $FF^3$ 的子空间：
 
-	#set enum(numbering: "(a) ") // 与原书一致
-
 	+ ${(x_1,x_2,x_3) in FF^3 : x_1+2x_2+3x_3=0}$
 	+ ${(x_1,x_2,x_3) in FF^3 : x_1+2x_2+3x_3=4}$
 	+ ${(x_1,x_2,x_3) in FF^3 : x_1x_2x_3=0}$
@@ -63,8 +61,6 @@
 
 #exercise_sol(type: "explain")[
 	验证下面这些有关子空间的结论。
-
-	#set enum(numbering: "(a) ") // 与原书一致
 
 	+ 如果 $b in FF$，那么当且仅当 $b=0$ 时，
 		$ {(x_1,x_2,x_3,x_4) in FF^4 : x_3=5x_4 + b} $ 
@@ -170,7 +166,6 @@
 ]
 
 #exercise_sol(type: "proof")[
-	#set enum(numbering: "(a) ") // 与原书一致
 	+ ${(a,b,c) in RR^3 : a^3 = b^3}$ 是不是 $RR^3$ 的子空间？
 	+ ${(a,b,c) in CC^3 : a^3 = b^3}$ 是不是 $CC^3$ 的子空间？
 ][
