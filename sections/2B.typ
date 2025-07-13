@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, tab, note, exercise_ref
-#import "../math.typ": Poly, span
+#import "../math.typ": Poly, span, complexification, ii
 
 #exercise_sol(type: "answer")[
 	求出所有恰好有一个基的向量空间。
@@ -388,4 +388,38 @@
 	#tab 由于 $u_1, dots, u_m$ 是 $U$ 的基，$w_1, dots, w_n$ 是 $W$ 的基，根据基的定义（原书定义2.26），我们有 $a_1 = dots.c = a_m = b_1 = dots.c = b_n = 0$。这表明向量组 $u_1, dots, u_m, w_1, dots, w_n$ 是线性无关的。
 
 	#tab 综上所述，向量组 $u_1, dots, u_m, w_1, dots, w_n$ 是 $V$ 的基。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是实向量空间，证明：若 $v_1, dots, v_n$ 是 $V$（视为实向量空间）的基，则 $v_1, dots, v_n$ 也是其复化 $complexification(V)$（视为复向量空间）的基。
+
+	#note[复化 $complexification(V)$ 的定义见#exercise_ref(<E-vector-dspace-complexification>)。]
+][
+	对于 $u + ii v in complexification(V)$，由于 $v_1, dots, v_n$ 是 $V$ 的基，可以找到 $a_1, dots, a_n in RR$ 和 $b_1, dots, b_n in RR$，使得
+
+	$ u &= a_1 v_1 &+& dots.c + a_n v_n \
+		v &= b_1 v_1 &+& dots.c + b_n v_n $
+
+	#tab 于是
+
+	$ u + ii v = (a_1 + ii b_1) v_1 + dots.c + (a_n + ii b_n) v_n $
+
+	#tab 这表明 $v_1, dots, v_n$ 张成 $complexification(V)$。
+
+	#tab 另一方面，设 $a_1 + ii b_1, dots, a_n + ii b_n in CC$，满足
+
+	$ (a_1 + ii b_1) v_1 + dots.c + (a_n + ii b_n) v_n = 0 + ii 0 $
+
+	#tab 根据 $complexification(V)$ 上标量乘法的定义，这相当于
+
+	$ (a_1 v_1 + dots.c + a_n v_n) + ii (b_1 v_1 + dots.c + b_n v_n) = 0 + ii 0 $
+
+	#tab 更进一步，必须有
+
+	$ a_1 v_1 &+ dots.c + a_n v_n &= 0 \
+		b_1 v_1 &+ dots.c + b_n v_n &= 0 $
+
+	#tab 由于 $v_1, dots, v_n$ 是 $V$ 的基，根据基的定义（原书定义2.26），我们有 $a_1 = dots.c = a_n = b_1 = dots.c = b_n = 0$。这表明向量组 $v_1, dots, v_n$ 是线性无关的。
+
+	#tab 综上所述，向量组 $v_1, dots, v_n$ 是 $complexification(V)$ 的基。
 ]
