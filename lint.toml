@@ -2,7 +2,7 @@
 name = "trailing-whitespace"
 pattern = "\\s+\\n$"
 enforce = true
-comment = "Trailing whitespace at line end"
+comment = "Found trailing whitespace at line end"
 
 [[rule]]
 name = "not-centered-dots-within-big-notations"
@@ -15,3 +15,15 @@ name = "centered-dots-within-small-notations"
 pattern = "[,][\\s&]*dots\\.c"
 enforce = true
 comment = "Please use dots within ,"
+
+[[rule]]
+name = "formula-without-space-after-cjk-character"
+pattern = "[^：，、。！？（）【】—；“”‘’…\\s\\x20-\\x7E]\\$"
+enforce = true
+comment = "Missing space between CJK character and $"
+
+[[rule]]
+name = "cjk-character-without-space-after-formula"
+pattern = "\\$[^：，、。！？（）【】—；“”‘’…\\s\\x20-\\x7E]"
+enforce = true
+comment = "Missing space between $ and CJK character"
