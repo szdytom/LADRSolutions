@@ -134,8 +134,8 @@
 	#tab 因此，这样的 $lambda$ 不存在。
 ]
 
-#exercise_sol(type: "proof", ref: <1A-ffn-add-assoc>)[
-	证明：$(x+y)+z=x+(y+z)$ 对所有 $x,y,z in FF^n$ 成立。
+#exercise_sol(type: "proof", ref: <E-ffn-add-assoc>)[
+	证明：$(x + y) + z = x + (y + z)$ 对所有 $x,y,z in FF^n$ 成立。
 
 	#note[沿用原书记号1.6与记号1.10，即 $FF$ 表示 $RR$ 或 $CC$，$n$ 表示某一固定的正整数。下文不再赘述。]
 ][
@@ -160,7 +160,7 @@
 		&= a(b x) $
 ]
 
-#exercise_sol(type: "proof", ref: <1A-ffn-mul-unit>)[
+#exercise_sol(type: "proof", ref: <E-ffn-mul-scalar-id>)[
 	证明：$1 x=x$ 对所有 $x in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, dots, x_n)$，则有
@@ -171,7 +171,7 @@
 		&= x $
 ]
 
-#exercise_sol(type: "proof", ref: <1A-ffn-distri-2v1s>)[
+#exercise_sol(type: "proof", ref: <E-ffn-distributivity-vector-add>)[
 	证明：$lambda (x+y) = lambda x + lambda y$ 对所有 $lambda in FF$ 和 $x,y in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, dots, x_n)$，$y = (y_1, dots, y_n)$，则有
@@ -182,7 +182,7 @@
 		&= lambda x + lambda y $
 ]
 
-#exercise_sol(type: "proof", ref: <1A-ffn-distri-1v2s>)[
+#exercise_sol(type: "proof", ref: <E-ffn-distributivity-scalar-add>)[
 	证明：$(a+b)x = a x + b x$ 对所有 $a,b in FF$ 和 $x in FF^n$ 成立。
 ][
 	根据定义，令 $x = (x_1, dots, x_n)$，则有
@@ -200,13 +200,13 @@
 	/ 可交换性: \
 		原书定理1.14
 	/ 可结合性: \
-		@1A-ffn-add-assoc
+		@E-ffn-add-assoc
 	/ 加法单位元: \
 		原书记号1.15定义了 $0$，其性质容易验证
 	/ 加法逆元: \
 		原书定义1.17
 	/ 乘法单位元: \
-		@1A-ffn-mul-unit
+		@E-ffn-mul-scalar-id
 	/ 分配性质: \
-		@1A-ffn-distri-2v1s 和@1A-ffn-distri-1v2s
+		@E-ffn-distributivity-vector-add 和@E-ffn-distributivity-scalar-add
 ]

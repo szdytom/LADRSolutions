@@ -96,11 +96,11 @@
 	#tab 综上所述，$span(v_1, dots, v_m) = span(w_1, dots, w_m)$。	
 ]
 
-#exercise_sol(type: "proof", ref: <2A-when-1-or-2-vecs-are-indep>)[
+#exercise_sol(type: "proof", ref: <E-when-1-or-2-vectors-indep>)[
 	+ 证明：向量空间中长度为 $1$ 的组线性无关，当且仅当组中的该向量不是 $0$；
 	+ 证明：向量空间中长度为 $2$ 的组线性无关，当且仅当组中两个向量的任意一个不是另一个的标量倍。
 ][
-	设 $V$ 是向量空间。对于第一个命题，设 $v in V$。首先说明充分性。假设 $v != 0$，根据#exercise_ref(<1B-vec-zero-product-property>)，使得 $a v = 0$ 成立的 $a in FF$ 的唯一选取方式是 $a = 0$，根据线性无关的定义（原书定义2.15），这表明向量组 $v$ 是线性无关的。
+	设 $V$ 是向量空间。对于第一个命题，设 $v in V$。首先说明充分性。假设 $v != 0$，根据#exercise_ref(<E-vector-trivial-annihilation>)，使得 $a v = 0$ 成立的 $a in FF$ 的唯一选取方式是 $a = 0$，根据线性无关的定义（原书定义2.15），这表明向量组 $v$ 是线性无关的。
 
 	#tab 然后说明必要性，如果 $v = 0$，则我们有
 
@@ -177,7 +177,7 @@
 	+ 证明：如果我们将 $CC$ 视为 $RR$ 上的向量空间，那么向量组 $1 + ii, 1 - ii$ 是线性无关的；
 	+ 证明：如果我们将 $CC$ 视为 $CC$ 上的向量空间，那么向量组 $1 + ii, 1 - ii$ 是线性相关的。
 ][
-	利用@2A-when-1-or-2-vecs-are-indep 中的结论，我们只需注意到，
+	利用@E-when-1-or-2-vectors-indep 中的结论，我们只需注意到，
 
 	$ (1 + i) / (1 - i) = ii $
 
@@ -313,7 +313,7 @@
 	#tab 根据张成空间的定义（原书定义2.4），这表明 $w in span(v_1, dots, v_m)$。
 ]
 
-#exercise_sol(type: "proof", ref: <2A-when-vecs-append-remains-indep>)[
+#exercise_sol(type: "proof", ref: <E-when-vector-list-append-remains-indep>)[
 	设 $v_1, dots, v_m$ 是 $V$ 中的线性无关向量组，且 $w in V$。证明：
 
 	$ v_1, dots, v_m, w "线性无关" quad <==> quad w in.not span(v_1, dots, v_m) $
@@ -470,7 +470,7 @@
 	#tab 因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$Poly_4(FF)$ 上的张成组的长度不少于 $5$。因此，由四个多项式构成的向量组不可能张成 $Poly_4(FF)$。
 ]
 
-#exercise_sol(type: "proof", ref: <2A-when-is-V-inf-dim>)[
+#exercise_sol(type: "proof", ref: <E-inf-dim-space-seq-characterization>)[
 	证明：$V$ 是无限维的，当且仅当 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。
 ][
 	首先说明充分性：现在假设 $V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。反证假设 $V$ 是有限维的，即存在一个向量组 $u_1, dots, u_ell$ 张成 $V$。根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），必然有向量组 $v_1, dots, v_(ell + 1)$ 线性相关，这与条件矛盾。因此，$V$ 是无限维的。
@@ -478,10 +478,10 @@
 	#tab 然后说明必要性：现在假设 $V$ 是无限维的。我们现在构造题目所要求的序列 $v_1, v_2, dots$ 如下
 
 	/ 第 $1$ 步: \
-		任取 $v_1 in V$，使得 $v_1 != 0$。根据@2A-when-1-or-2-vecs-are-indep 中的结论，向量组 $v_1$ 是线性无关的。
+		任取 $v_1 in V$，使得 $v_1 != 0$。根据@E-when-1-or-2-vectors-indep 中的结论，向量组 $v_1$ 是线性无关的。
 	
 	/ 第 $k$ 步: \
-		由于 $V$ 是无限维的，存在一个向量 $v_k in V$，使得 $v_k in.not span(v_1, dots, v_(k-1))$。根据@2A-when-vecs-append-remains-indep 中的结论，向量组 $v_1, dots, v_k$ 线性无关。
+		由于 $V$ 是无限维的，存在一个向量 $v_k in V$，使得 $v_k in.not span(v_1, dots, v_(k-1))$。根据@E-when-vector-list-append-remains-indep 中的结论，向量组 $v_1, dots, v_k$ 线性无关。
 
 	#tab 所以，$V$ 中存在一个序列 $v_1, v_2, dots$ 使得对于任意正整数 $m$，均有向量组 $v_1, dots, v_m$ 线性无关。必要性得证。
 
@@ -501,7 +501,7 @@
 
 	#tab 这立即给出 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $v_1, dots, v_m$ 是线性无关的。
 
-	#tab 所以，根据@2A-when-is-V-inf-dim 中的结论，$FF^infinity$ 是无限维的。
+	#tab 所以，根据@E-inf-dim-space-seq-characterization 中的结论，$FF^infinity$ 是无限维的。
 ]
 
 #exercise_sol(type: "proof")[
@@ -571,7 +571,7 @@
 
 	#tab 对于 $k in {1, dots, m}$，我们代入 $x = 1/k$ 即可说明 $a_k = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $f_1, dots, f_m$ 是线性无关的。
 
-	#tab 所以，根据@2A-when-is-V-inf-dim 中的结论，#fun-notation 是无限维的。
+	#tab 所以，根据@E-inf-dim-space-seq-characterization 中的结论，#fun-notation 是无限维的。
 ]
 
 #exercise_sol(type: "proof")[
@@ -590,7 +590,7 @@
 	#let b1 = math.bold("1")
 	$ b1:& FF -> FF \ &z |-> 1 $
 
-	#tab 有 $b1 in Poly_m (FF)$。同时，注意到 $b1(2) != 0$，因此 $b1 in.not span(v_1, dots, v_m)$。根据@2A-when-vecs-append-remains-indep 中的结论，向量组 $p_0, dots, p_m, b1$ 线性无关。然而，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$q_0, dots, q_m$ 这一张成向量组的长度为 $m + 1$，而向量组 $p_0, dots, p_m, b1$ 的长度为 $m + 2$，不可能是线性无关的。矛盾，故假设不成立。
+	#tab 有 $b1 in Poly_m (FF)$。同时，注意到 $b1(2) != 0$，因此 $b1 in.not span(v_1, dots, v_m)$。根据@E-when-vector-list-append-remains-indep 中的结论，向量组 $p_0, dots, p_m, b1$ 线性无关。然而，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$q_0, dots, q_m$ 这一张成向量组的长度为 $m + 1$，而向量组 $p_0, dots, p_m, b1$ 的长度为 $m + 2$，不可能是线性无关的。矛盾，故假设不成立。
 	
 	#tab 综上所述，$p_0, dots, p_m$ 在 $Poly_m (FF)$ 中不是线性无关的。
 ]

@@ -304,7 +304,7 @@
 	#tab 综上所述，$h$ 不是 $RR^RR$ 上的周期函数。这表明 $RR -> RR$ 上的周期函数构成的集合并不符合子空间的条件（原书定理1.34）中对“加法封闭性”的要求，因此其不是 $RR^RR$ 的子空间。
 ]
 
-#exercise_sol(type: "proof", ref: <1C-inter-of-subspace-is-subspace>)[
+#exercise_sol(type: "proof", ref: <E-inter-of-subspace-is-subspace>)[
 	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间，证明：交集 $V_1 inter V_2$ 是 $V$ 的子空间。
 ][
 	记 $S=V_1 inter V_2$，我们逐条验证其满足子空间的条件（原书定理1.34）：
@@ -334,12 +334,12 @@
 		当 $n=1$ 时，$S=V_1$，显然是 $V$ 的子空间。
 
 	/ 第 $k+1$ 步: \
-		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。又因为 $V_(k+1)$ 是 $V$ 的子空间，由@1C-inter-of-subspace-is-subspace 可知，$(V_1 inter dots inter V_k) inter V_(k+1)$ 也是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
+		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。又因为 $V_(k+1)$ 是 $V$ 的子空间，由@E-inter-of-subspace-is-subspace 可知，$(V_1 inter dots inter V_k) inter V_(k+1)$ 也是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
 
 	#tab 综上所述，$V$ 的任意一族子空间的交集是 $V$ 的子空间。
 ]
 
-#exercise_sol(type: "proof", ref: <1C-when-union-of-two-subspaces-is-subspace>)[
+#exercise_sol(type: "proof", ref: <E-when-union-of-two-subspaces-is-subspace>)[
 	证明：$V$ 的两个子空间的并集是 $V$ 的子空间，当且仅当其中一个子空间是另一个的子集。
 ][
 	设 $V_1$ 和 $V_2$ 都是 $V$ 的子空间。我们首先说明充分性。不妨设 $V_1 subset.eq V_2$，则 $V_1 union V_2 = V_2$ 是 $V$ 的子空间。
@@ -354,13 +354,13 @@
 #exercise_sol(type: "proof", label: "hard")[
 	证明：$V$ 的三个子空间的并集是 $V$ 的子空间，当且仅当其中一个包含另外两个。
 
-	#note[令人惊讶的是，这道习题比@1C-when-union-of-two-subspaces-is-subspace 难不少，也许是因为如果我们把 $FF$ 换成只包含两个元素的域，这道习题的结论就不成立了。]
+	#note[令人惊讶的是，这道习题比@E-when-union-of-two-subspaces-is-subspace 难不少，也许是因为如果我们把 $FF$ 换成只包含两个元素的域，这道习题的结论就不成立了。]
 ][
 	设 $V_1, V_2, V_3$ 都是 $V$ 的子空间。我们首先说明充分性。不妨设 $V_1 subset.eq V_3$ 且 $V_2 subset.eq V_3$，则 $V_1 union V_2 union V_3 = V_3$ 是 $V$ 的子空间。
 
 	#tab 下面说明必要性。使用反证法，假设 $V_1 union V_2 union V_3$ 是 $V$ 的子空间，以及任意一个 $V_j$ 都不包含另外两个。
 	
-	#tab 我们首先说明，任意一个 $V_j$ 都不是另外两个的并集的子集。否则，不妨设 $V_1 subset.eq V_2 union V_3$，则 $V_1 union V_2 union V_3 = V_2 union V_3$ 是 $V$ 的子空间。应用@1C-when-union-of-two-subspaces-is-subspace，可以推出 $V_2 subset.eq V_3$ 或 $V_3 subset.eq V_2$，这说明 $V_2$ 或 $V_3$ 包含另外两个，矛盾，故假设不成立。因此，
+	#tab 我们首先说明，任意一个 $V_j$ 都不是另外两个的并集的子集。否则，不妨设 $V_1 subset.eq V_2 union V_3$，则 $V_1 union V_2 union V_3 = V_2 union V_3$ 是 $V$ 的子空间。应用@E-when-union-of-two-subspaces-is-subspace，可以推出 $V_2 subset.eq V_3$ 或 $V_3 subset.eq V_2$，这说明 $V_2$ 或 $V_3$ 包含另外两个，矛盾，故假设不成立。因此，
 
 	$ V_1 subset.eq.not V_2 union V_3 wide and wide V_2 union V_3 subset.eq.not V_1 $
 
