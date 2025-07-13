@@ -273,9 +273,9 @@
 			return text("Error: 未找到习题", fill: color.red)
 		}
 		let e = el.first()
-		numbering("1A", counter("chapter_N").at(e.location()).at(0), counter("section_N").at(e.location()).at(0))
-		"节"
-		ref(l)
+		link(e.location(), 
+			numbering("1A节习题1（见第1页）", counter("chapter_N").at(e.location()).at(0), counter("section_N").at(e.location()).at(0), counter(figure.where(kind: "exercise-problem")).at(e.location()).at(0), counter(page).at(e.location()).at(0))
+		)
 	}
 }
 
