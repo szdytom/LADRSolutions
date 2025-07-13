@@ -3,7 +3,7 @@
 
 #exercise_sol(type: "proof")[
 	证明：$-(-v)=v$ 对任一 $v in V$ 都成立。
-	
+
 	#note[沿用原书记号1.29，即 $V$ 表示 $FF$ 上的向量空间。下文不再赘述。]
 ][
 	根据定义 $v + (-v) = 0$，由可交换性，得 $(-v) + v = 0$，即 $v$ 是 $-v$ 的加法逆元。由加法逆元的唯一性（原书定理1.27），得 $-(-v) = v$。
@@ -71,13 +71,13 @@
 			infinity wide& "若 " t<0 "，",
 			0 &"若 " t=0 "，",
 			-infinity &"若 " t>0 "；") $
-	
+
 	#tab 以及
 
 	$ t + infinity &= infinity + t = infinity + infinity = infinity "，" \
 		t + (-infinity) &= (-infinity) + t = (-infinity) + (-infinity) = -infinity "，" \
 		infinity + (-infinity) &= (-infinity) + infinity = 0 $
-	
+
 	#tab 具有这样的加法和标量乘法的 $RR union {infinity,  -infinity}$ 是 $RR$ 上的向量空间吗？解释一下。
 ][
 	不是。任取 $t in RR$（$t!=0$），注意到，
@@ -92,7 +92,7 @@
 	设 $S$ 是非空集合，令 $V^S$ 表示所有从 $S$ 到 $V$ 的函数构成的集合。请在 $V^S$ 定义一种自然的加法和标量乘法，并证明：具有这些定义的 $V^S$ 是向量空间。
 ][
 	我们按如下方式定义 $V^S$ 上的加法和标量乘法：
-	
+
 	- 对于 $f, g in V^S$，和 $f + g in V^S$ 是由下式定义的函数：对于所有 $x in S$，
 		$ (f + g)(x) = f(x) + g(x) $
 	- 对于 $lambda in FF$ 和 $f in V^S$，乘积 $lambda f in V^S$ 是由下式定义的函数：对于所有 $x in S$，
@@ -108,7 +108,7 @@
 	/ 可结合性: 对于所有 $f, g, h in V^S$，都有 $(f + g) + h = f + (g + h)$。 \
 		证明：对于所有 $x in S$，有
 		$ ((f + g) + h)(x) &= (f + g)(x) + h(x) 、
-			&= f(x) + g(x) + h(x) \ 
+			&= f(x) + g(x) + h(x) \
 			&= f(x) + (g + h)(x) \
 			&= (f + (g + h))(x) $
 		因此 $(f + g) + h = f + (g + h)$。
@@ -139,13 +139,13 @@
 			&= (a f)(x) + (b f)(x) \
 			&= (a f + b f)(x) $
 		因此 $(a + b)f = a f + b f$。
-	
+
 	#tab 综上所述，$V^S$ 满足向量空间的所有要求，因此 $V^S$ 是 $FF$ 上的向量空间。
 ]
 
 #exercise_sol(type: "proof", ref: <E-vector-dspace-complexification>)[
 	设 $V$ 是实向量空间。
-	
+
 	- $V$ 的*复化（complexification）*记为 $complexification(V)$，等于 $V times V$。$complexification(V)$ 中的所有元素为有序对 $(u, v)$，其中 $u,v in V$，不过我们将其记作 $u + ii v$。
 
 	- $complexification(V)$ 上的加法定义为
@@ -155,7 +155,7 @@
 	- $complexification(V)$ 上的标量乘法定义为
 		$ (a + b ii)(u + ii v) = (a u - b v) + ii (a v + b u) $
 		对所有 $a,b in RR$ 和所有 $u,v in V$ 都成立。
-	
+
 	证明：具有如上加法和标量乘法定义的 $complexification(V)$ 是向量空间。
 
 	#note[将 $u in V$ 等同于 $u + ii 0$，从而将 $V$ 视为 $complexification(V)$ 的一个子集。这样一来，由 $V$ 构造 $complexification(V)$ 就可以视作由 $RR^n$ 构造 $CC^n$ 的推广。]
@@ -207,6 +207,6 @@
 			&= a(u + ii v) + b(u + ii v) \
 			&= (a u + a ii v) + (b u + b ii v) \
 			&= a(u + ii v) + b(u + ii v) $
-	
+
 	#tab 综上所述，$complexification(V)$ 满足向量空间的所有要求，因此 $complexification(V)$ 是 $CC$ 上的向量空间。
 ]

@@ -56,10 +56,10 @@
 
 	#tab 因此，这样的 $beta$ 存在。为了说明其唯一性，假设存在另一个 $beta'$，也满足 $alpha + beta' = 0$，则有
 
-	$ beta = beta + 0 
-		= beta + (alpha + beta') 
-		= (beta + alpha) + beta' 
-		= 0 + beta' 
+	$ beta = beta + 0
+		= beta + (alpha + beta')
+		= (beta + alpha) + beta'
+		= 0 + beta'
 		= beta' $
 ]
 

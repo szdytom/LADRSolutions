@@ -4,16 +4,16 @@
 #exercise_sol(type: "answer")[
 	求出所有恰好有一个基的向量空间。
 ][
-	${0}$ 是唯一满足要求的向量空间，它的基是空集。对于任何其他向量空间 $V$，不妨设其的一个基为 $v_1, dots, v_m$，则由基的判定准则（原书定理2.28）可知，$V$ 中的任意向量都 $v$ 都可以唯一地表示为 
+	${0}$ 是唯一满足要求的向量空间，它的基是空集。对于任何其他向量空间 $V$，不妨设其的一个基为 $v_1, dots, v_m$，则由基的判定准则（原书定理2.28）可知，$V$ 中的任意向量都 $v$ 都可以唯一地表示为
 
-	$ v = a_1 v_1 + dots + a_m v_m $
+	$ v = a_1 v_1 + dots.c + a_m v_m $
 
 	#tab 其中 $a_1, dots, a_m in FF$。现在取向量组 $2v_1, dots, 2v_m$，则 $v$，可以被表示为
 
-	$ v = b_1 (2v_1) + dots + b_m (2v_m) $
+	$ v = b_1 (2v_1) + dots.c + b_m (2v_m) $
 
 	#tab 则对于 $k in {1, dots, m}$，$a_k = 2b_k$。这只有唯一的解，即 $b_k = a_k slash 2$，因此 $v$ 可以唯一地被向量组 $2v_1, dots, 2v_m$ 的线性组合表示，这表明向量组 $2v_1, dots, 2v_m$ 也是 $V$ 的一个基。由此可知，$V$ 中的任意向量都可以被表示为两个不同的基的线性组合，因此 $V$ 不可能只有一个基。
-	
+
 	#tab 综上所述，只有 ${0}$ 满足题目要求。
 ]
 
@@ -32,11 +32,11 @@
 ][
 	对于 (a)，记这些向量为 $v_1, dots, v_n$，设 $a_1, dots, a_n in FF$，使得
 
-	$ a_1 v_1 + dots + a_n v_n = 0 $
+	$ a_1 v_1 + dots.c + a_n v_n = 0 $
 
 	#tab 这立即给出 $a_1 = dots.c = a_n = 0$，根据线性无关的定义（原书定义2.15），可知向量组 $v_1, dots, v_n$ 是线性无关的。设 $v = (x_1, dots, x_n) in FF^n$，则
 
-	$ v = x_1 v_1 + dots + x_n v_n $
+	$ v = x_1 v_1 + dots.c + x_n v_n $
 
 	#tab 因此，$v_1, dots, v_n$ 张成 $FF^n$。根据基的定义（原书定义2.26），可知向量组 $v_1, dots, v_n$ 是 $FF^n$ 的基。
 
@@ -74,7 +74,7 @@
 	$ v = a_1 (1, 1, 0) + a_2 (0, 0, 1) $
 
 	#tab 求解 $a_1, a_2$，得到唯一的一组解是
-	
+
 	$ cases(
 		a_1 = x,
 		a_2 = y
@@ -97,7 +97,7 @@
 
 	#tab 对于 (g)，根据多项式的次数的定义（原书定义2.11），立即可得 $1, z, dots, z^m$ 张成 $Poly_m (FF)$。现在反证假设 $1, z, dots, z^m$ 不是线性无关的。即存在 $a_0, dots, a_m in FF$，其中至少有一个不为 $0$，使得对于任意 $z in FF$，有
 
-	$ a_0 + a_1 z + dots + a_m z^m = 0 $
+	$ a_0 + a_1 z + dots.c + a_m z^m = 0 $
 
 	#tab 现在找到编号最大的不为 $0$ 的系数 $ell$，即 $a_ell != 0$，且 $a_k = 0$ 对于 $ell < k <= m$ 成立。取
 
@@ -149,7 +149,7 @@
 
 	#tab 下面说明 $u_1, dots, u_5$ 是 $RR^5$ 的一个基。设 $a_1, dots, a_5 in RR$，$v = (x_1, dots, x_5) in RR^5$，满足
 
-	$ v = a_1 u_1 + dots + a_5 u_5 $
+	$ v = a_1 u_1 + dots.c + a_5 u_5 $
 
 	#tab 求解 $a_1, dots, a_5$，得到唯一的一组解是
 
@@ -167,7 +167,7 @@
 
 	$ w = span(u_4, u_5) $
 
-	#tab 我们首先说明，$RR^5 = U + W$。由于向量组 $u_1, dots, u_5$ 张成 $RR^5$，因此任意向量 $v in RR^5$ 都可以被表示为 
+	#tab 我们首先说明，$RR^5 = U + W$。由于向量组 $u_1, dots, u_5$ 张成 $RR^5$，因此任意向量 $v in RR^5$ 都可以被表示为
 
 	$ v = (a_1 u_1 + a_2 u_2 + a_3 u_3) + (a_4 u_4 + a_5 u_5) $
 
@@ -181,7 +181,7 @@
 
 	$ a_1 u_1 + a_2 u_2 + a_3 u_3 - a_4 u_4 - a_5 u_5 = 0 $
 
-	#tab 由于 $u_1, dots, u_5$ 是线性无关的（见上面 (b) 的证明），因此 $a_1 = dots = a_5 = 0$。这表明 $v = 0$，因此 $U inter W = {0}$。根据“两个子空间的直和”（原书定理1.46），我们得到 $RR^5 = U plus.circle W$。
+	#tab 由于 $u_1, dots, u_5$ 是线性无关的（见上面 (b) 的证明），因此 $a_1 = dots.c = a_5 = 0$。这表明 $v = 0$，因此 $U inter W = {0}$。根据“两个子空间的直和”（原书定理1.46），我们得到 $RR^5 = U plus.circle W$。
 ]
 
 #exercise_sol(type: "answer")[
@@ -217,7 +217,7 @@
 
 	#tab 下面说明 $u_1, dots, u_5$ 是 $CC^5$ 的一个基。设 $a_1, dots, a_5 in CC$，$v = (z_1, dots, z_5) in CC^5$，满足
 
-	$ v = a_1 u_1 + dots + a_5 u_5 $
+	$ v = a_1 u_1 + dots.c + a_5 u_5 $
 
 	#tab 求解 $a_1, dots, a_5$，得到唯一的一组解是
 
@@ -249,7 +249,7 @@
 
 	$ a_1 u_1 + a_2 u_2 + a_3 u_3 - a_4 u_4 - a_5 u_5 = 0 $
 
-	#tab 由于 $u_1, dots, u_5$ 是线性无关的（见上面 (b) 的证明），因此 $a_1 = dots = a_5 = 0$。这表明 $v = 0$，因此 $U inter W = {0}$。根据“两个子空间的直和”（原书定理1.46），我们得到 $CC^5 = U plus.circle W$。
+	#tab 由于 $u_1, dots, u_5$ 是线性无关的（见上面 (b) 的证明），因此 $a_1 = dots.c = a_5 = 0$。这表明 $v = 0$，因此 $U inter W = {0}$。根据“两个子空间的直和”（原书定理1.46），我们得到 $CC^5 = U plus.circle W$。
 ]
 
 #exercise_sol(type: "proof")[
@@ -257,13 +257,13 @@
 ][
 	设 $u_1, dots, u_m in U$ 是 $U$ 的一组基，$w_1, dots, w_ell in W$ 是 $W$ 的一组基。由于 $V = U + W$，因此任意向量 $v in V$ 都可以被表示为
 
-	$ v = (a_1 u_1 + dots + a_m u_m) + (b_1 w_1 + dots + b_n w_ell) $
+	$ v = (a_1 u_1 + dots.c + a_m u_m) + (b_1 w_1 + dots.c + b_n w_ell) $
 
 	#tab 其中 $a_1, dots, a_m, b_1, dots, b_ell in FF$。这表明
 
 	$ V = span(u_1, dots, u_m, w_1, dots w_ell) $
 
-	#tab 由于每个张成组都包含基（原书定理2.30），因此 $V$ 有一个由 $U union W$ 中的向量组成的基。 
+	#tab 由于每个张成组都包含基（原书定理2.30），因此 $V$ 有一个由 $U union W$ 中的向量组成的基。
 ]
 
 #exercise_sol(type: "answer")[
@@ -356,7 +356,7 @@
 #exercise_sol(type: "proof")[
 	设 $v_1, dots, v_m$ 是 $V$ 上的向量组，对于 $k in {1, dots, m}$，定义
 
-	$ w_k = v_1 + dots + v_k $
+	$ w_k = v_1 + dots.c + v_k $
 
 	证明：向量组 $v_1, dots, v_m$ 是 $V$ 的基，当且仅当向量组 $w_1, dots, w_m$ 是 $V$ 的基。
 ][
@@ -365,17 +365,17 @@
 
 #exercise_sol(type: "proof")[
 	设 $U$ 和 $W$ 是 $V$ 的子空间，且 $V = U plus.circle W$。又设 $u_1, dots, u_m$ 是 $U$ 的基，$w_1, dots, w_n$ 是 $W$ 的基。证明：向量组
-	
+
 	$ u_1, dots, u_m, w_1, dots, w_n $
-	
+
 	是 $V$ 的基。
 ][
 	设 $v in V$，由于 $V = U plus.circle W$，因此存在唯一的 $u_1, dots, u_m in U$ 和 $w_1, dots, w_n in W$，使得
 
-	$ v = (a_1 u_1 + dots + a_m u_m) + (b_1 w_1 + dots + b_n w_n) $
+	$ v = (a_1 u_1 + dots.c + a_m u_m) + (b_1 w_1 + dots.c + b_n w_n) $
 
 	#tab 其中 $a_1, dots, a_m, b_1, dots, b_n in FF$，这表明 $u_1, dots, u_m, w_1, dots w_n$ 张成 $V$。
-	
+
 	#tab 另一方面，设 $a_1, dots, a_m, b_1, dots, b_n in FF$，满足
 
 	$ (a_1 u_1 + dots.c + a_m u_m) + (b_1 w_1 + dots.c + b_n w_n) = 0 $

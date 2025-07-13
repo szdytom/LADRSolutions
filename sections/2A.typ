@@ -73,7 +73,7 @@
 		&= sum_(j=1)^m sum_(i=j)^m (a_i - a_(i + 1))v_j \
 		&= sum_(j=1)^m (sum_(i=j)^m a_i - sum_(i=j)^m a_(i + 1)) v_j \
 		&= sum_(j=1)^m a_j v_j = u $
-	
+
 	#tab 这说明 $u$ 可以用 $w_1, dots, w_m$ 线性表示，因此 $span(v_1, dots, v_m) subset.eq span(w_1, dots, w_m)$。另一方面，设 $u in span(w_1, dots, w_m)$，则 $u$ 可以表示为
 
 	$ u = a_1 w_1 + dots.c + a_m w_m $
@@ -84,7 +84,7 @@
 
 	#tab 其中对于 $k in {1, dots, m}$，$b_k = a_k + dots.c + a_m$。为了验证这一点，我们带入 $b_i$ 和 $w_i$ 的定义，得到
 
-	$ b_1 v_1 + dots.c + b_m v_m 
+	$ b_1 v_1 + dots.c + b_m v_m
 		&= sum_(i=1)^m (sum_(j=i)^m a_j) v_i \
 		&= sum_(i=1)^m sum_(j=i)^m a_j v_i \
 		&= sum_(j=1)^m sum_(i=1)^j a_j v_i \
@@ -92,8 +92,8 @@
 		&= sum_(j=1)^m a_j w_j = u $
 
 	#tab 这说明 $u$ 可以用 $v_1, dots, v_m$ 线性表示，因此 $span(w_1, dots, w_m) subset.eq span(v_1, dots, v_m)$。
-	
-	#tab 综上所述，$span(v_1, dots, v_m) = span(w_1, dots, w_m)$。	
+
+	#tab 综上所述，$span(v_1, dots, v_m) = span(w_1, dots, w_m)$。
 ]
 
 #exercise_sol(type: "proof", ref: <E-when-1-or-2-vectors-indep>)[
@@ -109,7 +109,7 @@
 	#tab 根据线性无关的定义（原书定义2.15），向量组 $0$ 不是线性无关的。
 
 	#tab 对于第二个命题，设 $v_1, v_2 in V$。首先说明充分性：使用反证法，假设 $v_1$ 和 $v_2$ 不是线性无关的，即存在 $a_1, a_2 in FF$，使得
-		
+
 	$ a_1 v_1 + a_2 v_2 = 0 $
 
 	#tab 其中 $a_1$ 和 $a_2$ 中至少有一个向量不为 $0$。不妨设 $a_1 != 0$，那么，可以整理得
@@ -141,9 +141,9 @@
 
 #exercise_sol(type: "proof")[
 	证明：向量组
-	
+
 	$ (2, 3, 1), (1, -1, 2), (7, 3, c) $
-	
+
 	在 $FF^3$ 中线性相关，当且仅当 $c = 8$。
 ][
 	首先说明充分性：当 $c = 8$ 时，注意到
@@ -169,7 +169,7 @@
 	$ (c - 8) a_1 = 0 $
 
 	#tab 由于 $c!=8$，只能有 $a_1 = 0$，而这将给出 $a_1 = a_2 = a_3 = 0$，与反证假设矛盾，故假设不成立。
-	
+
 	#tab 综上所述，向量组 $(2, 3, 1), (1, -1, 2), (7, 3, c)$ 在 $RR^3$ 中线性相关当且仅当 $c = 8$。
 ]
 
@@ -188,7 +188,7 @@
 	设 $v_1, v_2, v_3, v_4$ 是 $V$ 中的线性无关向量组。证明：向量组
 
 	$ v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4 $
-	
+
 	也线性无关。
 ][
 	设 $a_1, a_2, a_3, a_4 in FF$，使得
@@ -198,13 +198,13 @@
 	#tab 整理得到
 
 	$ a_1 v_1 + (a_2 - a_1) v_2 + (a_3 - a_2) v_3 + (a_4 - a_3) v_4 = 0 $
-	
+
 	#tab 由于 $v_1, v_2, v_3, v_4$ 线性无关，根据线性无关的定义（原书定义2.15），只能有
 
 	$ cases(
-		a_1 = 0, 
-		a_2 - a_1 = 0, 
-		a_3 - a_2 = 0, 
+		a_1 = 0,
+		a_2 - a_1 = 0,
+		a_3 - a_2 = 0,
 		a_4 - a_3 = 0
 	) $
 
@@ -269,7 +269,7 @@
 
 	$ v_1 &= (1, 0), wide &v_2 = (0, 1) \
 		w_1 &= (0, 1), &w_2 = (1, 0) $
-	
+
 	#tab 容易验证这两个向量组都是 $RR^2$ 中的线性无关向量组。然而，注意到
 
 	$ 1(v_1 + w_1) + (-1)(v_2 + w_2) = 1(1, 1) + (-1)(1, 1) = 0 $
@@ -291,7 +291,7 @@
 	#show: math_numbering(false)
 
 	#tab 其中 $a_1, dots, a_m$ 中至少有一个不为 $0$。
-	
+
 	#tab 下面我们说明 $a_1 + dots.c + a_m != 0$。整理@2A-vi-plus-w-is-dependent-def 可得
 
 	$ a_1 v_1 + dots.c + a_m v_m + (a_1 + dots.c + a_m) w = 0 $
@@ -339,7 +339,7 @@
 	$ a_1 v_1 + dots.c + a_m v_m = 0 $
 
 	#tab 这与题目条件中 $v_1, dots, v_m$ 线性无关矛盾。因此，$a_(m+1) != 0$。
-	
+
 	#tab 所以，我们可以将@2A-v-union-w-is-dependent-def 改写为
 
 	$ w = -(a_1 v_1 + dots.c + a_m v_m) / a_(m+1) $
@@ -351,9 +351,9 @@
 	#tab 则有
 
 	$ w = b_1 v_1 + dots.c + b_m v_m $
-	
+
 	#tab 这表明 $w in span(v_1, dots, v_m)$，与反证假设 $w in.not span(v_1, dots, v_m)$ 矛盾。因此，$v_1, dots, v_m, w$ 线性无关。
-	
+
 	#tab 综上所述，$v_1, dots, v_m, w$ 线性无关当且仅当 $w in.not span(v_1, dots, v_m)$。
 ]
 
@@ -402,7 +402,7 @@
 
 	#tab 其中对于 $k in {1, dots, m}$，$b_k = a_k + dots.c + a_m$。为了验证这一点，我们带入 $b_i$ 和 $w_i$ 的定义，得到
 
-	$ b_1 v_1 + dots.c + b_m v_m 
+	$ b_1 v_1 + dots.c + b_m v_m
 		&= sum_(i=1)^m (sum_(j=i)^m a_j) v_i \
 		&= sum_(i=1)^m sum_(j=i)^m a_j v_i \
 		&= sum_(j=1)^m sum_(i=1)^j a_j v_i \
@@ -416,7 +416,7 @@
 		a_2 + dots.c + a_m = 0,
 		dots.c,
 		a_(m-1) + a_m = 0,
-		a_m = 0	
+		a_m = 0
 	) $
 
 	#tab 这解得 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $w_1, dots, w_m$ 线性无关。
@@ -436,7 +436,7 @@
 	$ p = a_0 p_0 + a_1 p_1 + a_2 p_2 + a_3 p_3 + a_4 p_4 $
 
 	#tab 这说明 $Poly_4(FF) = span(p_0, p_1, p_2, p_3, p_4)$。因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），我们可以得出结论，$Poly_4(FF)$ 上的线性无关组的长度不能超过 $5$。
-	
+
 	#tab 所以，在 $Poly_4(FF)$ 上不存在由六个多项式组成的线性无关组。
 ]
 
@@ -479,7 +479,7 @@
 
 	/ 第 $1$ 步: \
 		任取 $v_1 in V$，使得 $v_1 != 0$。根据@E-when-1-or-2-vectors-indep 中的结论，向量组 $v_1$ 是线性无关的。
-	
+
 	/ 第 $k$ 步: \
 		由于 $V$ 是无限维的，存在一个向量 $v_k in V$，使得 $v_k in.not span(v_1, dots, v_(k-1))$。根据@E-when-vector-list-append-remains-indep 中的结论，向量组 $v_1, dots, v_k$ 线性无关。
 
@@ -591,6 +591,6 @@
 	$ b1:& FF -> FF \ &z |-> 1 $
 
 	#tab 有 $b1 in Poly_m (FF)$。同时，注意到 $b1(2) != 0$，因此 $b1 in.not span(v_1, dots, v_m)$。根据@E-when-vector-list-append-remains-indep 中的结论，向量组 $p_0, dots, p_m, b1$ 线性无关。然而，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$q_0, dots, q_m$ 这一张成向量组的长度为 $m + 1$，而向量组 $p_0, dots, p_m, b1$ 的长度为 $m + 2$，不可能是线性无关的。矛盾，故假设不成立。
-	
+
 	#tab 综上所述，$p_0, dots, p_m$ 在 $Poly_m (FF)$ 中不是线性无关的。
 ]
