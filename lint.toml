@@ -1,0 +1,17 @@
+[[rule]]
+name = "trailing-whitespace"
+pattern = "\\s+\\n$"
+enforce = true
+comment = "Trailing whitespace at line end"
+
+[[rule]]
+name = "not-centered-dots-within-big-notations"
+pattern = "[=+][\\s&]*dots[^\\.]"
+enforce = true
+comment = "Please use dots.c within = or +"
+
+[[rule]]
+name = "centered-dots-within-small-notations"
+pattern = "[,][\\s&]*dots\\.c"
+enforce = true
+comment = "Please use dots within ,"
