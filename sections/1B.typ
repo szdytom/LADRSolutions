@@ -2,7 +2,7 @@
 #import "../math.typ": ii, complexification
 
 #exercise_sol(type: "proof")[
-	证明：$-(-v)=v$ 对任一 $v in V$ 都成立。
+	证明：$-(-v)=v$ 对任意 $v in V$ 都成立。
 
 	#note[沿用原书记号1.29，即 $V$ 表示 $FF$ 上的向量空间。下文不再赘述。]
 ][

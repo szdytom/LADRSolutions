@@ -27,3 +27,15 @@ name = "cjk-character-without-space-after-formula"
 pattern = "\\$[^：，、。！？（）【】—；“”‘’…\\s\\x20-\\x7E]"
 enforce = true
 comment = "Missing space between $ and CJK character"
+
+[[rule]]
+name = "forbid-任一"
+pattern = "任一"
+enforce = true
+comment = "Please use 任意 instead of 任一"
+
+[[rule]]
+name = "forbid-对于所有"
+pattern = "对于所有"
+enforce = true
+comment = "Please use 对于任意 instead of 对于所有"

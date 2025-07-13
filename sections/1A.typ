@@ -46,7 +46,7 @@
 ]
 
 #exercise_sol(type: "proof")[
-	证明：对于任一 $alpha in CC$，都存在唯一的 $beta in CC$ 使得 $alpha + beta = 0$。
+	证明：对于任意 $alpha in CC$，都存在唯一的 $beta in CC$ 使得 $alpha + beta = 0$。
 ][
 	根据定义，令 $alpha = a + b ii$（其中 $a,b in RR$），则取 $beta = (-a) + (-b) ii$，则有
 
@@ -64,7 +64,7 @@
 ]
 
 #exercise_sol(type: "proof")[
-	证明：对于任一 $alpha in CC$（$alpha != 0$），都存在唯一的 $beta in CC$ 使得 $alpha beta = 1$。
+	证明：对于任意 $alpha in CC$（$alpha != 0$），都存在唯一的 $beta in CC$ 使得 $alpha beta = 1$。
 ][
 	根据定义，令 $alpha = a + b ii$（其中 $a,b in RR$），则取 $beta = (a / (a^2 + b^2)) - (b / (a^2 + b^2)) ii$，则有
 
