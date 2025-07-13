@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, tab, note
+#import "../styles.typ": exercise_sol, tab, note, exercise_ref
 #import "../math.typ": Poly, span
 
 #exercise_sol(type: "answer")[
@@ -351,4 +351,41 @@
 	$ U = {(x, y, z, z) in RR^4 : x, y, z in RR} $
 
 	#tab 是 $RR^4$ 的子空间,且满足 $v_1, v_2 in U$，而 $v_3 in.not U$ 和 $v_4 in.not U$。然而，$v_1, v_2$ 不是 $U$ 的基，因为向量 $(0, 0, 1, 1) in U$ 不是 $span(u_1, u_2)$ 中的元素。由此可知，原命题不成立。
+]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 上的向量组，对于 $k in {1, dots, m}$，定义
+
+	$ w_k = v_1 + dots + v_k $
+
+	证明：向量组 $v_1, dots, v_m$ 是 $V$ 的基，当且仅当向量组 $w_1, dots, w_m$ 是 $V$ 的基。
+][
+	由#exercise_ref(<E-cumulative-sum-span>) 和#exercise_ref(<E-cumulative-sum-independence>) 得证。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $W$ 是 $V$ 的子空间，且 $V = U plus.circle W$。又设 $u_1, dots, u_m$ 是 $U$ 的基，$w_1, dots, w_n$ 是 $W$ 的基。证明：向量组
+	
+	$ u_1, dots, u_m, w_1, dots, w_n $
+	
+	是 $V$ 的基。
+][
+	设 $v in V$，由于 $V = U plus.circle W$，因此存在唯一的 $u_1, dots, u_m in U$ 和 $w_1, dots, w_n in W$，使得
+
+	$ v = (a_1 u_1 + dots + a_m u_m) + (b_1 w_1 + dots + b_n w_n) $
+
+	#tab 其中 $a_1, dots, a_m, b_1, dots, b_n in FF$，这表明 $u_1, dots, u_m, w_1, dots w_n$ 张成 $V$。
+	
+	#tab 另一方面，设 $a_1, dots, a_m, b_1, dots, b_n in FF$，满足
+
+	$ (a_1 u_1 + dots.c + a_m u_m) + (b_1 w_1 + dots.c + b_n w_n) = 0 $
+
+	#tab 根据直和的条件（原书定理1.45），必须有
+
+	$ a_1 u_1 &+ dots.c + a_m u_m &= 0 \
+		b_1 w_1 &+ dots.c + b_n w_n &= 0 $
+
+	#tab 由于 $u_1, dots, u_m$ 是 $U$ 的基，$w_1, dots, w_n$ 是 $W$ 的基，根据基的定义（原书定义2.26），我们有 $a_1 = dots.c = a_m = b_1 = dots.c = b_n = 0$。这表明向量组 $u_1, dots, u_m, w_1, dots, w_n$ 是线性无关的。
+
+	#tab 综上所述，向量组 $u_1, dots, u_m, w_1, dots, w_n$ 是 $V$ 的基。
 ]

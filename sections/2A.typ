@@ -50,7 +50,7 @@
 	#tab 综上所述，$V = span(v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4)$，即向量组 $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$ 也张成 $V$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-cumulative-sum-span>)[
 	设 $v_1, dots, v_m$ 是 $V$ 中的一组向量。对于 $k in {1, dots, m}$，令
 
 	$ w_k = v_1 + dots.c + v_k $
@@ -357,7 +357,7 @@
 	#tab 综上所述，$v_1, dots, v_m, w$ 线性无关当且仅当 $w in.not span(v_1, dots, v_m)$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-cumulative-sum-independence>)[
 	设 $v_1, dots, v_m$ 是 $V$ 中的向量组。对于 $k in {1, dots, m}$，令
 
 	$ w_k = v_1 + dots.c + v_k $
