@@ -48,7 +48,7 @@
 		在定义中“条件可以替换”，指原来的条件替换成新条件后，满足定义的对象还是原来的那些。
 	]
 ][
-	采用原有定义时，新条件成立的证明由原书定理1.30给出。我们现在采用替换后的新定义，并以此证明加法逆元条件，即“对于所有 $v in V$，都存在 $w in V$ 使得 $v+w=0$”。
+	采用原有定义时，新条件成立的证明由原书定理1.30给出。我们现在采用替换后的新定义，并以此证明加法逆元条件，即“对于任意 $v in V$，都存在 $w in V$ 使得 $v+w=0$”。
 
 	#tab 更具体地，我们说明 $v + (-1)v=0$。这是由于
 
@@ -93,43 +93,43 @@
 ][
 	我们按如下方式定义 $V^S$ 上的加法和标量乘法：
 
-	- 对于 $f, g in V^S$，和 $f + g in V^S$ 是由下式定义的函数：对于所有 $x in S$，
+	- 对于 $f, g in V^S$，和 $f + g in V^S$ 是由下式定义的函数：对于任意 $x in S$，
 		$ (f + g)(x) = f(x) + g(x) $
-	- 对于 $lambda in FF$ 和 $f in V^S$，乘积 $lambda f in V^S$ 是由下式定义的函数：对于所有 $x in S$，
+	- 对于 $lambda in FF$ 和 $f in V^S$，乘积 $lambda f in V^S$ 是由下式定义的函数：对于任意 $x in S$，
 		$ (lambda f)(x) = lambda f(x) $
 
 	#tab 我们现在证明 $V^S$ 是 $FF$ 上的向量空间。具体而言，我们逐条验证向量空间的定义（原书定义1.20）中的要求：
 
-	/ 可交换性: 对于所有 $f, g in V^S$，都有 $f + g = g + f$。 \
-		证明：对于所有 $x in S$，有
+	/ 可交换性: 对于任意 $f, g in V^S$，都有 $f + g = g + f$。 \
+		证明：对于任意 $x in S$，有
 		$ (f + g)(x) = f(x) + g(x) = g(x) + f(x) = (g + f)(x) $
 		因此 $f + g = g + f $。
 
-	/ 可结合性: 对于所有 $f, g, h in V^S$，都有 $(f + g) + h = f + (g + h)$。 \
-		证明：对于所有 $x in S$，有
+	/ 可结合性: 对于任意 $f, g, h in V^S$，都有 $(f + g) + h = f + (g + h)$。 \
+		证明：对于任意 $x in S$，有
 		$ ((f + g) + h)(x) &= (f + g)(x) + h(x) 、
 			&= f(x) + g(x) + h(x) \
 			&= f(x) + (g + h)(x) \
 			&= (f + (g + h))(x) $
 		因此 $(f + g) + h = f + (g + h)$。
 
-	/ 加法单位元: 存在 $0 in V^S$ 使得对于所有 $f in V^S$，都有 $f + 0 = f$。 \
-		证明：取 $0: x |-> 0$ 为 $V^S$ 中的加法单位元。对于所有 $f in V^S$，都有
+	/ 加法单位元: 存在 $0 in V^S$ 使得对于任意 $f in V^S$，都有 $f + 0 = f$。 \
+		证明：取 $0: x |-> 0$ 为 $V^S$ 中的加法单位元。对于任意 $f in V^S$，都有
 		$ (f + 0)(x) = f(x) + 0 = f(x) = (f)(x) $
 		因此 $f + 0 = f$。
 
-	/ 加法逆元: 对于所有 $f in V^S$，存在 $g in V^S$ 使得 $f + g = 0$。 \
-		证明：取 $g: x |-> -f(x)$ 为 $f$ 的加法逆元。对于所有 $x in S$，都有
+	/ 加法逆元: 对于任意 $f in V^S$，存在 $g in V^S$ 使得 $f + g = 0$。 \
+		证明：取 $g: x |-> -f(x)$ 为 $f$ 的加法逆元。对于任意 $x in S$，都有
 		$ (f + g)(x) = f(x) + g(x) = f(x) - f(x) = 0 $
 		因此 $f + g = 0$。
 
-	/ 乘法单位元: 对于所有 $f in V^S$，都有 $1f = f$。 \
-		证明：对于所有 $x in S$，都有
+	/ 乘法单位元: 对于任意 $f in V^S$，都有 $1f = f$。 \
+		证明：对于任意 $x in S$，都有
 		$ (1f)(x) = 1 f(x) = f(x) $
 		因此 $1f = f$。
 
-	/ 分配性质: 对于所有 $f, g in V^S$ 以及所有 $a, b in FF$，都有 $a(f + g) = a f + a g$ 且 $(a + b)f = a f + b f$。 \
-		证明：对于所有 $x in S$，有
+	/ 分配性质: 对于任意 $f, g in V^S$ 以及所有 $a, b in FF$，都有 $a(f + g) = a f + a g$ 且 $(a + b)f = a f + b f$。 \
+		证明：对于任意 $x in S$，有
 		$ (a(f + g))(x) &= a((f + g)(x)) = a(f(x) + g(x)) \
 			&= a f(x) + a g(x) = (a f)(x) + (a g)(x) \
 			&= (a f + a g)(x) $
@@ -162,14 +162,14 @@
 ][
 	我们将说明 $complexification(V)$ 是 $CC$ 上的向量空间。具体而言，我们逐条验证向量空间的定义（原书定义1.20）中的要求：
 
-	/ 可交换性: 对于所有 $u_1,v_1,u_2,v_2 in V$，都有 $(u_1 + ii v_1) + (u_2 + ii v_2) = (u_2 + ii v_2) + (u_1 + ii v_1)$。 \
-		证明：由加法的可交换性，$u_1 + u_2 = u_2 + u_1$ 且 $v_1 + v_2 = v_2 + v_1$，因此
+	/ 可交换性: 对于任意 $u, v in complexification(V)$，都有 $u + v = v + u$。 \
+		证明：设 $u_1,v_1,u_2,v_2 in V$，由加法的可交换性，$u_1 + u_2 = u_2 + u_1$ 且 $v_1 + v_2 = v_2 + v_1$，因此
 		$ (u_1 + ii v_1) + (u_2 + ii v_2) &= (u_1 + u_2) + ii (v_1 + v_2) \
 			&= (u_2 + u_1) + ii (v_2 + v_1) \
 			&= (u_2 + ii v_2) + (u_1 + ii v_1) $
 
-	/ 可结合性: 对于所有 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，都有 $((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) = (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3))$。 \
-		证明：由加法的可结合性，$(u_1 + u_2) + u_3 = u_1 + (u_2 + u_3)$
+	/ 可结合性: 对于任意 $u, v, w in complexification(V)$，都有 $(u + v) + w = u + (v + w)$。 \
+		证明：设 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，由加法的可结合性，$(u_1 + u_2) + u_3 = u_1 + (u_2 + u_3)$
 		且 $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$，因此
 		$ &((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) \
 			=& ((u_1 + u_2) + ii (v_1 + v_2)) + (u_3 + ii v_3) \
@@ -177,36 +177,35 @@
 			=& (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3)) \
 			=& (u_1 + ii v_1) + (u_2 + u_3) + ii (v_2 + v_3) $
 
-	/ 加法单位元: 存在 $0 in complexification(V)$ 使得对于所有 $u,v in V$，都有 $(u + ii v) + 0 = u + ii v$。 \
-		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于所有 $u,v in V$，都有
+	/ 加法单位元: 存在 $0 in complexification(V)$，使得对于任意 $u in complexification(V)$，都有 $u + 0 = u$。 \
+		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于任意 $u,v in V$，都有
 		$ (u + ii v) + 0 &= (u + ii v) + (0 + ii 0) \
 			&= (u + 0) + ii (v + 0) \
 			&= u + ii v $
 
-	/ 加法逆元: 对于所有 $u,v in V$，存在 $w in complexification(V)$ 使得 $(u + ii v) + w = 0$。 \
-		证明：取 $w = -u + ii (-v)$ 为 $(u + ii v)$ 的加法逆元。对于所有 $u,v in V$，都有
+	/ 加法逆元: 对于任意 $u in complexification(V)$，存在 $w in complexification(V)$ 使得 $u + w = 0$。 \
+		证明：设 $u,v in V$，取 $w = -u + ii (-v)$ 为 $(u + ii v)$ 的加法逆元。则
 		$ (u + ii v) + w &= (u + ii v) + (-u + ii (-v)) \
 			&= (u - u) + ii (v - v) \
 			&= 0 + ii 0 \
 			&= 0 $
 
-	/ 乘法单位元: 对于所有 $u,v in V$，都有 $(1 + ii 0)(u + ii v) = u + ii v$。 \
-		证明：对于所有 $u,v in V$，都有
-		$ (1 + ii 0)(u + ii v) = (1 u - 0 v) + ii (1 v + 0 u) = u + ii v $
+	/ 乘法单位元: 对于任意 $u in complexification(V)$，都有 $1u = u$。 \
+		证明：对于任意 $u,v in V$，都有
+		$ (1 + 0 ii)(u + ii v) = (1 u - 0 v) + ii (1 v + 0 u) = u + ii v $
 
-	/ 分配性质: 对于所有 $u_1,v_1,u_2,v_2 in V$ 以及所有 $a,b in RR$，都有 $(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) = (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2)$ 且 $(a + b ii)(u + ii v) = a(u + ii v) + b(u + ii v)$。 \
-		证明：对于所有 $u_1,v_1,u_2,v_2 in V$ 和所有 $a,b in RR$，都有
+	/ 分配性质: 对于任意 $u, v in complexification(V)$ 以及 $lambda, mu in CC$，都有 $lambda(u + v) = lambda u + lambda v$ 且 $(lambda + mu)u = lambda u + mu u$。 \
+		证明：对于任意 $u_1,v_1,u_2,v_2 in V$ 和 $a,b in RR$，都有
 		$ &(a + b ii)((u_1 + ii v_1) + (u_2 + ii v_2)) \
 			=& (a + b ii)((u_1 + u_2) + ii (v_1 + v_2)) \
 			=& (a(u_1 + u_2) - b(v_1 + v_2)) + ii (a(v_1 + v_2) + b(u_1 + u_2)) \
-			=& (a u_1 - b v_1) + ii (a v_1 + b u_1) + (a u_2 - b v_2) + ii (a v_2 + b u_2) \
 			=& (a u_1 - b v_1 + a u_2 - b v_2) + ii (a v_1 + b u_1 + a v_2 + b u_2) \
 			=& (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2) $
-		另一方面，对于所有 $u,v in V$ 和所有 $a,b in RR$
-		$ (a + b ii)(u + ii v) &= (a u - b v) + ii (a v + b u) \
-			&= a(u + ii v) + b(u + ii v) \
-			&= (a u + a ii v) + (b u + b ii v) \
-			&= a(u + ii v) + b(u + ii v) $
+		另一方面，对于任意 $u,v in V$ 和 $a, b, c, d in RR$
+		$ &((a + b ii) + (c + d ii))(u + ii v) \
+			=& (a + c) u - (b + d) v + ii ((a + b) v + (c + d) u) \
+			=& ((a u - b v) + (c u - d v)) + ii ((a v + b u) + (c v + d u)) \
+			=& ((a + b ii)(u + ii v)) + ((c + d ii)(u + ii v)) $
 
 	#tab 综上所述，$complexification(V)$ 满足向量空间的所有要求，因此 $complexification(V)$ 是 $CC$ 上的向量空间。
 ]
