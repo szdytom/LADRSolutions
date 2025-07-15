@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, note, tab, exercise_ref
+#import "../styles.typ": exercise_sol, note, tab, exercise_ref, math_numbering
 #import "../math.typ": span, Poly
 
 #exercise_sol(type: "proof")[
@@ -38,7 +38,7 @@
 ][
 	对于 (a)，我们的思路是，考虑到 $p(6) = 0$ 意味着任意 $p in U$ 都可以表示为 $p(z) = (z - 6)q(z)$，其中 $q in Poly_3(FF)$。因此，我们很容易猜测 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$#footnote[将这些表达式看作关于 $z$ 的函数，即这里表示的是 $z |-> dots.c$，下同。]是 $U$ 的一组基。
 
-	#tab 为了说明这一点，我们首先证明 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是线性无关的。设 $a, b, c, d in FF$，满足
+	#tab 为了说明这一点，我们首先证明 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是线性无关的。设 $a, b, c, d in FF$，满足对于任意 $z in FF$，
 
 	$ a(z - 6) + b(z^2 - 6z) + c(z^3 - 6z^2) + d(z^4 - 6z^3) = 0 $
 
@@ -58,9 +58,174 @@
 
 	#tab 由此可得 $a = b = c = d = 0$，因此 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是线性无关的。
 
-	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> z in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。再根据长度恰当的线性无关组是基（原书2.38），我们得出 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是 $U$ 的一组基。
+	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> z in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
+	
+	#tab 代入 $z=6$，立即可以验证 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是 $U$ 的一组基。
 
 	#tab 对于 (b)，注意到 $1 in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3, 1$ 是线性无关的，进一步地，向量组 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3, 1$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
+
+	#tab 对于 (c)，我们可以取 $W = span(1)$。由 (b) 可知 $Poly_4(FF) = U + W$，根据子空间之和的维数（原书2.43），我们有
+
+	$ dim Poly_4(FF) = dim U + dim W - dim(U inter W) $
+
+	#tab 解得 $dim (U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $Poly_4(FF) = U plus.circle W$。
+]
+
+#exercise_sol(type: "answer")[
+	+ 令 $U = {p in Poly_4(FF) : p''(6) = 0}$，求 $U$ 的一组基；
+	+ 将 (a) 中的基扩充为 $Poly_4(FF)$ 的基；
+	+ 求 $Poly_4(FF)$ 的一个子空间 $W$，使得 $Poly_4(FF) = U plus.circle W$。
+][
+	#tab 对于 (a)，向量组 $1, z, z^3 - 18z^2, z^4 - 216z^2$ 是 $U$ 的一组基。为了说明这一点，我们首先证明 $1, z, z^3 - 18z^2, z^4 - 216z^2$ 是线性无关的。设 $a, b, c, d in FF$，满足对于任意 $z in FF$，
+
+	$ a + b z + c(z^3 - 18z^2) + d(z^4 - 216z^2) = 0 $
+
+	#tab 整理得到
+
+	$ a + b z + (-18c - 216d)z^2 + c z^3 + d z^4 = 0 $
+
+	#tab 根据多项式系数的唯一性，我们有
+
+	$ cases(
+		a = 0,
+		b = 0,
+		-18c - 216d = 0,
+		c = 0,
+		d = 0
+	) $
+
+	#tab 由此可得 $a = b = c = d = 0$，因此 $1, z, z^3 - 18z^2, z^4 - 216z^2$ 是线性无关的。
+
+	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> z^2 in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
+
+	#tab 分别求二阶导，再代入 $z = 6$，可以验证 $1, z, z^3 - 18z^2, z^4 - 216z^2 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $1, z, z^3 - 18z^2, z^4 - 216z^2$ 是 $U$ 的一组基。
+
+	#tab 对于 (b)，注意到 $z^2 in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $1, z, z^3 - 18z^2, z^4 - 216z^2, z^2$ 是线性无关的，进一步地，向量组 $1, z, z^3 - 18z^2, z^4 - 216z^2, z^2$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
+
+	#tab 对于 (c)，我们可以取 $W = span(z^2)$。由 (b) 可知 $Poly_4(FF) = U + W$，
+	根据子空间之和的维数（原书2.43），我们有
+
+	$ dim Poly_4(FF) = dim U + dim W - dim(U inter W) $
+
+	#tab 解得 $dim (U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $Poly_4(FF) = U plus.circle W$。
+]
+
+#exercise_sol(type: "answer", ref: <E-p2-eq-p5-poly4>)[
+	+ 令 $U = {p in Poly_4(FF) : p(2) = p(5)}$，求 $U$ 的一组基；
+	+ 将 (a) 中的基扩充为 $Poly_4(FF)$ 的基；
+	+ 求 $Poly_4(FF)$ 的一个子空间 $W$，使得 $Poly_4(FF) = U plus.circle W$。
+][
+	#tab 对于 (a)，向量组 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z$ 是 $U$ 的一组基。为了说明这一点，我们首先证明 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z$ 是线性无关的。设 $a, b, c, d in FF$，满足对于任意 $z in FF$，
+
+	$ a + b(z^2 - 7z) + c(z^3 - 39 z) + d(z^4 - 203 z) = 0 $
+
+	#tab 整理得到
+
+	$ a + (-7b - 39c - 203d)z + b z^2 + c z^3 + d z^4 = 0 $
+
+	#tab 根据多项式系数的唯一性，我们有
+
+	$ cases(
+		a = 0,
+		-7b - 39c - 203d = 0,
+		b = 0,
+		c = 0,
+		d = 0
+	) $
+
+	#tab 由此可得 $a = b = c = d = 0$，因此 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z$ 是线性无关的。
+
+	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> z in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
+
+	#tab 分别代入 $z = 2$ 和 $z = 5$，可以验证 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z$ 是 $U$ 的一组基。
+
+	#tab 对于 (b)，注意到 $z in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z, z$ 是线性无关的，进一步地，向量组 $1, z^2 - 7z, z^3 - 39 z, z^4 - 203 z, z$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
+
+	#tab 对于 (c)，我们可以取 $W = span(z)$。由 (b) 可知 $Poly_4(FF) = U + W$，根据子空间之和的维数（原书2.43），我们有
+
+	$ dim Poly_4(FF) = dim U + dim W - dim(U inter W) $
+
+	#tab 解得 $dim (U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $Poly_4(FF) = U plus.circle W$。
+]
+
+#exercise_sol(type: "answer")[
+	+ 令 $U = {p in Poly_4(FF) : p(2) = p(5) = p(6)}$，求 $U$ 的一组基；
+	+ 将 (a) 中的基扩充为 $Poly_4(FF)$ 的基；
+	+ 求 $Poly_4(FF)$ 的一个子空间 $W$，使得 $Poly_4(FF) = U plus.circle W$。
+][
+	对于 (a)，向量组 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z$ 是 $U$ 的一组基。为了说明这一点，我们首先证明 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z$ 是线性无关的。设 $a, b, c in FF$，满足对于任意 $z in FF$，
+
+	$ a + b(z^3 - 13 z^2 + 52z) + c(z^4 - 117 z^2 + 616z) = 0 $
+
+	#tab 整理得到
+
+	$ a + (52b + 616c)z + (-13b - 117c)z^2 + b z^3 + c z^4 = 0 $
+
+	#tab 根据多项式系数的唯一性，我们有
+
+	$ cases(
+		a = 0,
+		52b + 616c = 0,
+		-13b - 117c = 0,
+		b = 0,
+		c = 0
+	) $
+
+	#tab 由此可得 $a = b = c = 0$，因此 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z$ 是线性无关的。
+
+	#tab 设 $U_0$ 表示@E-p2-eq-p5-poly4 中的子空间 $U$。根据子空间的维数的性质，我们知道 $dim U <= dim U_0 = 4$。注意到 $(z - 2)(z - 5) in U_0$ 但是 $(z - 2)(z - 5) in.not U$，故 $U != U_0$，于是 $dim U <= 3$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 3$。于是只能有 $dim U = 3$。
+
+	#tab 分别代入 $z = 2$、$z = 5$ 和 $z = 6$，可以验证 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z$ 是 $U$ 的一组基。
+
+	#tab 对于 (b)，注意到 $(z - 2)(z - 5) in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5)$ 是线性无关的。进一步地，注意到该向量组中的多项式均满足在 $z = 2$ 处的取值与在 $z = 5$ 处的取值相等，故
+	
+	$ z^2 in.not span(1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5)) $
+
+	#tab 所以，向量组 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5), z^2$ 是线性无关的，作为长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，它是 $Poly_4(FF)$ 的一组基。
+
+	#tab 对于 (c)，我们可以取 $W = span((z - 2)(z - 5), z^2)$。由 (b) 可知 $Poly_4(FF) = U + W$，根据子空间之和的维数（原书2.43），我们有
+
+	$ dim Poly_4(FF) = dim U + dim W - dim(U inter W) $
+
+	#tab 解得 $dim (U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $Poly_4(FF) = U plus.circle W$。
+]
+
+#exercise_sol(type: "answer")[
+	+ 令 $U = {p in Poly_4(FF) : integral_(-1)^1 p = 0}$，求 $U$ 的一组基；
+	+ 将 (a) 中的基扩充为 $Poly_4(FF)$ 的基；
+	+ 求 $Poly_4(FF)$ 的一个子空间 $W$，使得 $Poly_4(FF) = U plus.circle W$。
+][
+	我们的思路是，考虑到
+
+	#show: math_numbering(true)
+	$ integral_(-1)^1 a_0 + a_1 z + a_2 z^2 + a_3 z^3 + a_4 z^4 dif z = 2 a_0 + 2/3 a_2 + 2/5 a_4 $ <2C-F-intt-poly4--1-to-1>
+	#show: math_numbering(false)
+
+	#tab 我们很容易猜测 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是 $U$ 的一组基。为了严格说明这一点，我们首先证明 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是线性无关的。设 $a, b, c, d in FF$，满足对于任意 $z in FF$，
+
+	$ a z + b(3 z^2 - 1) + c z^3 + d(5z^4 - 1) = 0 $
+
+	#tab 整理得到
+
+	$ (-b - d) + a z + (3b)z^2 + c z^3 + (5d)z^4 = 0 $
+
+	#tab 根据多项式系数的唯一性，我们有
+
+	$ cases(
+		-b - d = 0,
+		a = 0,
+		3b = 0,
+		c = 0,
+		5d = 0
+	) $
+
+	#tab 由此可得 $a = b = c = d = 0$，因此 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是线性无关的。
+
+	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> 1 in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
+
+	#tab 将系数代数@2C-F-intt-poly4--1-to-1 的积分结果，发现 $z, 3 z^2 - 1, z^3, 5z^4 - 1 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是 $U$ 的一组基。
+
+	#tab 对于 (b)，注意到 $1 in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $z, 3 z^2 - 1, z^3, 5z^4 - 1, 1$ 是线性无关的，进一步地，向量组 $z, 3 z^2 - 1, z^3, 5z^4 - 1, 1$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
 
 	#tab 对于 (c)，我们可以取 $W = span(1)$。由 (b) 可知 $Poly_4(FF) = U + W$，根据子空间之和的维数（原书2.43），我们有
 
