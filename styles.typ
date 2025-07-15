@@ -218,9 +218,9 @@
 	show figure.where(kind: "exercise-problem"): it => {
 		let cat_display = "习题"
 		set align(left)
-		set enum(numbering: "(a) ") // 与原书一致
+		set enum(numbering: "(a)", number-align: center + top) // 与原书一致
 		problem_box({
-			context fancy_term_box(cat_display, it.counter.get().at(0))
+			fancy_term_box(cat_display, it.counter.get().at(0))
 			h(0.5em)
 			it.body
 		})
