@@ -333,8 +333,8 @@
 	/ 第 $1$ 步: \
 		当 $n=1$ 时，$S=V_1$，显然是 $V$ 的子空间。
 
-	/ 第 $k+1$ 步: \
-		假设当 $n=k$ 时，结论成立，即 $V_1 inter dots inter V_k$ 是 $V$ 的子空间。又因为 $V_(k+1)$ 是 $V$ 的子空间，由@E-inter-of-subspace-is-subspace 可知，$(V_1 inter dots inter V_k) inter V_(k+1)$ 也是 $V$ 的子空间。由此，我们证明了当 $n=k+1$ 时，结论也成立。
+	/ 第 $k$ 步: \
+		假设当 $n = k - 1$ 时，结论成立，即 $V_1 inter dots inter V_(k - 1)$ 是 $V$ 的子空间。又因为 $V_k$ 是 $V$ 的子空间，由@E-inter-of-subspace-is-subspace 可知，$(V_1 inter dots inter V_(k - 1)) inter V_k$ 也是 $V$ 的子空间。由此，我们证明了当 $n = k$ 时，结论也成立。
 
 	#tab 综上所述，$V$ 的任意一族子空间的交集是 $V$ 的子空间。
 ]

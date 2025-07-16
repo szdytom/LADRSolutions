@@ -59,7 +59,7 @@
 	#tab 由此可得 $a = b = c = d = 0$，因此 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是线性无关的。
 
 	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> z in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
-	
+
 	#tab 代入 $z=6$，立即可以验证 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3$ 是 $U$ 的一组基。
 
 	#tab 对于 (b)，注意到 $1 in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3, 1$ 是线性无关的，进一步地，向量组 $z - 6, z^2 - 6z, z^3 - 6z^2, z^4 - 6z^3, 1$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
@@ -178,7 +178,7 @@
 	#tab 分别代入 $z = 2$、$z = 5$ 和 $z = 6$，可以验证 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z$ 是 $U$ 的一组基。
 
 	#tab 对于 (b)，注意到 $(z - 2)(z - 5) in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5)$ 是线性无关的。进一步地，注意到该向量组中的多项式均满足在 $z = 2$ 处的取值与在 $z = 5$ 处的取值相等，故
-	
+
 	$ z^2 in.not span(1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5)) $
 
 	#tab 所以，向量组 $1, z^3 - 13 z^2 + 52z, z^4 - 117 z^2 + 616z, (z - 2)(z - 5), z^2$ 是线性无关的，作为长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，它是 $Poly_4(FF)$ 的一组基。
@@ -252,3 +252,17 @@
 ]
 
 #note[可以验证，上面结论等号成立，当且仅当存在 $i,j in {1, dots, m}$（$i != j$），使得 $w = lambda v_i + mu v_j$，其中 $lambda, mu in FF$，满足 $lambda + mu = -1$。]
+
+#exercise_sol(type: "proof")[
+	设 $m$ 是正整数，$p_0, dots, p_m in Poly(FF)$，其中 $p_k$ 的次数为 $k$，证明： $p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
+][
+	我们首先论证：对于任意自然数 $m$，$p_0, dots, p_m$ 是线性无关的。我们关于 $m$ 使用数学归纳法。
+
+	/ 第 $0$ 步: \
+		当 $m = 0$ 时，根据#exercise_ref(<E-when-1-or-2-vectors-indep>)，向量组 $p_0$ 是线性无关的。
+
+	/ 第 $k$ 步: \
+		假设向量组 $p_0, dots, p_(k - 1)$ 是线性无关的。根据多项式系数的唯一性，$k$ 次多项式 $p_k in.not span(p_0, dots, p_(k-1))$，于是根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，向量组 $p_0, dots, p_k$ 是线性无关的。
+	
+	#tab 综上所述，对于任意自然数 $m$，向量组 $p_0, dots, p_m$ 是线性无关的。注意到对于任意正整数 $m$，$Poly_m (FF) = m + 1$，根据长度恰当的线性无关组是基（原书2.38），$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
+]
