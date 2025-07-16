@@ -284,3 +284,17 @@
 
 	#tab 注意到 $dim Poly_m (FF) = m + 1$，根据恰当长度的张成组是基（原书2.42），$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $W$ 都是 $CC^6$ 的四维子空间，证明：在 $U inter W$ 中存在两个向量，其中任意一个都不是另一个的标量倍。
+][
+	设子空间 $V = U + W$，根据子空间之和的维数（原书2.43），我们有
+
+	$ dim V = dim U + dim W - dim(U inter W) $
+
+	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim V <= dim CC^6 = 6$。因此，
+	
+	$ dim(U inter W) >= 2 $
+	
+	#tab 设 $u_1, dots, u_m$ 是 $U inter W$ 的一组基，其中 $m >= 2$。则 $u_1, u_2$ 是线性无关的。根据#exercise_ref(<E-when-1-or-2-vectors-indep>), $u_1, u_2$ 中任意一个都不是另一个的标量倍。由此得证。
+]
