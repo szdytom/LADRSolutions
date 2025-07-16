@@ -404,6 +404,8 @@
 	设 $V_1, dots, V_m$ 都是 $V$ 的有限维子空间，证明：$V_1 + dots.c + V_m$ 是有限维的，且
 
 	$ dim(V_1 + dots.c + V_m) <= dim V_1 + dots.c + dim V_m $
+
+	#note[以上不等式取等，当且仅当 $V_1 + dots.c + V_m$ 是直和，这将在原书3.94中得到证明。]
 ][
 	我们关于 $m$ 使用数学归纳法。
 
@@ -421,4 +423,12 @@
 			&<= dim V_1 + dots.c + dim V_k $
 
 	#tab 综上所述，$V_1 + dots.c + V_m$ 是有限维的，且 $dim(V_1 + dots.c + V_m) <= dim V_1 + dots.c + dim V_m$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$dim V = n >= 1$。证明：存在 $V$ 的一维子空间 $V_1, dots, V_n$，使得
+
+	$ V = V_1 plus.circle dots.c plus.circle V_n $
+][
+	设 $v_1, dots, v_n$ 是 $V$ 的一组基。我们可以取 $V_k = span(v_k)$，其中 $k in {1, dots, n}$。注意到 $dim V_k = 1$，因此 $V_1, dots, V_n$ 都是 $V$ 的一维子空间。根据基的判定准则（原书2.28）和直和的定义（原书1.41），我们立即得到 $V = V_1 plus.circle dots.c plus.circle V_n$。
 ]
