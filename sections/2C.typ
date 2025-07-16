@@ -399,3 +399,26 @@
 
 	#tab 综上所述 $U = W_1 inter dots.c inter W_(n - m)$。也就是说，$W_1, dots, W_(n - m)$ 就是所求的 $n - m$ 个子空间。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V_1, dots, V_m$ 都是 $V$ 的有限维子空间，证明：$V_1 + dots.c + V_m$ 是有限维的，且
+
+	$ dim(V_1, dots, V_m) <= dim V_1 + dots.c + dim V_m $
+][
+	我们关于 $m$ 使用数学归纳法。
+
+	/ 第 $1$ 步: \
+		当 $m = 1$ 时，$V_1$ 根据题目条件自然是有限维的，且 $dim V_1 <= dim V_1$。
+
+	/ 第 $k$ 步: \
+		假设 $V_1 + dots.c + V_(k - 1)$ 是有限维的，且 $dim(V_1 + dots.c + V_(k - 1)) <= dim V_1 + dots.c + dim V_(k - 1)$。设 $u_1, dots, u_n$ 是其的一组基。同时，$V_k$ 是有限维的，设 $v_1, dots, v_ell$ 是其的一组基。则
+		$ V_1 + dots.c + V_k = span(u_1, dots, u_n, v_1, dots, v_ell) $
+		于是，$V_1 + dots.c + V_k$ 是有限维的。根据子空间之和的维数（原书2.43），我们有
+		$ dim(V_1 + dots.c + V_k) =& dim(V_1 + dots.c + V_(k - 1)) + dim V_k \
+			&- dim((V_1 + dots.c + V_(k - 1)) inter V_k) $
+		根据归纳假设，
+		$ dim(V_1 + dots.c + V_k) &<= dim(V_1 + dots.c + V_(k - 1)) + dim V_k \
+			&<= dim V_1 + dots.c + dim V_k $
+
+	#tab 综上所述，$V_1 + dots.c + V_m$ 是有限维的，且 $dim(V_1 + dots.c + V_m) <= dim V_1 + dots.c + dim V_m$。
+]
