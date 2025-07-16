@@ -45,3 +45,9 @@ name = "ambiguous-poly-notation"
 pattern = "Poly_[a-z]\\("
 enforce = true
 comment = "Missing space after Poly_m"
+
+[[rule]]
+name = "use-tab-as-indent"
+pattern = "^[ ]+"
+enforce = true
+comment = "Please use tab as indent instead of spaces"

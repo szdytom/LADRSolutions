@@ -263,6 +263,6 @@
 
 	/ 第 $k$ 步: \
 		假设向量组 $p_0, dots, p_(k - 1)$ 是线性无关的。根据多项式系数的唯一性，$k$ 次多项式 $p_k in.not span(p_0, dots, p_(k-1))$，于是根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，向量组 $p_0, dots, p_k$ 是线性无关的。
-	
+
 	#tab 综上所述，对于任意自然数 $m$，向量组 $p_0, dots, p_m$ 是线性无关的。注意到对于任意正整数 $m$，$Poly_m (FF) = m + 1$，根据长度恰当的线性无关组是基（原书2.38），$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
 ]
