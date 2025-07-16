@@ -403,7 +403,7 @@
 #exercise_sol(type: "proof")[
 	设 $V_1, dots, V_m$ 都是 $V$ 的有限维子空间，证明：$V_1 + dots.c + V_m$ 是有限维的，且
 
-	$ dim(V_1, dots, V_m) <= dim V_1 + dots.c + dim V_m $
+	$ dim(V_1 + dots.c + V_m) <= dim V_1 + dots.c + dim V_m $
 ][
 	我们关于 $m$ 使用数学归纳法。
 
