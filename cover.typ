@@ -4,10 +4,9 @@
 #{
 // Book Cover
 set align(right)
-set text(font: zhfont_sans)
+set text(font: zhfont_sans, fill: text_color_set.at("100"), weight: "semibold")
 v(5fr)
 {
-	set text(fill: text_color_set.at("100"), weight: "semibold")
 	stack(
 		dir: ttb,
 		spacing: 15pt,
