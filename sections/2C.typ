@@ -266,3 +266,21 @@
 
 	#tab 综上所述，对于任意自然数 $m$，向量组 $p_0, dots, p_m$ 是线性无关的。注意到对于任意正整数 $m$，$Poly_m (FF) = m + 1$，根据长度恰当的线性无关组是基（原书2.38），$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $m$ 是正整数，对于 $k in {0, dots, m}$，令
+
+	$ p_k:& FF -> FF \ &z |-> z^k (1 - z)^(m - k) $
+
+	证明：$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
+
+	#note[这道习题中的基能够引出所谓*伯恩斯坦多项式（Bernstein polynomials）*。你可以上网搜索，了解伯恩斯坦多项式如何用于逼近 $[0, 1]$ 上的连续函数。]
+][
+	注意到，根据二项式定理，对于任意 $j in {0, dots, m}$，
+
+	$ z^j = sum_(k = j)^(m) binom(m - j, k - j) z^k (1 - z)^(m - k) $
+
+	#tab 即 $1, z, dots, z^m$ 均可用 $p_0, dots, p_m$ 的线性组合表示，于是 $p_0, dots, p_k$ 张成 $Poly_m (FF)$。
+
+	#tab 注意到 $dim Poly_m (FF) = m + 1$，根据恰当长度的张成组是基（原书2.42），$p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
+]
