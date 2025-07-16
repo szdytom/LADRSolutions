@@ -39,3 +39,9 @@ name = "forbid-对于所有"
 pattern = "对于所有"
 enforce = true
 comment = "Please use 对于任意 instead of 对于所有"
+
+[[rule]]
+name = "ambiguous-poly-notation"
+pattern = "Poly_[a-z]\\("
+enforce = true
+comment = "Missing space after Poly_m"
