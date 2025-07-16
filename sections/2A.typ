@@ -277,7 +277,7 @@
 	#tab 根据线性无关的定义（原书定义2.15），这表明向量组 $v_1 + w_1, v_2 + w_2$ 不是线性无关的，因此原命题不成立。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-when-shared-vec-add-become-dep>)[
 	设 $v_1, dots, v_m$ 是 $V$ 中的线性无关向量组，且 $w in V$。证明：若向量组
 
 	$ v_1 + w, dots, v_m + w $

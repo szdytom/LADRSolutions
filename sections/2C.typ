@@ -223,7 +223,7 @@
 
 	#tab 根据子空间的维数的性质，我们知道 $dim U <= dim Poly_4(FF) = 5$。注意到 $z |-> 1 in.not U$，故 $U != Poly_4(FF)$，于是 $dim U <= 4$。另一方面，将 $U$ 的一组基看作张成组，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到 $dim U >= 4$。于是只能有 $dim U = 4$。
 
-	#tab 将系数代数@2C-F-intt-poly4--1-to-1 的积分结果，发现 $z, 3 z^2 - 1, z^3, 5z^4 - 1 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是 $U$ 的一组基。
+	#tab 将系数代入@2C-F-intt-poly4--1-to-1 的积分结果，发现 $z, 3 z^2 - 1, z^3, 5z^4 - 1 in U$，根据长度恰当的线性无关组是基（原书2.38），我们得出 $z, 3 z^2 - 1, z^3, 5z^4 - 1$ 是 $U$ 的一组基。
 
 	#tab 对于 (b)，注意到 $1 in.not U$，根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，可得向量组 $z, 3 z^2 - 1, z^3, 5z^4 - 1, 1$ 是线性无关的，进一步地，向量组 $z, 3 z^2 - 1, z^3, 5z^4 - 1, 1$ 是长度恰当（$dim Poly_4(FF) = 5$）的线性无关组，因此它是 $Poly_4(FF)$ 的一组基。
 
@@ -233,3 +233,22 @@
 
 	#tab 解得 $dim (U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $Poly_4(FF) = U plus.circle W$。
 ]
+
+#exercise_sol(type: "proof", label: "tricky")[
+	设向量组 $v_1, dots, v_m$ 在 $V$ 中线性无关，$w in V$，证明
+
+	$ dim span(v_1 + w, dots, v_m + w) >= m - 1 $
+][
+	$m = 1$ 的情况是平凡的。对于 $m >= 2$，我们注意到以下事实：
+
+	- $-v_1 in.not span(v_2, dots, v_m)$；
+	- $v_2, dots, v_m$ 线性无关。
+
+	#tab 根据#exercise_ref(<E-when-shared-vec-add-become-dep>) 的逆否命题，我们得到 $v_2 - v_1, dots, v_m - v_1$ 是线性无关的。另一方面，注意到，对于任意 $k in {2, dots, m}$
+
+	$ v_k - v_1 = (v_k + w) - (v_1 + w) in span(v_1 + w, dots, v_m + w) $
+
+	#tab 综上所述，$v_2 - v_1, dots, v_m - v_1$ 是 $span(v_1 + w, dots, v_m + w)$ 上的一个线性无关组，因此，根据“线性无关组的长度 $<=$ 张成组的长度”（原书2.22），我们得到结论 $dim span(v_1 + w, dots, v_m + w) >= m - 1$。
+]
+
+#note[可以验证，上面结论等号成立，当且仅当存在 $i,j in {1, dots, m}$（$i != j$），使得 $w = lambda v_i + mu v_j$，其中 $lambda, mu in FF$，满足 $lambda + mu = -1$。]
