@@ -5,6 +5,7 @@
 #show: project.with("线性代数应该这样学 习题解答")
 
 #include "cover.typ"
+#include "preface.typ"
 
 #[
 #show heading.where(level: 1): set text(22pt)

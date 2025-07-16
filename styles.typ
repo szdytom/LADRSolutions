@@ -63,10 +63,10 @@
 	),
 )
 
-#let unset-list-indent(body) = {
-	set list(indent: 0.5em)
-	set enum(indent: 0.5em)
-	set terms(indent: 0.5em)
+#let unset-list-indent(body, amount: 0.5em) = {
+	set list(indent: amount)
+	set enum(indent: amount)
+	set terms(indent: amount)
 	body
 }
 
