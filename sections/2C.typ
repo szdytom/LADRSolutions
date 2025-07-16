@@ -383,7 +383,7 @@
 
 	$ U subset.eq W_1 inter dots.c inter W_(n - m) $
 
-	#tab 另一方面，我们说明 $W_1 inter dots.c inter W_(n - m) subset.eq U$。当 $n - m = 1$ 时，情况时平凡的。设 $v in W_1 inter dots.c inter W_(n - m)$，则对于 $k in {1, dots, n - m}$ 和 $i in {1, dots, n}$，存在 $a_(k, i)$，使得对于任意 $k in {1, dots, n - m}$，有
+	#tab 另一方面，我们说明 $W_1 inter dots.c inter W_(n - m) subset.eq U$。当 $n - m = 1$ 时，情况是平凡的。现在设 $v in W_1 inter dots.c inter W_(n - m)$，则对于 $k in {1, dots, n - m}$ 和 $i in {1, dots, n}$，存在 $a_(k, i)$，使得对于任意 $k in {1, dots, n - m}$，有
 
 	$ v = a_(k, 1) u_1 + dots.c + a_(k, n) u_n $
 
