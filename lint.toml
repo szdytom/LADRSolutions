@@ -5,13 +5,13 @@ enforce = true
 comment = "Found trailing whitespace at line end"
 
 [[rule]]
-name = "not-centered-dots-within-big-notations"
-pattern = "[=+][\\s&]*dots[^\\.]"
+name = "not-centered-dots-within-operators"
+pattern = "[=+(inter)(union)][\\s&]*dots[^\\.]"
 enforce = true
-comment = "Please use dots.c within = or +"
+comment = "Please use dots.c within operators"
 
 [[rule]]
-name = "centered-dots-within-small-notations"
+name = "centered-dots-within-commas"
 pattern = "[,][\\s&]*dots\\.c"
 enforce = true
 comment = "Please use dots within ,"
