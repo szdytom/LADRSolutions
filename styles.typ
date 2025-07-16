@@ -83,7 +83,7 @@
 		spacing: 1.2em,
 		leading: 0.75em,
 	)
-	set list(marker: (text(sym.square.filled.small, fill: theme_color_set.at("100")), text([--], fill: theme_color_set.at("100"))), indent: 2.5em)
+	set list(marker: (text(sym.square.filled.small, fill: aux_color_set.at("100")), text([--], fill: aux_color_set.at("100"))), indent: 2.5em)
 	set enum(indent: 2.5em)
 	set terms(indent: 2.5em)
 	show heading: set text(font: zhfont_sans, weight: "semibold", text_color_set.at("100"))
