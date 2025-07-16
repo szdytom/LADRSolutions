@@ -288,13 +288,114 @@
 #exercise_sol(type: "proof")[
 	设 $U$ 和 $W$ 都是 $CC^6$ 的四维子空间，证明：在 $U inter W$ 中存在两个向量，其中任意一个都不是另一个的标量倍。
 ][
-	设子空间 $V = U + W$，根据子空间之和的维数（原书2.43），我们有
+	根据子空间之和的维数（原书2.43），我们有
 
-	$ dim V = dim U + dim W - dim(U inter W) $
+	$ dim(U + W) = dim U + dim W - dim(U inter W) $
 
-	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim V <= dim CC^6 = 6$。因此，
-	
+	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim(U + W) <= dim CC^6 = 6$。因此，
+
 	$ dim(U inter W) >= 2 $
-	
+
 	#tab 设 $u_1, dots, u_m$ 是 $U inter W$ 的一组基，其中 $m >= 2$。则 $u_1, u_2$ 是线性无关的。根据#exercise_ref(<E-when-1-or-2-vectors-indep>), $u_1, u_2$ 中任意一个都不是另一个的标量倍。由此得证。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $W$ 都是 $RR^8$ 的子空间，$dim U = 3$，$dim W = 5$，且 $U + W = RR^8$，证明：$RR^8 = U plus.circle W$。
+][
+	根据子空间之和的维数（原书2.43），我们有
+
+	$ dim(U + W) = dim U + dim W - dim(U inter W) $
+
+	#tab 解得 $dim(U inter W) = 0$，即 $U inter W = {0}$。根据“两个子空间的直和”（原书1.46），得到 $RR^8 = U plus.circle W$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $W$ 都是 $RR^9$ 的五维子空间，证明：$U inter W != {0}$。
+][
+	根据子空间之和的维数（原书2.43），我们有
+
+	$ dim(U + W) = dim U + dim W - dim(U inter W) $
+
+	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim(U + W) <= dim RR^9 = 9$。因此，
+
+	$ dim(U inter W) >= 1 $
+
+	#tab 由此得证 $U inter W != {0}$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是 $10$ 维向量空间，$V_1, V_2, V_3$ 都是 $V$ 的子空间，$dim V_1 = dim V_2 = dim V_3 = 7$，证明：$V_1 inter V_2 inter V_3 != {0}$。
+][
+	根据子空间之和的维数（原书2.43），我们有
+
+	$ dim(V_1 + V_2) &= dim V_1 + dim V_2 - dim(V_1 inter V_2) \
+		dim((V_1 + V_2) + V_3) &= dim(V_1 + V_2) + dim V_3 - dim((V_1 + V_2) inter V_3) $
+
+	#tab 上下两式相加，化简得
+
+	$ dim(V_1 + V_2 + V_3) =& dim V_1 + dim V_2 + dim V_3 \
+		&- dim(V_1 inter V_2) - dim((V_1 + V_2) inter V_3) $
+
+	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim(V_1 + V_2 + V_3) <= dim V = 10$。同时，考虑到 $(V_1 + V_2) inter V_3 subset.eq V_3$，我们有 $dim((V_1 + V_2) inter V_3) <= dim V_3 = 7$，因此
+
+	$ dim(V_1 inter V_2) >= 4 $
+
+	#tab 同时
+
+	$ dim((V_1 inter V_2) + V_3) = dim(V_1 inter V_2) + dim V_3 - dim(V_1 inter V_2 inter V_3) $
+
+	#tab 结合 $dim((V_1 inter V_2) + V_3) <= dim V = 10$，于是
+
+	$ 4 <= dim(V_1 inter V_2) <= 3 + dim(V_1 inter V_2 inter V_3) $
+
+	#tab 所以 $dim(V_1 inter V_2 inter V_3) >= 1$，由此得证 $V_1 inter V_2 inter V_3 != {0}$。
+]
+
+#exercise_sol(type: "proof", label: "tricky")[
+	设 $V$ 是有限维向量空间，$V_1, V_2, V_3$ 都是 $V$ 的子空间，$dim V_1 + dim V_2 + dim V_3 > 2 dim V$，证明：$V_1 inter V_2 inter V_3 != {0}$。
+][
+	根据子空间之和的维数（原书2.43），我们有
+
+	$ dim((V_1 inter V_2) + V_3) &= dim(V_1 inter V_2) + dim V_3 - dim(V_1 inter V_2 inter V_3) \
+		dim(V_1 + V_2) &= dim V_1 + dim V_2 - dim (V_1 inter V_2) $
+
+	#tab 两式向加，移项得
+
+	$ dim((V_1 inter V_2) + V_3) &=&& dim V_1 + dim V_2 + dim V_3 \
+		&&&- dim(V_1 + V_2) - dim(V_1 inter V_2 inter V_3) \
+		&>&& 2 dim V -  dim(V_1 + V_2) - dim(V_1 inter V_2 inter V_3) $
+
+	#tab 另一方面，根据子空间的维数性质（原书2.37），$dim((V_1 inter V_2) + V_3) <= dim V$，以及 $dim (V_1 + V_2) <= dim V$，因此
+
+	$ dim(V_1 inter V_2 inter V_3) > 0 $
+
+	#tab 由此得证 $V_1 inter V_2 inter V_3 != {0}$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$U$ 是 $V$ 的子空间（$U != V$）。令 $n = dim V$，$m = dim U$，证明：$V$ 中存在这样 $n - m$ 个子空间，其中每个子空间的维数都是 $n-1$，且它们的交集是 $U$。
+][
+	设 $u_1, dots, u_m$ 是 $U$ 的一组基，将其看作 $V$ 中的线性无关组，根据每个线性无关组都可被扩充为基（原书2.32），我们可以将 $u_1, dots, u_m$ 扩充为 $V$ 的一组基 $u_1, dots, u_n$。现在，对于 $k in {1, dots, n - m}$ 和 $j in {1, dots, n - 1}$，令
+
+	$ W_k = span(u_1, dots, u_(m + k - 1), u_(m + k + 1), dots, u_n) $
+
+	#tab 即 $W_k$ 是向量组 $u_1, dots, u_m$ 中去掉第 $m + k$ 个向量后得到的向量组所张成的子空间。注意到 $dim W_k = n - 1$，因此 $W_1, dots, W_(n - m)$ 是 $V$ 的 $n - m$ 个维数为 $n - 1$ 的子空间。同时，注意到 $U = span(u_1, dots, u_m) subset.eq W_k$，因此
+
+	$ U subset.eq W_1 inter dots.c inter W_(n - m) $
+
+	#tab 另一方面，我们说明 $W_1 inter dots.c inter W_(n - m) subset.eq U$。当 $n - m = 1$ 时，情况时平凡的。设 $v in W_1 inter dots.c inter W_(n - m)$，则对于 $k in {1, dots, n - m}$ 和 $i in {1, dots, n}$，存在 $a_(k, i)$，使得对于任意 $k in {1, dots, n - m}$，有
+
+	$ v = a_(k, 1) u_1 + dots.c + a_(k, n) u_n $
+
+	#tab 且 $a_(k, m + k) = 0$。现在，对于任意 $j in {2, dots, n - m}$，我们将 $v$ 在 $W_1$ 和 $W_q$ 中线性组合的表达式相减，得到
+
+	$ 0 = (a_(1, 1) - a_(j, 1)) u_1 + dots.c + (a_(1, n) - a_(j, n)) u_n $
+
+	#tab 由于 $u_1, dots, u_n$ 是线性无关的，因此，对于任意 $i in {1, dots, n}$，$a_(1, i) = a_(j, i)$。特别注意到，$a_(1, m + j) = a_(j, m + j) = 0$，考虑到 $a_(1, m + 1) = 0$，以及 $j in {2, dots, n - m}$ 选取的任意性，我们得到，对于任意 $j in {1, dots, n - m}$，$a_(1, m + j) = 0$，即
+
+	$ v = a_(1, 1) u_1 + dots.c + a_(1, m) u_m in U $
+
+	#tab 这表明 $W_1 inter dots.c inter W_(n - m) subset.eq U$。
+
+	#tab 综上所述 $U = W_1 inter dots.c inter W_(n - m)$。也就是说，$W_1, dots, W_(n - m)$ 就是所求的 $n - m$ 个子空间。
 ]
