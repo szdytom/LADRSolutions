@@ -96,3 +96,22 @@
 
 	#tab 这立即给出了我们想要的结果。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $T in LinearMap(V, W)$ 且 $v_1, dots, v_m$ 是 $V$ 中的一组向量，使得向量组 $T v_1, dots, T v_m$ 在 $W$ 中是线性无关的。证明：向量组 $v_1, dots, v_m$ 是线性无关的。
+][
+	我们证明其逆否命题，即若 $v_1, dots, v_m$ 是线性相关的，则 $T v_1, dots, T v_m$ 也是线性相关的。现在假设 $v_1, dots, v_m$ 是线性相关的。
+
+	#tab 根据线性相关的定义（原书2.17），存在 $a_1, dots, a_m in FF$，使得
+
+	$ a_1 v_1 + dots.c + a_m v_m = 0 $
+
+	#tab 其中 $a_1, dots, a_m$ 不全为 $0$。由于 $T$ 是线性映射，根据线性映射将 $0$ 映射到 $0$（原书3.10），我们有
+
+	$ 0 = T 0 &= T(a_1 v_1 + dots.c + a_m v_m) \
+		&= a_1 T v_1 + dots.c + a_m T v_m \ $
+
+	#tab 这立即说明 $T v_1, dots, T v_m$ 是线性相关的。
+
+	#tab 一个命题成立，当且仅当其逆否命题成立。因此，原命题得证。
+]
