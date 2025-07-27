@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab
-#import "../math.typ": Poly
+#import "../math.typ": Poly, LinearMap
 
 #exercise_sol(type: "proof")[
 	设 $b, c in RR$。定义
@@ -70,4 +70,29 @@
 	$ T(2p) = (40 + 24b, 207 / 10 + c sin 2) = (40 + 12b, 207 / 10 + 2c sin 1) = 2 T(p) $
 
 	#tab 解得 $b = c = 0$。这就是说 $T$ 是线性映射，当且仅当 $b = c = 0$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $T in LinearMap(FF^n, FF^m)$。证明：对于 $j in {1, dots, m}$ 和 $k in {1, dots, n}$，存在标量 $A_(j, k) in FF$，使得对于任意 $(x_1, dots, x_n) in FF^n$，
+
+	$ T(x_1, dots, x_n) = (A_(1, 1)x_1 + dots.c + A_(1, n) x_n, dots, A_(m, 1) x_1 + dots.c + A_(m, n) x_n) $
+
+	#note[此习题表明，线性映射 $T$ 具有在原书例3.3的倒数第二个例子中预示的形式。]
+][
+	对于 $j in {1, dots, m}$ 和 $k in {1, dots, n}$，令 $w_j in FF^m$ 和 $v_k in FF^n$ 分别为第 $j$ 个和第 $k$ 个分量为 $1$，其余分量为 $0$ 的向量。
+	
+	#tab 容易发现，$w_1, dots, w_m$ 是 $FF^m$ 的基，$v_1, dots, v_n$ 是 $FF^n$ 的基。于是，对于任意 $k in {1, dots, n}$，可以找到 $A_(1, 1), dots, A_(m, 1) in FF$，使得
+
+	$ T v_k = A_(1, k) w_1 + dots.c + A_(m, k) w_m $
+
+	#tab 另一方面，根据 $v_k$ 的定义，我们知道 $(x_1, dots, x_n) = x_1 v_1 + dots.c + x_n v_n$。同时，考虑到 $T$ 是线性映射，我们有
+
+	$ T(x_1, dots, x_n) &= T(sum_(k = 1)^n x_k v_k) \
+		&= sum_(k = 1)^n T(x_k v_k) \
+		&= sum_(k = 1)^n x_k T v_k \
+		&= sum_(k = 1)^n x_k sum_(j = 1)^m A_(j, k) w_j \
+		&= sum_(j = 1)^m w_j sum_(k = 1)^n A_(j, k) x_k \
+		&= (A_(1, 1)x_1 + dots.c + A_(1, n) x_n, dots, A_(m, 1) x_1 + dots.c + A_(m, n) x_n) $
+
+	#tab 这立即给出了我们想要的结果。
 ]
