@@ -520,6 +520,7 @@
 	table(
 		columns: 4,
 		stroke: none,
+		inset: 5pt,
 		align: top + left,
 	..for k in range(1, 5) {
 		(box(cetz.canvas({

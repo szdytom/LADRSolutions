@@ -1,5 +1,6 @@
 #import "@preview/cetz:0.4.0"
 #import "@preview/cetz-venn:0.1.4"
+#import "@preview/wrap-it:0.1.1": wrap-content
 
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref, math_numbering
 #import "../math.typ": span, Poly, rhs, lhs
@@ -448,16 +449,13 @@
 ][
 	有限集的并集的元素数量公式，由容斥原理给出，对于三个集合而言，
 
-	$ \#(A union B union C) =& \#A + \#B + \#C \
-		&- \#(A inter B) - \#(A inter C) - \#(B inter C) \
-		&+ \#(A inter B inter C) $
-
-	#figure(cetz.canvas({
-		let c1 = theme_color_set.at("60")
-		let c2 = aux_color_set.at("100")
-		let c3 = theme_color_set.at("100")
+	#[
+	#show: wrap-content.with(figure(cetz.canvas({
+		let c1 = aux_color_set.at("80")
+		let c2 = theme_color_set.at("60")
+		let c3 = theme_color_set.at("80")
 		cetz-venn.venn3(
-			stroke: 1pt + text_color_set.at("100"),
+			stroke: 1pt + theme_color_set.at("100"),
 			a-fill: c1,
 			b-fill: c1,
 			c-fill: c1,
@@ -466,13 +464,18 @@
 			bc-fill: c2,
 			abc-fill: c3,
 		)
-	}), caption: [三个集合的韦恩图。], placement: auto)
+	}), caption: [三个集合的韦恩图。]))
+
+	$ \#(A union B union C) =& \#A + \#B + \#C \
+		&- \#(A inter B) - \#(A inter C) - \#(B inter C) \
+		&+ \#(A inter B inter C) $
 
 	#tab 这能够很自然地迁移到有关子空间维数的公式上来。然而，这一猜想并不正确，考虑取
 
 	$ V_1 &= {(0, x) in RR^2 : x in RR} \
 		V_2 &= {(x, 0) in RR^2 : x in RR} \
 		V_3 &= {(x, x) in RR^2 : x in RR} $
+	]
 
 	#tab 则 $dim V_1 = dim V_2 = dim V_3 = 1$，$dim(V_1 inter V_2) = dim(V_1 inter V_3) = dim(V_2 inter V_3) = 0$，$dim(V_1 inter V_2 inter V_3) = 0$，然而 $dim(V_1 + V_2 + V_3) = 2 != 1 + 1 + 1 - 0 - 0 - 0 + 0 = 3$。
 

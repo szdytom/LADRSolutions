@@ -1,5 +1,4 @@
 #import "@preview/showybox:2.0.4": showybox
-#import "@preview/tableau-icons:0.1.0" as tbl
 #import "@preview/cetz:0.4.0"
 #import "@preview/cetz-plot:0.1.2": plot
 
@@ -23,7 +22,7 @@
 
 #let showy_wrapper(title: "", margin: none, ..args) = {
 	let b = if title != "" {
-		showybox(title: text(font: zhfont_sans, title, weight: "regular"), ..args)
+		showybox(title: text(font: zhfont_sans, title, weight: "semibold"), ..args)
 	} else {
 		showybox(title: title, ..args)
 	}
@@ -36,7 +35,7 @@
 }
 
 #let simple_box = showy_wrapper.with(
-	breakable: true,
+	breakable: false,
 	title-style: (
 		weight: 900,
 		color: text_color_set.at("100"),
@@ -92,8 +91,8 @@
 	set text(11pt)
 	show figure.caption: set text(9pt, font: zhfont_fangsong)
 	show footnote.entry: set text(9pt, font: zhfont_fangsong)
-	set table(stroke: 1pt + theme_color_set.at("100"), inset: 5pt)
-	set grid(stroke: 1pt + theme_color_set.at("100"))
+	// set table(stroke: 1pt + theme_color_set.at("100"), inset: 5pt)
+	// set grid(stroke: 1pt + theme_color_set.at("100"))
 	set highlight(fill: none, stroke: (
 		bottom: 4pt + theme_color_set.at("10")
 	))
