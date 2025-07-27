@@ -1,5 +1,9 @@
+#import "@preview/cetz:0.4.0"
+#import "@preview/cetz-venn:0.1.4"
+
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref, math_numbering
-#import "../math.typ": span, Poly
+#import "../math.typ": span, Poly, rhs, lhs
+#import "../color.typ": theme_color_set, aux_color_set, text_color_set
 
 #exercise_sol(type: "proof")[
 	证明：$RR^2$ 的子空间恰有 ${0}$，$RR^2$ 中所有过原点的直线，以及 $RR^2$ 本身。
@@ -431,4 +435,70 @@
 	$ V = V_1 plus.circle dots.c plus.circle V_n $
 ][
 	设 $v_1, dots, v_n$ 是 $V$ 的一组基。我们可以取 $V_k = span(v_k)$，其中 $k in {1, dots, n}$。注意到 $dim V_k = 1$，因此 $V_1, dots, V_n$ 都是 $V$ 的一维子空间。根据基的判定准则（原书2.28）和直和的定义（原书1.41），我们立即得到 $V = V_1 plus.circle dots.c plus.circle V_n$。
+]
+
+#exercise_sol(type: "explain")[
+	受三个有限集的并集的元素数量公式的启发，你可能会这样猜测：若 $V_1, V_2, V_3$ 是一个有限维向量空间的子空间，那么有
+
+	$ dim(V_1 + V_2 + V_3) =& dim V_1 + dim V_2 + dim V_3 \
+		&- dim(V_1 inter V_2) - dim(V_1 inter V_3) - dim(V_2 inter V_3) \
+		&+ dim(V_1 inter V_2 inter V_3) $
+	
+	解释一下为什么这样猜测，然后证明以上公式，或给出反例。
+][
+	有限集的并集的元素数量公式，由容斥原理给出，对于三个集合而言，
+
+	$ \#(A union B union C) =& \#A + \#B + \#C \
+		&- \#(A inter B) - \#(A inter C) - \#(B inter C) \
+		&+ \#(A inter B inter C) $
+
+	#figure(cetz.canvas({
+		let c1 = theme_color_set.at("60")
+		let c2 = aux_color_set.at("100")
+		let c3 = theme_color_set.at("100")
+		cetz-venn.venn3(
+			stroke: 1pt + text_color_set.at("100"),
+			a-fill: c1,
+			b-fill: c1,
+			c-fill: c1,
+			ab-fill: c2,
+			ac-fill: c2,
+			bc-fill: c2,
+			abc-fill: c3,
+		)
+	}), caption: [三个集合的韦恩图。], placement: auto)
+
+	#tab 这能够很自然地迁移到有关子空间维数的公式上来。然而，这一猜想并不正确，考虑取
+
+	$ V_1 &= {(0, x) in RR^2 : x in RR} \
+		V_2 &= {(x, 0) in RR^2 : x in RR} \
+		V_3 &= {(x, x) in RR^2 : x in RR} $
+
+	#tab 则 $dim V_1 = dim V_2 = dim V_3 = 1$，$dim(V_1 inter V_2) = dim(V_1 inter V_3) = dim(V_2 inter V_3) = 0$，$dim(V_1 inter V_2 inter V_3) = 0$，然而 $dim(V_1 + V_2 + V_3) = 2 != 1 + 1 + 1 - 0 - 0 - 0 + 0 = 3$。
+
+	#tab 因此，该猜想是错误的。
+]
+
+#exercise_sol(type: "proof")[
+	已知 $V_1$，$V_2$ 和 $V_3$ 都是一个有限维向量空间的子空间，证明：
+
+	$ dim(V_1 + V_2 + V_3) =& dim V_1 + dim V_2 + dim V_3 \
+		&-dim(V_1 inter V_2)/3 - dim(V_1 inter V_3)/3 - dim(V_2 inter V_3) / 3 \
+		&-dim((V_1 + V_2) inter V_3)/3 \
+		&-dim((V_1 + V_3) inter V_2)/3 \
+		&-dim((V_2 + V_3) inter V_1)/3 $
+
+	#note[上面公式初看可能有些奇怪，因为等式右边是否是整数令人怀疑。]
+][
+	等式两边同时乘以 $3$，并利用子空间之和的维数（原书2.43）将形如 $dim(A inter B)$ 的项代换，我们得到#footnote[$rhs$ 是 Right Hand Side 的缩写，表示等式右边的表达式。对称地，$lhs$ 是 Left Hand Side 的缩写，表示等式左边的表达式。]
+
+	$ 3rhs =& 3dim V_1 + 3dim V_2 + 3dim V_3 \
+		&- (dim V_1 + dim V_2 - dim(V_1 + V_2)) \
+		&- (dim V_1 + dim V_3 - dim(V_1 + V_3)) \
+		&- (dim V_2 + dim V_3 - dim(V_2 + V_3)) \
+		&- (dim(V_1 + V_2) + dim V_3 - dim(V_1 + V_2 + V_3)) \
+		&- (dim(V_1 + V_3) + dim V_2 - dim(V_1 + V_3 + V_2)) \
+		&- (dim(V_2 + V_3) + dim V_1 - dim(V_2 + V_3 + V_1)) $
+
+	#tab 整理后，立即给出了等式两边相等的结果。
 ]
