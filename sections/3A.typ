@@ -1,6 +1,8 @@
 #import "../styles.typ": exercise_sol, note, tab
 #import "../math.typ": Poly, LinearMap
 
+#note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
+
 #exercise_sol(type: "proof")[
 	设 $b, c in RR$。定义
 
@@ -114,4 +116,58 @@
 	#tab 这立即说明 $T v_1, dots, T v_m$ 是线性相关的。
 
 	#tab 一个命题成立，当且仅当其逆否命题成立。因此，原命题得证。
+]
+
+#exercise_sol(type: "proof")[
+	证明：$LinearMap(V, W)$ 是向量空间，即原书 3.6 的结论。
+][
+	我们逐条验证 $LinearMap(V, W)$ 满足向量空间的定义（原书1.20）中的要求。
+
+	/ 可交换性: 对任意 $T, S in LinearMap(V, W)$，$T + S = S + T$。 \
+		证明：设 $v in V$，则
+		$ (T + S)v &= T v + S v \
+			&= S v + T v \
+			&= (S + T)v $
+
+	/ 可结合性: 对任意 $T, S, R in LinearMap(V, W)$ 以及 $a, b in FF$，都有 $ (T + S) + R = T + (S + R)$，以及 $(a b)T = a(b T)$。\
+		证明：设 $v in V$，则对于加法的结合性，有
+		$ ((T + S) + R)v &= (T + S)v + R v \
+			&= T v + S v + R v \
+			&= T v + (S + R)v \
+			&= T v + S v + R v \
+			&= (T + (S + R))v $
+		对于乘法的结合性，有
+		$ ((a b)T)v &= (a b)(T v) \
+			&= a(b(T v)) \
+			&= a((b T)v) = (a(b T))v $
+
+	/ 加法单位元: 存在 $0 in LinearMap(V, W)$，使得对任意 $T in LinearMap(V, W)$，$T + 0 = T$。 \
+		证明：取 $0: v |-> 0$，设 $v in V$，则
+		$ (T + 0)v &= T v + 0 v \
+			&= T v + 0 \
+			&= T v $
+
+	/ 加法逆元: 对任意 $T in LinearMap(V, W)$，存在 $-T in LinearMap(V, W)$，使得 $T + (-T) = 0$。 \
+		证明：取 $-T: v |-> -T v$，设 $v in V$，则
+		$ (T + (-T))v &= T v + (-T)v \
+			&= T v - T v \
+			&= 0 \
+			&= 0 v $
+
+	/ 乘法单位元: 对于任意 $T in LinearMap(V, W)$，$1 T = T$。 \
+		证明：设 $v in V$，则
+		$ (1 T)v &= 1(T v) \
+			&= T v $
+
+	/ 分配性质: 对于任意 $T, S in LinearMap(V, W)$ 和 $a, b in FF$，都有 $a(T + S) = a T + a S$，以及 $(a + b)T = a T + b T$。\
+		证明：设 $v in V$，则对于第一个分配性质，有
+		$ (a(T + S))v &= a((T + S)v) \
+			&= a(T v + S v) \
+			&= a T v + a S v \
+			&= (a T + a S)v $
+		对于第二个分配性质，有
+		$ ((a + b)T)v &= (a + b)(T v) \
+			&= a(T v) + b(T v) \
+			&= (a T)v + (b T)v \
+			&= (a T + b T)v $
 ]
