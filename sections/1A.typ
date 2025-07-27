@@ -149,7 +149,7 @@
 
 #note[$FF^n$ 上向量的加法交换律由原书定理1.14给出。]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-ffn-mul-assoc>)[
 	证明：$(a b)x = a(b x)$ 对所有 $x in FF^n$ 和 $a,b in FF$ 成立。
 ][
 	根据定义，令 $x = (x_1, dots, x_n)$，则有
@@ -200,7 +200,7 @@
 	/ 可交换性: \
 		原书定理1.14
 	/ 可结合性: \
-		@E-ffn-add-assoc
+		@E-ffn-add-assoc 和@E-ffn-mul-assoc
 	/ 加法单位元: \
 		原书记号1.15定义了 $0$，其性质容易验证
 	/ 加法逆元: \

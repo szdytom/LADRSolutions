@@ -128,6 +128,7 @@
 		$ (T + S)v &= T v + S v \
 			&= S v + T v \
 			&= (S + T)v $
+		因此 $T + S = S + T$。
 
 	/ 可结合性: 对任意 $T, S, R in LinearMap(V, W)$ 以及 $a, b in FF$，都有 $ (T + S) + R = T + (S + R)$，以及 $(a b)T = a(b T)$。\
 		证明：设 $v in V$，则对于加法的结合性，有
@@ -136,16 +137,18 @@
 			&= T v + (S + R)v \
 			&= T v + S v + R v \
 			&= (T + (S + R))v $
-		对于乘法的结合性，有
+		因此 $(T + S) + R = T + (S + R)$。另一方面，对于标量乘法的结合性，有
 		$ ((a b)T)v &= (a b)(T v) \
 			&= a(b(T v)) \
 			&= a((b T)v) = (a(b T))v $
+		因此 $(a b)T = a(b T)$。
 
 	/ 加法单位元: 存在 $0 in LinearMap(V, W)$，使得对任意 $T in LinearMap(V, W)$，$T + 0 = T$。 \
 		证明：取 $0: v |-> 0$，设 $v in V$，则
 		$ (T + 0)v &= T v + 0 v \
 			&= T v + 0 \
 			&= T v $
+		因此 $T + 0 = T$。
 
 	/ 加法逆元: 对任意 $T in LinearMap(V, W)$，存在 $-T in LinearMap(V, W)$，使得 $T + (-T) = 0$。 \
 		证明：取 $-T: v |-> -T v$，设 $v in V$，则
@@ -153,11 +156,13 @@
 			&= T v - T v \
 			&= 0 \
 			&= 0 v $
+		因此 $T + (-T) = 0$。
 
 	/ 乘法单位元: 对于任意 $T in LinearMap(V, W)$，$1 T = T$。 \
 		证明：设 $v in V$，则
 		$ (1 T)v &= 1(T v) \
 			&= T v $
+		因此 $1 T = T$。
 
 	/ 分配性质: 对于任意 $T, S in LinearMap(V, W)$ 和 $a, b in FF$，都有 $a(T + S) = a T + a S$，以及 $(a + b)T = a T + b T$。\
 		证明：设 $v in V$，则对于第一个分配性质，有
@@ -165,9 +170,10 @@
 			&= a(T v + S v) \
 			&= a T v + a S v \
 			&= (a T + a S)v $
-		对于第二个分配性质，有
+		因此 $a(T + S) = a T + a S$。另一方面，对于第二个分配性质，有
 		$ ((a + b)T)v &= (a + b)(T v) \
 			&= a(T v) + b(T v) \
 			&= (a T)v + (b T)v \
 			&= (a T + b T)v $
+		因此 $(a + b)T = a T + b T$。
 ]

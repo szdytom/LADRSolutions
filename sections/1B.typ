@@ -101,39 +101,43 @@
 	#tab 我们现在证明 $V^S$ 是 $FF$ 上的向量空间。具体而言，我们逐条验证向量空间的定义（原书定义1.20）中的要求：
 
 	/ 可交换性: 对于任意 $f, g in V^S$，都有 $f + g = g + f$。 \
-		证明：对于任意 $x in S$，有
+		证明：设 $x in S$，有
 		$ (f + g)(x) = f(x) + g(x) = g(x) + f(x) = (g + f)(x) $
 		因此 $f + g = g + f $。
 
-	/ 可结合性: 对于任意 $f, g, h in V^S$，都有 $(f + g) + h = f + (g + h)$。 \
-		证明：对于任意 $x in S$，有
-		$ ((f + g) + h)(x) &= (f + g)(x) + h(x) 、
+	/ 可结合性: 对于任意 $f, g, h in V^S$ 以及 $a, b in FF$，都有 $(f + g) + h = f + (g + h)$ 且 $(a b)f = a(b f)$。 \
+		证明：设 $x in S$，则对于加法的结合性，有
+		$ ((f + g) + h)(x) &= (f + g)(x) + h(x) \
 			&= f(x) + g(x) + h(x) \
 			&= f(x) + (g + h)(x) \
 			&= (f + (g + h))(x) $
-		因此 $(f + g) + h = f + (g + h)$。
+		因此 $(f + g) + h = f + (g + h)$。对于标量乘法的结合性，有
+		$ ((a b)f)(x) &= (a b)(f(x)) \
+			&= a(b f(x)) \
+			&= a((b f)(x)) = (a(b f))(x) $
+		因此 $(a b)f = a(b f)$。
 
 	/ 加法单位元: 存在 $0 in V^S$ 使得对于任意 $f in V^S$，都有 $f + 0 = f$。 \
-		证明：取 $0: x |-> 0$ 为 $V^S$ 中的加法单位元。对于任意 $f in V^S$，都有
+		证明：取 $0: x |-> 0$ 为 $V^S$ 中的加法单位元。设 $x in S$，对于任意 $f in V^S$，都有
 		$ (f + 0)(x) = f(x) + 0 = f(x) = (f)(x) $
 		因此 $f + 0 = f$。
 
 	/ 加法逆元: 对于任意 $f in V^S$，存在 $g in V^S$ 使得 $f + g = 0$。 \
-		证明：取 $g: x |-> -f(x)$ 为 $f$ 的加法逆元。对于任意 $x in S$，都有
+		证明：取 $g: x |-> -f(x)$ 为 $f$ 的加法逆元。设 $x in S$，都有
 		$ (f + g)(x) = f(x) + g(x) = f(x) - f(x) = 0 $
 		因此 $f + g = 0$。
 
 	/ 乘法单位元: 对于任意 $f in V^S$，都有 $1f = f$。 \
-		证明：对于任意 $x in S$，都有
+		证明：设 $x in S$，都有
 		$ (1f)(x) = 1 f(x) = f(x) $
 		因此 $1f = f$。
 
 	/ 分配性质: 对于任意 $f, g in V^S$ 以及所有 $a, b in FF$，都有 $a(f + g) = a f + a g$ 且 $(a + b)f = a f + b f$。 \
-		证明：对于任意 $x in S$，有
+		证明：设 $x in S$，则对于第一个分配性质，有
 		$ (a(f + g))(x) &= a((f + g)(x)) = a(f(x) + g(x)) \
 			&= a f(x) + a g(x) = (a f)(x) + (a g)(x) \
 			&= (a f + a g)(x) $
-		因此 $a(f + g) = a f + a g$。另一方面，有
+		因此 $a(f + g) = a f + a g$。对于第二个分配性质，有
 		$ ((a + b)f)(x) &= (a + b) f(x) \
 			&= a f(x) + b f(x) \
 			&= (a f)(x) + (b f)(x) \
@@ -168,14 +172,19 @@
 			&= (u_2 + u_1) + ii (v_2 + v_1) \
 			&= (u_2 + ii v_2) + (u_1 + ii v_1) $
 
-	/ 可结合性: 对于任意 $u, v, w in complexification(V)$，都有 $(u + v) + w = u + (v + w)$。 \
-		证明：设 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，由加法的可结合性，$(u_1 + u_2) + u_3 = u_1 + (u_2 + u_3)$
-		且 $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$，因此
+	/ 可结合性: 对于任意 $u, v, w in complexification(V)$ 以及 $a, b in CC$，都有 $(u + v) + w = u + (v + w)$ 且 $(a b)u = a(b u)$。 \
+		证明：设 $u_1,v_1,u_2,v_2,u_3,v_3 in V$，则对于加法的结合性，有
 		$ &((u_1 + ii v_1) + (u_2 + ii v_2)) + (u_3 + ii v_3) \
 			=& ((u_1 + u_2) + ii (v_1 + v_2)) + (u_3 + ii v_3) \
 			=& (u_1 + u_2 + u_3) + ii (v_1 + v_2 + v_3) \
 			=& (u_1 + ii v_1) + ((u_2 + ii v_2) + (u_3 + ii v_3)) \
 			=& (u_1 + ii v_1) + (u_2 + u_3) + ii (v_2 + v_3) $
+		另一方面，对于标量乘法的结合性，有
+		$ (a b)(u + ii v) &= (a b)(u_1 + ii v_1) \
+			&= (a b u_1 - a b v_1) + ii (a b v_1 + a b u_1) \
+			&= a(b u_1 - b v_1) + ii (a b v_1 + a b u_1) \
+			&= a(b(u_1 + ii v_1)) \
+			&= a(b(u + ii v)) $
 
 	/ 加法单位元: 存在 $0 in complexification(V)$，使得对于任意 $u in complexification(V)$，都有 $u + 0 = u$。 \
 		证明：取 $0 = 0 + ii 0$ 为 $complexification(V)$ 中的加法单位元。对于任意 $u,v in V$，都有
@@ -201,7 +210,7 @@
 			=& (a(u_1 + u_2) - b(v_1 + v_2)) + ii (a(v_1 + v_2) + b(u_1 + u_2)) \
 			=& (a u_1 - b v_1 + a u_2 - b v_2) + ii (a v_1 + b u_1 + a v_2 + b u_2) \
 			=& (a + b ii)(u_1 + ii v_1) + (a + b ii)(u_2 + ii v_2) $
-		另一方面，对于任意 $u,v in V$ 和 $a, b, c, d in RR$
+		另一方面，对于任意 $u,v in V$ 和 $a, b, c, d in RR$，
 		$ &((a + b ii) + (c + d ii))(u + ii v) \
 			=& (a + c) u - (b + d) v + ii ((a + b) v + (c + d) u) \
 			=& ((a u - b v) + (c u - d v)) + ii ((a v + b u) + (c v + d u)) \
