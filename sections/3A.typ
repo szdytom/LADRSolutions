@@ -1,4 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab
+#import "../math.typ": Poly
 
 #exercise_sol(type: "proof")[
 	设 $b, c in RR$。定义
@@ -37,4 +38,36 @@
 	#tab 于是，$c = 0$。
 
 	#tab 综上所述，$T$ 是线性映射，当且仅当 $b = c = 0$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $b, c in RR$。定义
+
+	$ T:& Poly(RR) -> RR^2 \ &p |-> vec(3p(4) + 5p'(6) + b p(1)p(2), integral_(-1)^2 x^3 p(x) dif x + c sin p(0)) $
+
+	证明：$T$ 是线性映射，当且仅当，$b = c = 0$。
+][
+	首先，假设 $b = c = 0$。则 $T(p) = (3p(4) + 5p'(6), integral_(-1)^2 x^3 p(x) dif x)$，我们逐条验证线性映射的定义（原书3.1）中的要求：
+
+	/ 可加性: 对任意 $p, q in Poly(RR)$，$T(p + q) = T p + T q$。 \
+		证明：设 $p, q in Poly(RR)$，则
+		$ T(p + q) &= (3(p + q)(4) + 5(p + q)'(6), integral_(-1)^2 x^3 (p + q)(x) dif x) \
+			&= (3p(4) + 3q(4) + 5p'(6) + 5q'(6), integral_(-1)^2 x^3 p(x) dif x + integral_(-1)^2 x^3 q(x) dif x) \
+			&= (3p(4) + 5p'(6), integral_(-1)^2 x^3 p(x) dif x) + (3q(4) + 5q'(6), integral_(-1)^2 x^3 q(x) dif x) \
+			&= T p + T q $
+
+	/ 齐次性: 对任意 $p in Poly(RR)$ 和任意 $lambda in RR$，$T(lambda p) = lambda T p$。 \
+		证明：设 $p in Poly(RR)$，则
+		$ T(lambda p) &= (3(lambda p)(4) + 5(lambda p)'(6), integral_(-1)^2 x^3 (lambda p)(x) dif x) \
+			&= (lambda (3p(4)) + lambda (5p'(6)), lambda integral_(-1)^2 x^3 p(x) dif x) \
+			&= lambda (3p(4), integral_(-1)^2 x^3 p(x) dif x) \
+			&= lambda T p $
+
+	#tab 综上，$T$ 满足线性映射的定义。
+
+	#tab 另一方面，假设 $T$ 是线性映射。设 $p: x |-> x + 1$。则根据齐次性的要求，有
+
+	$ T(2p) = (40 + 24b, 207 / 10 + c sin 2) = (40 + 12b, 207 / 10 + 2c sin 1) = 2 T(p) $
+
+	#tab 解得 $b = c = 0$。这就是说 $T$ 是线性映射，当且仅当 $b = c = 0$。
 ]

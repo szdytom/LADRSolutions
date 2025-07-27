@@ -99,6 +99,7 @@
 	))
 	set footnote(numbering: "注1")
 	show math.equation: set text(font: mathfont)
+	set math.vec(delim: ("[", "]"))
 
 	hide[#title <book-title>]
 
