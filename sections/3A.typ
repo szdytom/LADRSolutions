@@ -215,3 +215,30 @@
 
 	#tab 综上所述，$T v = lambda v$ 对任意 $v in V$ 成立。
 ]
+
+#exercise_sol(type: "proof")[
+	给出一个例子：函数 $phi: RR^2 -> RR$，使得对于任意 $a in RR$ 和 $v in RR^2$，有
+
+	$ phi(a v) = a phi(v) $
+
+	但是 $phi$ 不是线性映射。
+][
+	对于任意 $(x, y) in RR^2$，令
+
+	$ phi(x, y) = cases(
+		x wide& abs(x) >= abs(y),
+		y & abs(x) < abs(y),
+	) $
+
+	#tab 设 $a in RR$，则当 $abs(x) >= abs(y)$ 时，$phi(x, y) = x$，且有 $abs(a x) >= abs(a y)$，于是
+
+	$ phi(a(x, y)) = phi(a x, a y) = a x = a phi(x, y) $
+
+	#tab 当 $abs(x) < abs(y)$ 时，$phi(x, y) = y$，且有 $abs(a x) < abs(a y)$，于是
+
+	$ phi(a(x, y)) = phi(a x, a y) = a y = a phi(y) $
+
+	#tab 因此，对于任意 $a in RR$ 和 $v in RR^2$，都有 $phi(a v) = a phi(v)$。
+
+	#tab 但是 $phi$ 不是线性映射。因为当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$，这违背了线性映射的可加性的要求。
+]
