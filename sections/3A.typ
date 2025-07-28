@@ -270,3 +270,15 @@
 
 	#tab 因此 $phi$ 不满足线性映射的齐次性要求。
 ]
+
+#exercise_sol(type: "answer")[
+	证明或证伪：如果 $q in Poly(RR)$，$T: Poly(RR) -> Poly(RR)$ 定义为 $T p = q compose p$，那么 $T$ 是线性映射。
+
+	#note[这里定义的函数 $T$，不同于原书3.3中最后一个例子定义的函数 $T$，区别在于复合的次序。]
+][
+	设 $x in RR$。令 $q: Poly(RR)$ 为 $ x |-> x^2$。注意到，取 $p: Poly(RR)$ 为 $x |-> x$，则
+
+	$ (T 2p)(x) = q(2 p(x)) = 4 x^2 != 2 x^2 = 2 q(p(x)) = 2 T p $
+
+	#tab 这违反了线性映射的齐次性要求。因此 $T$ 不是线性映射。
+]
