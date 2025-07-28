@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, note, tab
+#import "../styles.typ": exercise_sol, note, tab, exercise_ref
 #import "../math.typ": Poly, LinearMap, ii
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
@@ -281,4 +281,32 @@
 	$ (T 2p)(x) = q(2 p(x)) = 4 x^2 != 2 x^2 = 2 q(p(x)) = 2 T p $
 
 	#tab 这违反了线性映射的齐次性要求。因此 $T$ 不是线性映射。
+]
+
+#exercise_sol(type: "proof", label: "tricky")[
+	设 $V$ 是有限维向量空间，$T in LinearMap(V)$。证明：$T$ 是恒等算子的标量倍，当且仅当，对于任意 $S in LinearMap(V)$，$S T = T S$ 成立。
+][
+	首先，假设 $T = lambda I$，其中 $lambda in FF$ 且 $I$ 是 $V$ 上的恒等算子。设 $v in V$，则对于任意 $S in LinearMap(V)$，有
+
+	$ (S T)v = S(T v) = S(lambda v) = lambda S v = (lambda I)(S v) = (T S)v $
+
+	#tab 这说明 $S T = T S$ 成立。
+
+	#tab 另一方面，我们说明逆否命题。假设不存在 $lambda in FF$，使得 $T = lambda I$，即存在 $v in V$，使得不存在 $lambda in FF$，使得 $T v = lambda v$。根据#exercise_ref(<E-when-1-or-2-vectors-indep>)，我们得到 $v, T v$ 是一个线性无关组。
+
+	#tab 现在，我们构造一个线性映射 $S in LinearMap(V)$，使得 $S v = v$ 且 $S T v = v$。具体而言，根据每个线性无关组都可被扩充为基（原书2.32），我们可以找到 $u_1, dots, u_m in V$，使得 $v, T v, u_1, dots, u_m$ 是 $V$ 的一组基。现在，对于任意 $w in V$，我们可以唯一地将 $w$ 表示为
+
+	$ w = a v + b T v + c_1 u_1 + dots.c + c_m u_m $
+
+	其中 $a, b, c_1, dots, c_m in FF$。于是，我们令
+
+	$ S w = (a + b) v + c_1 u_1 + dots.c + c_m u_m $
+
+	#tab 很容易说明 $S$ 是线性映射，且 $S v = S T v = v$。于是只能有
+
+	$ S T v = v != T v = T S v $
+
+	#tab 这说明 $S T != T S$。
+
+	#tab 综上所述，$T$ 是恒等算子的标量倍，当且仅当，对于任意 $S in LinearMap(V)$，$S T = T S$ 成立。
 ]
