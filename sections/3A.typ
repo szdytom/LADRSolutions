@@ -369,3 +369,17 @@
 
 	#tab 所以，根据#exercise_ref(<E-inf-dim-space-seq-characterization>)，$LinearMap(V, W)$ 是无限维的。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 中的线性相关向量组，$dim W > 0$。证明：存在 $w_1, dots, w_m in W$，使得不存在 $T in LinearMap(V, W)$ 对于任意 $k in {1, dots, m}$，都有 $T v_k = w_k$。
+][
+	根据线性相关性引理（原书2.19），存在 $k in {1, dots, m}$，使得 $v_k in span(v_1, dots, v_(k - 1))$。设
+
+	$ v_k = a_1 v_1 + dots.c + a_(k - 1) v_(k - 1) $
+
+	#tab 其中 $a_1, dots, a_(k - 1) in FF$。任取 $w_k != 0$，并令 $w_1 = dots.c = w_(k - 1) = 0$。于是
+
+	$ T v_k = a_1 T v_1 + dots.c + a_(k - 1) T v_(k - 1) = 0 != w_k $
+
+	#tab 这说明不存在 $T in LinearMap(V, W)$，使得对于任意 $k in {1, dots, m}$，都有 $T v_k = w_k$。
+]
