@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab
-#import "../math.typ": Poly, LinearMap
+#import "../math.typ": Poly, LinearMap, ii
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
 
@@ -222,6 +222,8 @@
 	$ phi(a v) = a phi(v) $
 
 	但是 $phi$ 不是线性映射。
+
+	#note[本题和下一题表明，仅有齐次性或仅有可加性，都不足以推导出一个函数是线性映射。]
 ][
 	对于任意 $(x, y) in RR^2$，令
 
@@ -241,4 +243,30 @@
 	#tab 因此，对于任意 $a in RR$ 和 $v in RR^2$，都有 $phi(a v) = a phi(v)$。
 
 	#tab 但是 $phi$ 不是线性映射。因为当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$，这违背了线性映射的可加性的要求。
+]
+
+#exercise_sol(type: "proof")[
+	给出一个例子：函数 $phi: CC -> CC$，使得对于任意 $w, z in CC$，有
+
+	$ phi(w + z) = phi(w) + phi(z) $
+
+	但是 $phi$ 不是线性映射。（此处将 $CC$ 视为复向量空间。）
+
+	#note[满足上述可加性条件，而不是线性映射的函数 $phi: RR -> RR$ 也是存在的。然而，证明这样的一个函数存在，要用到高得多的数学工具。#footnote[这有很强的分析背景，感兴趣的读者可以搜索“柯西方程的不连续解”“哈默尔基“等关键词。明确构造出这样的函数一般而言需要承认选择公理，构造的基本思路是将 $RR$ 视为 $QQ$ 上的一个无限维向量空间。]]
+][
+	设 $z in CC$，令#footnote[这里的 $Re z$ 表示 $z$ 的实部，类似地，记号 $Im z$ 表示 $z$ 的虚部。]
+
+	$ phi(z) = Re z $
+
+	#tab 设 $w = (a + b ii), z = (c + d ii) in CC$，其中 $a, b, c, d in RR$。则
+
+	$ phi(w + z) = Re((a + c) + (b + d) ii) = a + c = Re w + Re z = phi(w) + phi(z) $
+
+	#tab 因此，对于任意 $w, z in CC$，都有 $phi(w + z) = phi(w) + phi(z)$。
+
+	#tab 但是 $phi$ 不是线性映射。注意到
+
+	$ phi(ii 2) = 0 != 2 ii = ii phi(2) $
+
+	#tab 因此 $phi$ 不满足线性映射的齐次性要求。
 ]
