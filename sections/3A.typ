@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref
-#import "../math.typ": Poly, LinearMap, ii
+#import "../math.typ": Poly, LinearMap, ii, span
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
 
@@ -330,7 +330,7 @@
 	#tab 这说明 $T$ 不满足线性映射的定义（原书3.1）中对可加性的要求。因此 $T$ 不是 $V$ 上的线性映射。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-extend-linear-map>)[
 	设 $V$ 是有限维的向量空间。证明：$V$ 的子空间上的任意一个线性映射都可以扩充为 $V$ 上的线性映射。形式化地说，设 $U$ 是 $V$ 的子空间，$S in LinearMap(U, W)$。则存在 $T in LinearMap(V, W)$，使得 $T u = S u$ 对任意 $u in U$ 成立。
 
 	#note[原书 3.125 的证明将会用到本题的结果。]
@@ -344,4 +344,28 @@
 	$ R v = a_1 v_1 + dots.c + a_m v_m $
 
 	#tab 很容易证明 $R$ 是线性映射，且对于 $u in U$，有 $R u = u$。现在，令 $T = S R$ 就立即完成了证明。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$dim V > 0$，$W$ 是无限维向量空间。证明：$LinearMap(V, W)$ 是无限维的。
+][
+	设 $v in V$，$v != 0$。根据#exercise_ref(<E-inf-dim-space-seq-characterization>)，$W$ 中存在一个序列 $w_1, w_2, dots$ 使得对于任意 $m in NN^+$，向量组 $w_1, dots, w_m$ 线性无关。
+
+	#tab 对于任意 $u in span(v)$，存在 $lambda in FF$，使得 $u = lambda v$。现在，对于任意 $k in NN^+$，令函数 $S_k: span(v) -> W$ 满足
+
+	$ S_k u = lambda w_k $
+
+	#tab 根据@E-extend-linear-map，存在 $T_k in LinearMap(V, W)$，使得对于任意 $u in span(v)$，都有 $T_k u = S_k u$。特别地，$T_k v = w_k$。
+
+	#tab 对于任意 $m in NN^+$，设 $a_1, dots a_m in FF$，使得
+
+	$ a_1 T_1 + dots.c + a_m T_m = 0 $
+
+	#tab 等式两边同时代入 $v$，我们得到
+
+	$ a_1 w_1 + dots.c + a_m w_m = 0 $
+
+	#tab 由于 $w_1, dots, w_m$ 是线性无关的，因此 $a_1 = dots.c = a_m = 0$。这说明 $T_1, dots, T_m$ 是线性无关的。
+
+	#tab 所以，根据#exercise_ref(<E-inf-dim-space-seq-characterization>)，$LinearMap(V, W)$ 是无限维的。
 ]

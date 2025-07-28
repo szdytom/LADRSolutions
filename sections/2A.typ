@@ -501,7 +501,7 @@
 
 	#tab 这立即给出 $a_1 = dots.c = a_m = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $v_1, dots, v_m$ 是线性无关的。
 
-	#tab 所以，根据@E-inf-dim-space-seq-characterization 中的结论，$FF^infinity$ 是无限维的。
+	#tab 所以，根据@E-inf-dim-space-seq-characterization，$FF^infinity$ 是无限维的。
 ]
 
 #exercise_sol(type: "proof")[
@@ -572,7 +572,7 @@
 
 	#tab 对于 $k in {1, dots, m}$，我们代入 $x = 1/k$ 即可说明 $a_k = 0$，于是根据线性无关的定义（原书定义2.15），向量组 $f_1, dots, f_m$ 是线性无关的。
 
-	#tab 所以，根据@E-inf-dim-space-seq-characterization 中的结论，#fun-notation 是无限维的。
+	#tab 所以，根据@E-inf-dim-space-seq-characterization，#fun-notation 是无限维的。
 ]
 
 #exercise_sol(type: "proof")[
@@ -591,7 +591,7 @@
 	#let b1 = math.bold("1")
 	$ b1:& FF -> FF \ &z |-> 1 $
 
-	#tab 有 $b1 in Poly_m (FF)$。同时，注意到 $b1(2) != 0$，因此 $b1 in.not span(v_1, dots, v_m)$。根据@E-when-vector-list-append-remains-indep 中的结论，向量组 $p_0, dots, p_m, b1$ 线性无关。然而，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$q_0, dots, q_m$ 这一张成向量组的长度为 $m + 1$，而向量组 $p_0, dots, p_m, b1$ 的长度为 $m + 2$，不可能是线性无关的。矛盾，故假设不成立。
+	#tab 有 $b1 in Poly_m (FF)$。同时，注意到 $b1(2) != 0$，因此 $b1 in.not span(v_1, dots, v_m)$。根据@E-when-vector-list-append-remains-indep，向量组 $p_0, dots, p_m, b1$ 线性无关。然而，根据“线性无关组的长度 $<=$ 张成组的长度”（原书定理2.22），$q_0, dots, q_m$ 这一张成向量组的长度为 $m + 1$，而向量组 $p_0, dots, p_m, b1$ 的长度为 $m + 2$，不可能是线性无关的。矛盾，故假设不成立。
 
 	#tab 综上所述，$p_0, dots, p_m$ 在 $Poly_m (FF)$ 中不是线性无关的。
 ]
