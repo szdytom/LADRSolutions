@@ -242,7 +242,7 @@
 
 	#tab 因此，对于任意 $a in RR$ 和 $v in RR^2$，都有 $phi(a v) = a phi(v)$。
 
-	#tab 但是 $phi$ 不是线性映射。因为当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$。
+	#tab 另一方面，注意到当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$。
 
 	#tab 这说明 $phi$ 不满足线性映射的定义（原书3.1）中对可加性的要求。因此 $phi$ 不是线性映射。
 ]
@@ -266,11 +266,11 @@
 
 	#tab 因此，对于任意 $w, z in CC$，都有 $phi(w + z) = phi(w) + phi(z)$。
 
-	#tab 但是 $phi$ 不是线性映射。注意到
+	#tab 另一方面，注意到
 
 	$ phi(ii 2) = 0 != 2 ii = ii phi(2) $
 
-	#tab 因此 $phi$ 不满足线性映射的齐次性要求。
+	#tab 这说明 $phi$ 不满足线性映射的定义（原书3.1）中对齐次性的要求。因此 $phi$ 不是的线性映射。
 ]
 
 #exercise_sol(type: "answer")[
@@ -328,4 +328,20 @@
 	$ T u = S u != 0 = 0 + 0 = T u + T (v - u) $
 
 	#tab 这说明 $T$ 不满足线性映射的定义（原书3.1）中对可加性的要求。因此 $T$ 不是 $V$ 上的线性映射。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维的向量空间。证明：$V$ 的子空间上的任意一个线性映射都可以扩充为 $V$ 上的线性映射。形式化地说，设 $U$ 是 $V$ 的子空间，$S in LinearMap(U, W)$。则存在 $T in LinearMap(V, W)$，使得 $T u = S u$ 对任意 $u in U$ 成立。
+
+	#note[原书 3.125 的证明将会用到本题的结果。]
+][
+	设 $v_1, dots, v_m$ 是 $U$ 的一组基，根据每一个线性无关组都可被扩充为基（原书2.32），我们可以找到 $v_(m + 1), dots, v_n in V$，使得 $v_1, dots, v_n$ 是 $V$ 的一组基。现在，对于任意 $v in V$，我们可以唯一地将 $v$ 表示为
+
+	$ v = a_1 v_1 + dots.c + a_n v_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。现在，令函数 $R: V -> U$，使得
+
+	$ R v = a_1 v_1 + dots.c + a_m v_m $
+
+	#tab 很容易证明 $R$ 是线性映射，且对于 $u in U$，有 $R u = u$。现在，令 $T = S R$ 就立即完成了证明。
 ]
