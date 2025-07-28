@@ -242,7 +242,9 @@
 
 	#tab 因此，对于任意 $a in RR$ 和 $v in RR^2$，都有 $phi(a v) = a phi(v)$。
 
-	#tab 但是 $phi$ 不是线性映射。因为当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$，这违背了线性映射的可加性的要求。
+	#tab 但是 $phi$ 不是线性映射。因为当 $v = (1, 0)$ 和 $w = (0, -1)$ 时，$phi(v + w) = phi(1, -1) = 1$，而 $phi(v) + phi(w) = phi(1, 0) + phi(0, -1) = 1 + (-1) = 0$，即 $phi(v + w) != phi(v) + phi(w)$。
+
+	#tab 这说明 $phi$ 不满足线性映射的定义（原书3.1）中对可加性的要求。因此 $phi$ 不是线性映射。
 ]
 
 #exercise_sol(type: "proof")[
@@ -276,11 +278,11 @@
 
 	#note[这里定义的函数 $T$，不同于原书3.3中最后一个例子定义的函数 $T$，区别在于复合的次序。]
 ][
-	设 $x in RR$。令 $q: Poly(RR)$ 为 $ x |-> x^2$。注意到，取 $p: Poly(RR)$ 为 $x |-> x$，则
+	设 $x in RR$。令 $q in Poly(RR)$ 为 $ x |-> x^2$。注意到，取 $p in Poly(RR)$ 为 $x |-> x$，则
 
 	$ (T 2p)(x) = q(2 p(x)) = 4 x^2 != 2 x^2 = 2 q(p(x)) = 2 T p $
 
-	#tab 这违反了线性映射的齐次性要求。因此 $T$ 不是线性映射。
+	#tab 这说明 $T$ 不满足线性映射的定义（原书3.1）中对齐次性的要求。因此 $T$ 不是线性映射。
 ]
 
 #exercise_sol(type: "proof", label: "tricky")[
@@ -309,4 +311,21 @@
 	#tab 这说明 $S T != T S$。
 
 	#tab 综上所述，$T$ 是恒等算子的标量倍，当且仅当，对于任意 $S in LinearMap(V)$，$S T = T S$ 成立。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 是 $V$ 的子空间，$U != V$。设 $S in LinearMap(U, W)$，且 $S != 0$（即存在 $u in U$，使得 $S u != 0$）。定义 $T: V -> W$，使得
+
+	$ T v = cases(
+		S v wide& v in U,
+		0 wide& v in V quad and quad v in.not U,
+	) $
+
+	证明：$T$ 不是 $V$ 上的线性映射。
+][
+	设 $u in U$，使得 $S u != 0$，$v in V$ 且 $v in.not V$。由于 $u + (v - u) = v in.not U$，根据子空间的条件（原书1.34）中对加法封闭性的要求，只能有 $v - u in.not U$。注意到
+
+	$ T u = S u != 0 = 0 + 0 = T u + T (v - u) $
+
+	#tab 这说明 $T$ 不满足线性映射的定义（原书3.1）中对可加性的要求。因此 $T$ 不是 $V$ 上的线性映射。
 ]
