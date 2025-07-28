@@ -444,7 +444,7 @@
 	$ dim(V_1 + V_2 + V_3) =& dim V_1 + dim V_2 + dim V_3 \
 		&- dim(V_1 inter V_2) - dim(V_1 inter V_3) - dim(V_2 inter V_3) \
 		&+ dim(V_1 inter V_2 inter V_3) $
-	
+
 	解释一下为什么这样猜测，然后证明以上公式，或给出反例。
 ][
 	有限集的并集的元素数量公式，由容斥原理给出，对于三个集合而言，
