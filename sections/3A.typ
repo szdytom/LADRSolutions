@@ -205,3 +205,13 @@
 
 	#tab 综上所述，线性映射的乘法具有可结合性、单位元和分配性质。
 ]
+
+#exercise_sol(type: "proof")[
+	证明：任何从一维向量空间到其自身的线性映射，就是标量乘法。形式化地说，即若 $dim V = 1$ 且 $T in LinearMap(V) $，则存在 $lambda in FF$，使得 $T v = lambda v$ 对任意 $v in V$ 成立。
+][
+	设 $w$ 是 $V$ 的一组基。由于 $T w in V$，根据基的性质，存在 $lambda in FF$，使得 $T w = lambda w$。现在考虑任意 $v in V$。根据基的性质，存在唯一的 $a in FF$，使得 $v = a w$。因此
+
+	$ T v = T(a w) = a T w = a(lambda w) = lambda (a w) = lambda v $
+
+	#tab 综上所述，$T v = lambda v$ 对任意 $v in V$ 成立。
+]
