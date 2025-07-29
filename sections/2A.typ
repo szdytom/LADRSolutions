@@ -364,7 +364,7 @@
 
 	证明：如果向量组 $v_1, dots, v_m$ 线性无关，当且仅当向量组 $w_1, dots, w_m$ 线性无关。
 ][
-	#tab 首先说明充分性：现在 $w_1, dots, w_m$ 线性无关。设 $a_1, dots, a_m in FF$ 使得
+	首先说明充分性：现在 $w_1, dots, w_m$ 线性无关。设 $a_1, dots, a_m in FF$ 使得
 
 	$ a_1 v_1 + dots.c + a_m v_m = 0 $
 
