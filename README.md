@@ -1,5 +1,7 @@
 # 《线性代数应该这样学（第四版）》习题解答
 
+这里是我对 Sheldon Axler《线性代数应该这样学（第四版）》习题的解答。原书及其中文版 PDF 均可在 [Linear Algebra Done Right 的网站](https://linear.axler.net/) 上免费下载。
+
 ## 在线查看 PDF
 
 本仓库使用 GitHub Actions 自动构建 PDF 文档，并部署到 GitHub Pages 上。由 `main` 分支的最新提交触发构建。[查看 PDF 文档](https://szdytom.github.io/LADRSolutions/main.pdf)

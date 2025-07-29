@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref
-#import "../math.typ": Poly, LinearMap, ii, span, restricted
+#import "../math.typ": Poly, LinearMap, ii, span, restricted, Permutation
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
 
@@ -206,7 +206,7 @@
 	#tab 综上所述，线性映射的乘法具有可结合性、单位元和分配性质。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-linear-map-space-of-dim-1-is-dim-1>)[
 	证明：任何从一维向量空间到其自身的线性映射，就是标量乘法。形式化地说，即若 $dim V = 1$ 且 $T in LinearMap(V) $，则存在 $lambda in FF$，使得 $T v = lambda v$ 对任意 $v in V$ 成立。
 ][
 	设 $w$ 是 $V$ 的一组基。由于 $T w in V$，根据基的性质，存在 $lambda in FF$，使得 $T w = lambda w$。现在考虑任意 $v in V$。根据基的性质，存在唯一的 $a in FF$，使得 $v = a w$。因此
@@ -296,21 +296,13 @@
 
 	#tab 另一方面，我们说明逆否命题。假设不存在 $lambda in FF$，使得 $T = lambda I$，即存在 $v in V$，使得不存在 $lambda in FF$，使得 $T v = lambda v$。根据#exercise_ref(<E-when-1-or-2-vectors-indep>)，我们得到 $v, T v$ 是一个线性无关组。
 
-	#tab 现在，我们构造一个线性映射 $S in LinearMap(V)$，使得 $S v = v$ 且 $S T v = v$。具体而言，根据每个线性无关组都可被扩充为基（原书2.32），我们可以找到 $u_1, dots, u_m in V$，使得 $v, T v, u_1, dots, u_m$ 是 $V$ 的一组基。现在，对于任意 $w in V$，我们可以唯一地将 $w$ 表示为
+	#tab 现在，我们构造一个线性映射 $S in LinearMap(V)$，使得 $S v = v$ 且 $S T v = v$。具体而言，根据每个线性无关组都可被扩充为基（原书2.32），我们可以找到 $u_1, dots, u_m in V$，使得 $v, T v, u_1, dots, u_m$ 是 $V$ 的一组基。
 
-	$ w = a v + b T v + c_1 u_1 + dots.c + c_m u_m $
-
-	其中 $a, b, c_1, dots, c_m in FF$。于是，我们令
-
-	$ S w = (a + b) v + c_1 u_1 + dots.c + c_m u_m $
-
-	#tab 很容易说明 $S$ 是线性映射，且 $S v = S T v = v$。于是只能有
+	#tab 根据线性映射引理（原书3.4），我们找到线性映射 $S: V -> V$，满足 $S v = v$，$S (T v) = v$，且对于 $j in {1, dots, m}$，$S u_j = u_j$。注意到
 
 	$ S T v = v != T v = T S v $
 
-	#tab 这说明 $S T != T S$。
-
-	#tab 综上所述，$T$ 是恒等算子的标量倍，当且仅当，对于任意 $S in LinearMap(V)$，$S T = T S$ 成立。
+	#tab 这说明 $S T != T S$。综上所述，$T$ 是恒等算子的标量倍，当且仅当，对于任意 $S in LinearMap(V)$，$S T = T S$ 成立。
 ]
 
 #exercise_sol(type: "proof")[
@@ -335,15 +327,17 @@
 
 	#note[原书 3.125 的证明将会用到本题的结果。]
 ][
-	设 $v_1, dots, v_m$ 是 $U$ 的一组基，根据每一个线性无关组都可被扩充为基（原书2.32），我们可以找到 $v_(m + 1), dots, v_n in V$，使得 $v_1, dots, v_n$ 是 $V$ 的一组基。现在，对于任意 $v in V$，我们可以唯一地将 $v$ 表示为
+	设 $v_1, dots, v_m$ 是 $U$ 的一组基，根据每一个线性无关组都可被扩充为基（原书2.32），我们可以找到 $v_(m + 1), dots, v_n in V$，使得 $v_1, dots, v_n$ 是 $V$ 的一组基。
 
-	$ v = a_1 v_1 + dots.c + a_n v_n $
+	#tab 现在，根据线性映射引理（原书3.4），我们可以找到线性映射 $T: V -> W$，使得对于任意 $i in {1, dots, m}$，都有 $T v_i = S v_i$，且对于 $j in {m + 1, dots, n}$，$T v_j = 0$。对于任意 $u in U$，由于 $u$ 可以唯一地表示为
 
-	#tab 其中 $a_1, dots, a_n in FF$。现在，令函数 $R: V -> U$，使得
+	$ u = a_1 v_1 + dots.c + a_m v_m $
 
-	$ R v = a_1 v_1 + dots.c + a_m v_m $
+	#tab 因此
 
-	#tab 很容易证明 $R$ 是线性映射，且对于 $u in U$，有 $R u = u$。现在，令 $T = S R$ 就立即完成了证明。
+	$ T u = a_1 T v_1 + dots.c + a_m T v_m = a_1 S v_1 + dots.c + a_m S v_m = S u $
+
+	#tab 综上所述，$T$ 满足 $T u = S u$ 对任意 $u in U$ 成立，即 $T$ 是 $S$ 的扩充。
 ]
 
 #exercise_sol(type: "proof")[
@@ -351,11 +345,7 @@
 ][
 	设 $v in V$，$v != 0$。根据#exercise_ref(<E-inf-dim-space-seq-characterization>)，$W$ 中存在一个序列 $w_1, w_2, dots$ 使得对于任意 $m in NN^+$，向量组 $w_1, dots, w_m$ 线性无关。
 
-	#tab 对于任意 $u in span(v)$，存在 $lambda in FF$，使得 $u = lambda v$。现在，对于任意 $k in NN^+$，令函数 $S_k: span(v) -> W$ 满足
-
-	$ S_k u = lambda w_k $
-
-	#tab 根据@E-extend-linear-map，存在 $T_k in LinearMap(V, W)$，使得对于任意 $u in span(v)$，都有 $T_k u = S_k u$。特别地，$T_k v = w_k$。
+	#tab 根据线性映射引理（原书3.4），我们可以找到线性映射 $S_k: span(v) -> W$，使得 $S_k v = w_k$。然后根据@E-extend-linear-map，存在 $T_k in LinearMap(V, W)$，使得对于任意 $u in span(v)$，都有 $T_k u = S_k u$。
 
 	#tab 对于任意 $m in NN^+$，设 $a_1, dots a_m in FF$，使得
 
@@ -373,7 +363,7 @@
 #exercise_sol(type: "proof")[
 	设 $v_1, dots, v_m$ 是 $V$ 中的线性相关向量组，$dim W > 0$。证明：存在 $w_1, dots, w_m in W$，使得不存在 $T in LinearMap(V, W)$ 对于任意 $k in {1, dots, m}$，都有 $T v_k = w_k$。
 ][
-	根据线性相关性引理（原书2.19），存在 $k in {1, dots, m}$，使得 $v_k in span(v_1, dots, v_(k - 1))$。设
+	由于向量组 $v_1, dots, v_m$ 是线性相关的，根据线性相关性引理（原书2.19），存在 $k in {1, dots, m}$，使得 $v_k in span(v_1, dots, v_(k - 1))$。设
 
 	$ v_k = a_1 v_1 + dots.c + a_(k - 1) v_(k - 1) $
 
@@ -393,14 +383,67 @@
 
 	$ u = a_1 v_1 + a_2 v_2 $
 
-	其中 $a_1, a_2 in FF$。现在，定义 $Sr: U -> W$ 和 $Tr: U -> W$#footnote[这里使用的是限制算子的记号，表示定义域限制在 $U$ 上，原书第三版的5.14定义了此记号。但是这里无需明白这些定义，将其分别当作两个函数的名字即可。]，使得
+	#tab 其中 $a_1, a_2 in FF$。根据线性映射引理（原书3.4），我们可以找到线性映射 $Sr: U -> W$ 和 $Tr: U -> W$#footnote[这里使用的是限制算子的记号，表示定义域限制在 $U$ 上，原书第三版的5.14定义了此记号。但是这里无需明白这些定义，将其分别当作两个函数的名字即可。]，使得 $Sr(v_1) = v_2$ 且 $Sr(v_2) = v_1$，以及 $Tr (v_1) = Tr(v_2) = v_1$。
 
-	$ Sr(u) &= a_1 v_2 + a_2 v_1 \
-		Tr(u) &= (a_1 + a_2) v_1 $
-
-	#tab 很容易证明 $Sr$ 和 $Tr$ 是线性映射。现在，根据@E-extend-linear-map，存在 $S, T in LinearMap(V)$，使得对于任意 $u in U$，都有 $S u = Sr(u)$ 且 $T u = Tr(u)$。注意到
+	#tab 现在，根据@E-extend-linear-map，存在 $S, T in LinearMap(V)$，使得对于任意 $u in U$，都有 $S u = Sr(u)$ 且 $T u = Tr(u)$。注意到
 
 	$ S T v_2 = S v_1 = v_2 != v_1 = T v_1 = T S v_2 $
 
 	#tab 于是 $S T != T S$，这立即完成了证明。
+]
+
+#let Es = $cal(E)$
+
+#exercise_sol(type: "proof", label: "hard")[
+	设 $V$ 是有限维向量空间。
+
+	- $LinearMap(V)$ 的子空间 $Es$ 被称为*双边理想（two-sided ideal）*，是指 $T E in Es$ 和 $E T in Es$，对于任意 $E in Es$ 和 $T in LinearMap(V)$ 都成立。
+
+	证明：$LinearMap(V)$ 仅有的双边理想是 ${0}$ 和 $LinearMap(V)$。
+][
+	验证 ${0}$ 是 $LinearMap(V)$ 的双边理想是平凡的。现在假设 $Es$ 是 $LinearMap(V)$ 的双边理想，且 $Es != {0}$。故存在 $E in Es$ 使得 $E != 0$，即可设 $w_0 in V$，使得 $E w_0 != 0$。令 $w = E w_0$。
+
+	#let Rr = $restricted(R, span(w))$
+	#tab 根据线性映射引理（原书3.4），可以找到线性映射#footnote[这里有时将 $FF$ 视为一个向量空间，即我们不对 $FF$ 和 $FF^1$ 进行明确地区分。] $Rr: span(w) -> FF$，满足 $Rr(w) = 1$。进一步地，根据@E-extend-linear-map，存在线性映射 $R in LinearMap(V, FF)$，使得对于任意 $u in span(w)$，都有 $R u = Rr(u)$。
+
+	#tab 现在，对于任意 $u in W$ 和 $f in LinearMap(V, FF)$，定义
+
+	- 线性映射 $S_u: V -> V$ 为 $v |-> R(v)u$；
+
+	- 线性映射 $T_f: V -> V$ 为 $v |-> f(v) w_0$。
+
+	#tab 由于 $Es$ 是双边理想，$S_u E T_f in Es$。设 $u_1, dots, u_m$ 是 $V$ 的一组基。另一方面，设 $v in V$，注意到
+
+	$ (S_u E T_f)v
+		&= S_u (E(f(v) w_0)) \
+		&= S_u (f(v) E w_0) \
+		&= f(v) S_u w \
+		&= f(v) R(w) u \
+		&= f(v) u $
+
+	#tab 现在，设 $T in LinearMap(V)$，$i, j in {1, dots, m}$。我们将 $T u_j$ 表示为
+
+	$ T u_j = A_(1, j) u_1 + dots.c + A_(m, j) u_m $
+
+	#tab 其中 $A_(i, j) in FF$。同时，对于任意 $v in V$，将其表示为
+
+	$ v = a_1 u_1 + dots.c + a_m u_m $
+
+	#tab 其中 $a_1, dots, a_m in FF$。现在，对于任意 $i in {1, dots, m}$，根据线性映射引理（原书3.4），我们可以找到线性映射 $f_i in LinearMap(V, FF)$，使得对于任意 $j in {1, dots, m}$，$f_i (v_j) = A_(i, j)$，即
+
+	$ f_i (v) = sum_(j = 1)^m A_(i, j) a_j $
+
+	#tab 注意到
+
+	$ T v &= sum_(j = 1)^m a_j T u_j \
+		&= sum_(j = 1)^m a_j sum_(i = 1)^m A_(i, j) u_i \
+		&= sum_(i = 1)^m u_i sum_(j = 1)^m A_(i, j) a_j \
+		&= sum_(i = 1)^m u_i f_i (v) \
+		&= sum_(i = 1)^m (S_u_i E T_f_i) v $
+
+	#tab 这说明
+
+	$ T = sum_(i = 1)^m S_u_i E T_f_i in Es $
+
+	#tab 由于 $T$ 是任意的，因此 $Es$ 包含了所有的线性映射，即 $Es = LinearMap(V)$。综上所述，$LinearMap(V)$ 仅有的双边理想是 ${0}$ 和 $LinearMap(V)$。
 ]
