@@ -81,3 +81,31 @@
 
 	#tab 由于 $dim RR^5 = 5$，因此 $2n = 5$，这与 $n$ 是整数矛盾。因此不存在这样的 $T$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 是有限维向量空间，$2 <= dim V <= dim W$。证明：${T in LinearMap(V, W) : T "不是单射"}$ 不是 $LinearMap(V, W)$ 的子空间。
+][
+	记 $S = {T in LinearMap(V, W) : T "不是单射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $n >= m = dim V >= 2$。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。
+
+	#tab 设 $v in V$。假设 $T v = 0$，将 $v$ 表示为
+
+	$ v = z_1 v_1 + dots.c + z_m v_m $
+
+	#tab 其中 $z_1, dots, z_m in FF$。则
+
+	$ T v = z_1 T v_1 + dots.c + z_m T v_m = z_1 w_1 + dots.c + z_m w_m = 0$
+
+	#tab 由于 $w_1, dots, w_m$ 是线性无关的，因此 $z_1 = dots = z_m = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射，即 $T in.not S$。
+
+	#tab 再次利用线性映射引理（原书3.4），存在 $R in LinearMap(V, W)$，使得 $R v_1 = w_1$，且对于任意 $i in {2, dots, m}$，$R v_i = 0$。由于 $m >= 2$，我们至少有 $R v_2 = R 0 = 0$，故 $R$ 不是单射。
+
+	#tab 注意到
+	
+	$ (T - R) v_1 = T v_1 - R v_1 = w_1 - w_1 = 0 = (T - R) 0 $
+
+	#tab 故 $T - R$ 不是单射。即 $R, T - R in S$，注意到
+
+	$ R + (T - R) = T in.not S $
+
+	#tab 这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(V, W)$ 的子空间。
+]
