@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref
-#import "../math.typ": Poly, LinearMap, ii, span
+#import "../math.typ": Poly, LinearMap, ii, span, restricted
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
 
@@ -382,4 +382,25 @@
 	$ T v_k = a_1 T v_1 + dots.c + a_(k - 1) T v_(k - 1) = 0 != w_k $
 
 	#tab 这说明不存在 $T in LinearMap(V, W)$，使得对于任意 $k in {1, dots, m}$，都有 $T v_k = w_k$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$dim V > 1$。证明：存在 $S, T in LinearMap(V)$ 使得 $S T != T S$。
+][
+	#let Sr = $restricted(S, U)$
+	#let Tr = $restricted(T, U)$
+	设 $v_1, v_2 in V$ 是线性无关的向量组，令 $U = span(v_1, v_2)$。设 $u in U$，则 $u$ 可以唯一地表示为
+
+	$ u = a_1 v_1 + a_2 v_2 $
+
+	其中 $a_1, a_2 in FF$。现在，定义 $Sr: U -> W$ 和 $Tr: U -> W$#footnote[这里使用的是限制算子的记号，表示定义域限制在 $U$ 上，原书第三版的5.14定义了此记号。但是这里无需明白这些定义，将其分别当作两个函数的名字即可。]，使得
+
+	$ Sr(u) &= a_1 v_2 + a_2 v_1 \
+		Tr(u) &= (a_1 + a_2) v_1 $
+
+	#tab 很容易证明 $Sr$ 和 $Tr$ 是线性映射。现在，根据@E-extend-linear-map，存在 $S, T in LinearMap(V)$，使得对于任意 $u in U$，都有 $S u = Sr(u)$ 且 $T u = Tr(u)$。注意到
+
+	$ S T v_2 = S v_1 = v_2 != v_1 = T v_1 = T S v_2 $
+
+	#tab 于是 $S T != T S$，这立即完成了证明。
 ]

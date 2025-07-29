@@ -6,3 +6,4 @@
 #let complexification(vv) = $vv_upright(C)$
 #let rhs = "R.H.S."
 #let lhs = "L.H.S."
+#let restricted(ff, uu) = $ff|_uu$
