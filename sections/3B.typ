@@ -144,3 +144,19 @@
 
 	#tab 这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(V, W)$ 的子空间。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $T in LinearMap(V, W)$ 是单射，向量组 $v_1, dots, v_n$ 在 $V$ 中线性无关。证明：向量组 $T v_1, dots, T v_n$ 在 $W$ 中线性无关。
+][
+	设 $a_1, dots, a_n in FF$ 使得
+
+	$ a_1 T v_1 + dots.c + a_n T v_n = 0 $
+
+	#tab 根据线性映射的定义，有
+
+	$ T (a_1 v_1 + dots.c + a_n v_n) = 0 $
+
+	#tab 由于 $T$ 是单射，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$，因此 $a_1 v_1 + dots.c + a_n v_n = 0$。由于向量组 $v_1, dots, v_n$ 在 $V$ 中线性无关，只能有 $a_1 = dots = a_n = 0$。
+
+	#tab 这说明向量组 $T v_1, dots, T v_n$ 在 $W$ 中线性无关。
+]
