@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, tab
+#import "../styles.typ": exercise_sol, tab, exercise_ref
 #import "../math.typ": null, range, LinearMap, span
 
 #exercise_sol(type: "answer")[
@@ -9,8 +9,8 @@
 	$ T:& RR^5 -> RR^2 \ &(x_1, x_2, x_3, x_4, x_5) |-> (x_1, x_2) $
 
 	#tab 根据定义
-	
-	$ range T &= RR^2 \ 
+
+	$ range T &= RR^2 \
 		null T &= {(0, 0, x, y, z) in RR^5 : x, y, z in RR} $
 
 	#tab 于是 $dim null T = 3$ 且 $dim range T = 2$。
@@ -47,12 +47,12 @@
 	证明：${T in LinearMap(RR^5, RR^4) : dim null T > 2}$ 不是 $LinearMap(RR^5, RR^4)$ 的子空间。
 ][
 	记 $S = {T in LinearMap(RR^5, RR^4) : dim null T > 2}$。取 $T_1, T_2 in LinearMap(RR^5, RR^4)$，使得对于任意 $x_1, x_2, x_3, x_4, x_5 in RR$，有
-	
+
 	$ T_1(x_1, x_2, x_3, x_4, x_5) &= (x_1, x_2, 0, 0) \
 		T_2(x_1, x_2, x_3, x_4, x_5) &= (0, 0, x_3, x_4) $
-	
+
 	容易验证 $dim null T_1 = dim null T_2 = 3 > 2$，即 $T_1$ 和 $T_2$ 都是 $S$ 中的元素。然而，注意到 $dim range (T_1 + T_2) = 4$，即根据线性映射基本定理（原书3.21），
-	
+
 	$ dim null (T_1 + T_2) = dim RR^5 - dim range (T_1 + T_2) = 5 - 4 = 1 $
 
 	#tab 因此 $T_1 + T_2 in.not S$。这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(RR^5, RR^4)$ 的子空间。
@@ -85,9 +85,9 @@
 #exercise_sol(type: "proof")[
 	设 $V$ 和 $W$ 是有限维向量空间，$2 <= dim V <= dim W$。证明：${T in LinearMap(V, W) : T "不是单射"}$ 不是 $LinearMap(V, W)$ 的子空间。
 ][
-	记 $S = {T in LinearMap(V, W) : T "不是单射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $n >= m = dim V >= 2$。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。
-
-	#tab 设 $v in V$。假设 $T v = 0$，将 $v$ 表示为
+	记 $S = {T in LinearMap(V, W) : T "不是单射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $n >= m = dim V >= 2$。
+	
+	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。设 $v in V$。假设 $T v = 0$，将 $v$ 表示为
 
 	$ v = z_1 v_1 + dots.c + z_m v_m $
 
@@ -95,15 +95,50 @@
 
 	$ T v = z_1 T v_1 + dots.c + z_m T v_m = z_1 w_1 + dots.c + z_m w_m = 0$
 
-	#tab 由于 $w_1, dots, w_m$ 是线性无关的，因此 $z_1 = dots = z_m = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射，即 $T in.not S$。
+	#tab 由于 $w_1, dots, w_m$ 是线性无关的，因此 $z_1 = dots.c = z_m = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射，即 $T in.not S$。
 
 	#tab 再次利用线性映射引理（原书3.4），存在 $R in LinearMap(V, W)$，使得 $R v_1 = w_1$，且对于任意 $i in {2, dots, m}$，$R v_i = 0$。由于 $m >= 2$，我们至少有 $R v_2 = R 0 = 0$，故 $R$ 不是单射。
 
 	#tab 注意到
-	
+
 	$ (T - R) v_1 = T v_1 - R v_1 = w_1 - w_1 = 0 = (T - R) 0 $
 
 	#tab 故 $T - R$ 不是单射。即 $R, T - R in S$，注意到
+
+	$ R + (T - R) = T in.not S $
+
+	#tab 这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(V, W)$ 的子空间。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 是有限维向量空间，$2 <= dim W <= dim V$。证明：${T in LinearMap(V, W) : T "不是满射"}$ 不是 $LinearMap(V, W)$ 的子空间。
+][
+	记 $S = {T in LinearMap(V, W) : T "不是满射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $m >= n = dim W >= 2$。
+	
+	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$，且对于任意 $i in {n+1, dots, m}$，$T v_i = 0$。设 $w in W$。将 $w$ 表示为
+
+	$ w = z_1 w_1 + dots.c + z_n w_n $
+
+	#tab 其中 $z_1, dots, z_m in FF$。则
+
+	$ w = z_1 T v_1 + dots.c + z_n T v_n = T (z_1 v_1 + dots.c + z_n v_n) $
+
+	#tab 故 $range T = W$，即 $T$ 是满射，因此 $T in.not S$。
+
+	#tab 再次利用线性映射引理（原书3.4），存在 $R in LinearMap(V, W)$，使得 $R v_1 = w_1$，且对于任意 $i in {2, dots, n}$，$R v_i = 0$。由于 $n >= 2$，$w_1, w_2$ 线性无关，根据#exercise_ref(<E-when-1-or-2-vectors-indep>)，不存在 $lambda in FF$，使得 $w_2 = lambda w_1$，即 $w in.not range R$，故 $R$ 不是满射。
+
+	#tab 反证假设 $T - R$ 是满射，则存在 $v in V$ 使得 $(T - R) v = w_1$。将 $v$ 表示为
+
+	$ v = z_1 v_1 + dots.c + z_m v_m $
+
+	#tab 其中 $z_1, dots, z_m in FF$。则
+
+	$ w_1 = (T - R) v &= T v - R v \
+		&= z_1 T v_1 + dots.c + z_m T v_m + z_1 R v_1 + dots.c + z_m R v_m \
+		&= z_1 w_1 + dots.c + z_n w_n - z_1 w_1 \
+		&= z_2 w_2 + dots.c + z_n w_n in span(w_2, dots, w_m) $
+
+	#tab 根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，$w_2, dots, w_n, w_1$ 不是线性无关的，矛盾。故 $T - R$ 不是满射。现在 $R, T - R in S$，注意到
 
 	$ R + (T - R) = T in.not S $
 
