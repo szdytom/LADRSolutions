@@ -57,3 +57,27 @@
 
 	#tab 因此 $T_1 + T_2 in.not S$。这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(RR^5, RR^4)$ 的子空间。
 ]
+
+#exercise_sol(type: "answer")[
+	给出一例：线性映射 $T in LinearMap(RR^4)$，满足 $range T = null T$。
+][
+	设 $v_1, dots, v_4$ 是 $RR^4$ 的一组基。根据线性映射引理（原书3.4），存在 $T in LinearMap(RR^4)$，使得 $T v_1 = T v_2 = 0$，$T v_3 = v_1$，$T v_4 = v_2$。因此
+
+	$ range T = null T = span(v_1, v_2) $
+
+	#tab 因此 $T$ 满足题目要求。
+]
+
+#exercise_sol(type: "proof")[
+	证明：不存在 $T in LinearMap(RR^5)$，使得 $range T = null T$。
+][
+	假设存在 $T in LinearMap(RR^5)$，使得 $range T = null T$。根据线性映射基本定理（原书3.21），有
+
+	$ dim RR^5 = dim null T + dim range T $
+
+	#tab 由于 $range T = null T$，因此 $dim range T = dim null T$。设 $dim range T = n$，则
+
+	$ dim RR^5 = n + n = 2n $
+
+	#tab 由于 $dim RR^5 = 5$，因此 $2n = 5$，这与 $n$ 是整数矛盾。因此不存在这样的 $T$。
+]
