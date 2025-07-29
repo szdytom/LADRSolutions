@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab, exercise_ref
-#import "../math.typ": Poly, LinearMap, ii, span, restricted, Permutation
+#import "../math.typ": Poly, LinearMap, ii, span, restricted
 
 #note[与原书一致，在本章中，如无其他说明，我们总是假定字母 $U$，$V$ 和 $W$ 都是 $FF$ 上的向量空间。]
 
@@ -217,7 +217,7 @@
 ]
 
 #exercise_sol(type: "proof")[
-	给出一个例子：函数 $phi: RR^2 -> RR$，使得对于任意 $a in RR$ 和 $v in RR^2$，有
+	给出一例：函数 $phi: RR^2 -> RR$，使得对于任意 $a in RR$ 和 $v in RR^2$，有
 
 	$ phi(a v) = a phi(v) $
 
@@ -248,7 +248,7 @@
 ]
 
 #exercise_sol(type: "proof")[
-	给出一个例子：函数 $phi: CC -> CC$，使得对于任意 $w, z in CC$，有
+	给出一例：函数 $phi: CC -> CC$，使得对于任意 $w, z in CC$，有
 
 	$ phi(w + z) = phi(w) + phi(z) $
 
