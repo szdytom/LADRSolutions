@@ -160,3 +160,17 @@
 
 	#tab 这说明向量组 $T v_1, dots, T v_n$ 在 $W$ 中线性无关。
 ]
+
+#exercise_sol(type: "proof")[
+	设向量组 $v_1, dots, v_n$ 张成 $V$，$T in LinearMap(V, W)$，证明：$T v_1, dots, T v_n$ 张成 $range T$。
+][
+	设 $w in range T$，则可设 $v in V$，使得 $T v = w$。将 $v$ 表示为
+
+	$ v = z_1 v_1 + dots.c + z_n v_n $
+	
+	#tab 其中 $z_1, dots, z_n in FF$。则
+
+	$ w = T v = T (z_1 v_1 + dots.c + z_n v_n) = z_1 T v_1 + dots.c + z_n T v_n $
+
+	#tab 这说明 $w$ 可以表示为向量组 $T v_1, dots, T v_n$ 的线性组合，根据张成的定义（原书2.7），可得 $T v_1, dots, T v_n$ 张成 $range T$。
+]
