@@ -38,7 +38,7 @@
 
 	#tab 现在假设向量组 $v_1, dots, v_m$ 不张成 $V$，则 $dim V > dim span(v_1, dots, v_m) = m$，然而 $dim FF^m = m$，根据映射到更高维空间上的线性映射不是满射（原书3.24），$T$ 不是满射。
 
-	#tab 对于 (b)，结论是 $T$ 是单射等价于向量组 $v_1, dots, v_m$ 线性无关。首先假设 $T$ 是单射，则根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$。因此 $z_1 v_1 + dots.c + z_m v_m = 0$ 仅当 $z_1 = dots = z_m = 0$，这说明向量组 $v_1, dots, v_m$ 线性无关。
+	#tab 对于 (b)，结论是 $T$ 是单射等价于向量组 $v_1, dots, v_m$ 线性无关。首先假设 $T$ 是单射，则根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$。因此 $z_1 v_1 + dots.c + z_m v_m = 0$ 仅当 $z_1 = dots.c = z_m = 0$，这说明向量组 $v_1, dots, v_m$ 线性无关。
 
 	#tab 现在假设向量组 $v_1, dots, v_m$ 线性无关。则 $dim range T = dim span(v_1, dots, v_m) = m$，根据线性映射基本定理（原书3.21），$dim FF^m = dim null T + dim range T$，解得 $dim null T = {0}$，即 $T$ 是单射。
 ]
@@ -86,7 +86,7 @@
 	设 $V$ 和 $W$ 是有限维向量空间，$2 <= dim V <= dim W$。证明：${T in LinearMap(V, W) : T "不是单射"}$ 不是 $LinearMap(V, W)$ 的子空间。
 ][
 	记 $S = {T in LinearMap(V, W) : T "不是单射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $n >= m = dim V >= 2$。
-	
+
 	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。设 $v in V$。假设 $T v = 0$，将 $v$ 表示为
 
 	$ v = z_1 v_1 + dots.c + z_m v_m $
@@ -114,7 +114,7 @@
 	设 $V$ 和 $W$ 是有限维向量空间，$2 <= dim W <= dim V$。证明：${T in LinearMap(V, W) : T "不是满射"}$ 不是 $LinearMap(V, W)$ 的子空间。
 ][
 	记 $S = {T in LinearMap(V, W) : T "不是满射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $m >= n = dim W >= 2$。
-	
+
 	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$，且对于任意 $i in {n+1, dots, m}$，$T v_i = 0$。设 $w in W$。将 $w$ 表示为
 
 	$ w = z_1 w_1 + dots.c + z_n w_n $
@@ -156,21 +156,40 @@
 
 	$ T (a_1 v_1 + dots.c + a_n v_n) = 0 $
 
-	#tab 由于 $T$ 是单射，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$，因此 $a_1 v_1 + dots.c + a_n v_n = 0$。由于向量组 $v_1, dots, v_n$ 在 $V$ 中线性无关，只能有 $a_1 = dots = a_n = 0$。
+	#tab 由于 $T$ 是单射，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$，因此 $a_1 v_1 + dots.c + a_n v_n = 0$。由于向量组 $v_1, dots, v_n$ 在 $V$ 中线性无关，只能有 $a_1 = dots.c = a_n = 0$。
 
 	#tab 这说明向量组 $T v_1, dots, T v_n$ 在 $W$ 中线性无关。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-domain-span-to-range-span>)[
 	设向量组 $v_1, dots, v_n$ 张成 $V$，$T in LinearMap(V, W)$，证明：$T v_1, dots, T v_n$ 张成 $range T$。
 ][
 	设 $w in range T$，则可设 $v in V$，使得 $T v = w$。将 $v$ 表示为
 
 	$ v = z_1 v_1 + dots.c + z_n v_n $
-	
+
 	#tab 其中 $z_1, dots, z_n in FF$。则
 
 	$ w = T v = T (z_1 v_1 + dots.c + z_n v_n) = z_1 T v_1 + dots.c + z_n T v_n $
 
 	#tab 这说明 $w$ 可以表示为向量组 $T v_1, dots, T v_n$ 的线性组合，根据张成的定义（原书2.7），可得 $T v_1, dots, T v_n$ 张成 $range T$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$T in LinearMap(V, W)$。证明：存在 $V$ 的子空间 $U$，使得
+
+	$ U inter null T = {0} wide and wide range T = {T u : u in U} $
+][
+	设 $v_1, dots, v_n$ 是 $V$ 的一组基，则根据@E-domain-span-to-range-span，$T v_1, dots, T v_n$ 张成 $range T$。在根据“每个张成组都包含基”（原书2.30），不妨设 $T v_1, dots, T v_m$ 是 $range T$ 的一组基。
+
+	#tab 令 $U = span(v_1, dots, v_m)$。将 $T$ 视作 $U -> W$ 的线性映射，则根据@E-domain-span-to-range-span，$range T = {T u : u in U}$。现在证明 $U inter null T = {0}$。设 $u in U inter null T$，则存在 $a_1, dots, a_m in FF$，使得
+
+	$ u = a_1 v_1 + dots.c + a_m v_m $
+
+	#tab 由于 $u in null T$，根据线性映射的定义，有
+
+	$ 0 = T u = a_1 T v_1 + dots.c + a_m T v_m $
+
+	#tab 由于 $T v_1, dots, T v_m$ 是线性无关的，故 $a_1 = dots.c = a_m = 0$，即 $u = 0$。因此 $U inter null T = {0}$。
+]
+
