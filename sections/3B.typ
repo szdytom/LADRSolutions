@@ -238,3 +238,27 @@
 
 	#tab 解得 $dim range T = 3$，然而 $dim FF^2 = 2$，根据“子空间的维数不超过该空间的维数”（原书2.37），$range T subset.eq FF^2$，因此 $dim range T <= dim FF^2 = 2$，矛盾。因此不存在这样的线性映射。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 上存在一个线性映射，使得其零空间和值域都是有限维的，证明：$V$ 是有限维的。
+][
+	设 $T in LinearMap(V)$，使得 $dim null T = m$ 且 $dim range T = n$，其中 $m, n in NN$。进一步可设 $u_1, dots, u_m$ 是 $null T$ 的一组基，$T v_1, dots, T v_n$ 是 $range T$ 的一组基。
+
+	#tab 设 $w in V$，则 $T w in range T$，因此可以将 $T w$ 表示为
+
+	$ T w = a_1 T v_1 + dots.c + a_n T v_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。因此
+
+	$ T w = T (a_1 v_1 + dots.c + a_n v_n) $
+
+	#tab 记 $v = a_1 v_1 + dots.c + a_n v_n$，则 $T (w - v) = 0$，故 $w - v in null T$，即存在 $b_1, dots, b_m in FF$，使得
+
+	$ w - v = b_1 u_1 + dots.c + b_m u_m $
+
+	#tab 这说明 $w$ 可以表示为
+
+	$ w = (a_1 v_1 + dots.c + a_n v_n) + (b_1 u_1 + dots.c + b_m u_m) $
+
+	#tab 即 $w in span(u_1, dots, u_m, v_1, dots, v_n)$。$V$ 可以被有限个向量张成，因此 $V$ 是有限维的。
+]
