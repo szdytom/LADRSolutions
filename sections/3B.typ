@@ -211,3 +211,13 @@
 
 	#tab 解得 $dim range T = 2$，即 $dim range T = dim FF^2$，根据“某空间中与之维数相同的子空间即为该空间本身”（原书2.39），$range T = FF^2$，即 $T$ 是满射。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 是 $RR^8$ 的 $3$ 维子空间，$T$ 是 $RR^8 -> RR^5$ 的线性映射，使得 $null T = U$。证明：$T$ 是满射。
+][
+	根据线性映射基本定理（原书3.21），有
+
+	$ dim RR^8 = dim null T + dim range T $
+
+	#tab 由于 $null T = U$，因此 $dim null T = 3$。解得 $dim range T = 5$。根据“某空间中与之维数相同的子空间即为该空间本身”（原书2.39），$range T = RR^5$，即 $T$ 是满射。
+]
