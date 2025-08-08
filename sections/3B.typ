@@ -272,7 +272,7 @@
 
 	#tab 由于 $range T subset.eq W$，根据子空间的维数（原书2.37），$dim range T <= dim W$，因此 $dim V <= dim W$。
 
-	#tab 现在假设 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一个线性无关组。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$。
+	#tab 现在假设 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 上的一个线性无关组。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$。
 
 	#tab 设 $v in V$，使得 $T v = 0$。将 $v$ 表示为
 
@@ -283,4 +283,26 @@
 	$ 0 = T v = a_1 T v_1 + dots.c + a_n T v_n = a_1 w_1 + dots.c + a_n w_n $
 
 	#tab 由于 $w_1, dots, w_n$ 是线性无关的，故 $a_1 = dots.c = a_n = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 都是有限维向量空间，证明：存在 $V -> W$ 的满的线性映射，当且仅当 $dim V >= dim W$。
+][
+	首先假设存在 $T in LinearMap(V, W)$ 是满射。根据线性映射基本定理（原书3.21），有
+
+	$ dim V = dim null T + dim range T $
+
+	#tab 由于 $range T = W$，因此 $dim range T = dim W$，解得 $dim V = dim null T + dim W >= dim W$。
+
+	#tab 现在假设 $dim V >= dim W$。设 $w_1, dots, w_n$ 是 $W$ 的一组基，$v_1, dots, v_n$ 是 $V$ 上的一个线性无关向量组。根据线性映射引理（原书3.4），存在 $S in LinearMap(span(v_1, dots, v_n), W)$，使得对于任意 $i in {1, dots, n}$，有 $S v_i = w_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $T in LinearMap(V, W)$，使得对于任意 $v in span(v_1, dots, v_n)$，有 $T v = S v$。
+
+	#tab 设 $w in W$，则可以将 $w$ 表示为
+
+	$ w = a_1 w_1 + dots.c + a_n w_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。则
+
+	$ w = a_1 T v_1 + dots.c + a_n T v_n = T (a_1 v_1 + dots.c + a_n v_n) $
+
+	#tab 这说明对于任意 $w in W$，都存在一个向量在 $V$ 中，使得其通过 $T$ 映射到该向量。因此 $T$ 是满射。
 ]
