@@ -145,7 +145,7 @@
 	#tab 这说明 $S$ 违反了子空间的条件（原书1.34）中对加法封闭性的要求，故 $S$ 不是 $LinearMap(V, W)$ 的子空间。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-indep-preservance-under-inj>)[
 	设 $T in LinearMap(V, W)$ 是单射，向量组 $v_1, dots, v_n$ 在 $V$ 中线性无关。证明：向量组 $T v_1, dots, T v_n$ 在 $W$ 中线性无关。
 ][
 	设 $a_1, dots, a_n in FF$ 使得
@@ -242,7 +242,7 @@
 #exercise_sol(type: "proof")[
 	设 $V$ 上存在一个线性映射，使得其零空间和值域都是有限维的，证明：$V$ 是有限维的。
 ][
-	设 $T in LinearMap(V)$，使得 $dim null T = m$ 且 $dim range T = n$，其中 $m, n in NN$。进一步可设 $u_1, dots, u_m$ 是 $null T$ 的一组基，$T v_1, dots, T v_n$ 是 $range T$ 的一组基。
+	设 $T in LinearMap(V)$，使得 $dim null T = m$ 且 $dim range T = n$。进一步可设 $u_1, dots, u_m$ 是 $null T$ 的一组基，$T v_1, dots, T v_n$ 是 $range T$ 的一组基，其中 $v_1, dots, v_n in V$。
 
 	#tab 设 $w in V$，则 $T w in range T$，因此可以将 $T w$ 表示为
 
@@ -338,7 +338,17 @@
 #exercise_sol(type: "proof")[
 	设 $W$ 是有限维向量空间，$T in LinearMap(V, W)$。证明：$T$ 是单射，当且仅当，存在 $S in LinearMap(W, V)$，使得 $S T$ 是 $V$ 上的恒等映射。
 ][
-	首先假设 $T$ 是单射。根据“映射到更低维空间上的线性映射不是单射”（原书3.22）的逆否命题，可知 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组线性无关向量组。根据线性映射引理（原书3.4），存在 $R in LinearMap(span(w_1, dots, w_n), V)$，使得对于任意 $i in {1, dots, n}$，有 $R w_i = v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $S in LinearMap(W, V)$，使得对于任意 $w in span(w_1, dots, w_n)$，有 $S w = R w$。
+	首先假设 $T$ 是单射。根据值域是子空间（原书3.18），$range T$ 是 $W$ 的子空间，进一步根据子空间的维数（原书2.37），可得 $range T$ 是有限维的。设 $T u_1, dots, T u_n$ 是 $range T$ 的一组基，其中 $u_1, dots, u_n in V$。
+
+	#tab 设 $u in V$，则可以将 $T u$ 表示为
+
+	$ T u = a_1 T u_1 + dots.c + a_n T u_n = T (a_1 u_1 + dots.c + a_n u_n) $
+
+	#tab 其中 $a_1, dots, a_n in FF$。根据单射的定义（原书3.14），$T$ 是单射，因此 $u in span(u_1, dots, u_n)$。因此向量组 $u_1, dots, u_n$ 张成 $V$。故 $V$ 是有限维向量空间。
+
+	#tab 故可设 $v_1, dots, v_n$ 是 $V$ 的一组基。对于 $i in {1, dots, n}$，令 $w_i = T v_i$。根据@E-indep-preservance-under-inj，$w_1, dots, w_n$ 是线性无关的。
+	
+	#tab 根据线性映射引理（原书3.4），存在 $R in LinearMap(span(w_1, dots, w_n), V)$，使得对于任意 $i in {1, dots, n}$，有 $R w_i = v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $S in LinearMap(W, V)$，使得对于任意 $w in span(w_1, dots, w_n)$，有 $S w = R w$。
 
 	#tab 设 $v in V$，则可以将 $v$ 表示为
 
@@ -346,9 +356,9 @@
 
 	#tab 其中 $a_1, dots, a_n in FF$。则
 
-	$ S T v &= S (a_1 T v_1 + dots.c + a_n T v_n) 
+	$ S T v &= S (a_1 T v_1 + dots.c + a_n T v_n) \
 		&= S(a_1 w_1 + dots.c + a_n w_n) \
-		&= a_1 S w_1 + dots.c + a_n S w_n 
+		&= a_1 S w_1 + dots.c + a_n S w_n \
 		&= a_1 v_1 + dots.c + a_n v_n = v $
 
 	#tab 这说明 $S T$ 确实是 $V$ 上的恒等映射。
@@ -358,4 +368,27 @@
 	$ v = S T v = S 0 = 0 $
 
 	#tab 这说明 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射。
+]
+
+#exercise_sol(type: "proof")[
+	设 $W$ 是有限维的向量空间，$T in LinearMap(V, W)$。证明：$T$ 是满射，当且仅当，存在 $S in LinearMap(W, V)$，使得 $T S$ 是 $W$ 上的恒等映射。
+][
+	首先假设 $T$ 是满射。令 $n = dim W$。如果 $V$ 是有限维的，则根据“映射到更高维空间上的线性映射不是满射”（原书3.24）的逆否命题，$dim V >= dim W$。因此可设 $v_1, dots, v_n$ 是 $V$ 上的一个线性无关向量组。如果 $V$ 是无限维的，自然也可以取 $v_1, dots, v_n$ 为 $V$ 上的线性无关向量组。
+
+	#tab 现在对于 $i in {1, dots, n}$，令 $w_i = T v_i$。根据@E-indep-preservance-under-inj，$w_1, dots, w_n$ 是线性无关的。进一步，根据“长度恰当的线性无关组是基”（原书2.38），$w_1, dots, w_n$ 是 $W$ 的一组基。于是，根据线性映射引理（原书3.4），存在 $S in LinearMap(W, V)$，使得对于任意 $i in {1, dots, n}$，有 $S w_i = v_i$。
+
+	#tab 设 $w in W$，则可以将 $w$ 表示为
+	
+	$ w = a_1 w_1 + dots.c + a_n w_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。则
+	
+	$ T S w &= T (a_1 S w_1 + dots.c + a_n S w_n) \
+		&= T (a_1 v_1 + dots.c + a_n v_n) \
+		&= a_1 T v_1 + dots.c + a_n T v_n \
+		&= a_1 w_1 + dots.c + a_n w_n = w $
+
+	#tab 这说明 $T S$ 确实是 $W$ 上的恒等映射。
+
+	#tab 现在假设存在 $S in LinearMap(W, V)$，使得 $T S$ 是 $W$ 上的恒等映射。设 $w in W$，则可取 $v = S w in V$，使得 $T v = T S w = w$。这说明对于任意 $w in W$，都存在一个向量在 $V$ 中，使得其通过 $T$ 映射到该向量。因此 $T$ 是满射。
 ]
