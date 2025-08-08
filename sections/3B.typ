@@ -306,3 +306,31 @@
 
 	#tab 这说明对于任意 $w in W$，都存在一个向量在 $V$ 中，使得其通过 $T$ 映射到该向量。因此 $T$ 是满射。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 都是有限维向量空间，$U$ 是 $V$ 的子空间。证明：存在 $T in LinearMap(V, W)$，使得 $null T = U$ 当且仅当 $dim U >= dim V - dim W$。
+][
+	首先假设存在 $T in LinearMap(V, W)$，使得 $null T = U$。根据线性映射基本定理（原书3.21），有
+
+	$ dim V = dim null T + dim range T $
+
+	#tab 由于 $null T = U$，因此 $dim null T = dim U$。由于 $range T subset.eq W$，根据子空间的维数（原书2.37），$dim range T <= dim W$，因此
+
+	$ dim V <= dim U + dim W $
+
+	#tab 解得 $dim U >= dim V - dim W$。
+
+	#tab 现在假设 $dim U >= dim V - dim W$。设 $u_1, dots, u_m$ 是 $U$ 的一组基。根据“每个线性无关组都可以扩展为基”（原书2.31），存在 $v_1, dots, v_n in V$，使得向量组 $u_1, dots, u_m, v_1, dots, v_n$ 是 $V$ 的一组基。其中 $m = dim U$，$n = dim V - dim U$。由于 $dim U >= dim V - dim W$，解得 $n <= dim W$。
+
+	#tab 设 $w_1, dots, w_n in W$ 是线性无关组，根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T u_i = 0$，且对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$。
+
+	#tab 设 $v in null T$，则存在 $a_1, dots, a_m, b_1, dots, b_n in FF$，使得
+
+	$ v = a_1 u_1 + dots.c + a_m u_m + b_1 v_1 + dots.c + b_n v_n $
+
+	#tab 其中
+
+	$ 0 = T v = b_1 T v_1 + dots.c + b_n T v_n = b_1 w_1 + dots.c + b_n w_n $
+
+	#tab 由于 $w_1, dots, w_n$ 是线性无关的，故 $b_1 = dots.c = b_n = 0$，即 $v in U$。因此 $null T subset.eq U$。另一方面，显然 $U subset.eq null T$，因此 $null T = U$。
+]
