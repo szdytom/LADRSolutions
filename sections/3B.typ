@@ -262,3 +262,25 @@
 
 	#tab 即 $w in span(u_1, dots, u_m, v_1, dots, v_n)$。$V$ 可以被有限个向量张成，因此 $V$ 是有限维的。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 都是有限维向量空间，证明：存在 $V -> W$ 的单的线性映射，当且仅当 $dim V <= dim W$。
+][
+	首先假设存在 $T in LinearMap(V, W)$ 是单射。根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T = {0}$，因此 $dim null T = 0$。根据线性映射基本定理（原书3.21），有
+
+	$ dim V = dim null T + dim range T = dim range T $
+
+	#tab 由于 $range T subset.eq W$，根据子空间的维数（原书2.37），$dim range T <= dim W$，因此 $dim V <= dim W$。
+
+	#tab 现在假设 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一个线性无关组。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$。
+
+	#tab 设 $v in V$，使得 $T v = 0$。将 $v$ 表示为
+
+	$ v = a_1 v_1 + dots.c + a_n v_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。则
+
+	$ 0 = T v = a_1 T v_1 + dots.c + a_n T v_n = a_1 w_1 + dots.c + a_n w_n $
+
+	#tab 由于 $w_1, dots, w_n$ 是线性无关的，故 $a_1 = dots.c = a_n = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射。
+]
