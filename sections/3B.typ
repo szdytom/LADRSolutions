@@ -193,3 +193,21 @@
 	#tab 由于 $T v_1, dots, T v_m$ 是线性无关的，故 $a_1 = dots.c = a_m = 0$，即 $u = 0$。因此 $U inter null T = {0}$。
 ]
 
+#exercise_sol(type: "proof")[
+	设 $T$ 是 $FF^4 -> FF^2$ 的线性映射，且
+
+	$ null T = {(x_1, x_2, x_3, x_4) in FF^4 : x_1 = 5x_2 and x_3 = 7 x_4} $
+
+	证明：$T$ 是满射。
+][
+	注意到，取
+
+	$ v_1 &= (5, 1, 0, 0) \
+		v_2 &= (0, 0, 7, 1) $
+
+	#tab 则 $null T = span(v_1, v_2)$，因此 $dim null T = 2$。根据线性映射基本定理（原书3.21），
+
+	$ dim FF^4 = dim null T + dim range T $
+
+	#tab 解得 $dim range T = 2$，即 $dim range T = dim FF^2$，根据“某空间中与之维数相同的子空间即为该空间本身”（原书2.39），$range T = FF^2$，即 $T$ 是满射。
+]
