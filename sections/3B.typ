@@ -217,7 +217,24 @@
 ][
 	根据线性映射基本定理（原书3.21），有
 
-	$ dim RR^8 = dim null T + dim range T $
+	$ dim RR^8 = dim U + dim range T $
 
-	#tab 由于 $null T = U$，因此 $dim null T = 3$。解得 $dim range T = 5$。根据“某空间中与之维数相同的子空间即为该空间本身”（原书2.39），$range T = RR^5$，即 $T$ 是满射。
+	#tab 解得 $dim range T = 5$。根据“某空间中与之维数相同的子空间即为该空间本身”（原书2.39），$range T = RR^5$，即 $T$ 是满射。
+]
+
+#exercise_sol(type: "proof")[
+	证明：不存在 $FF^5 -> FF^2$ 的线性映射，使得其零空间等于
+
+	$ {(x_1, x_2, x_3, x_4, x_5) in FF^5 : x_1 = 3 x_2 and x_3 = x_4 = x_5} $
+][
+	假设这样的线性映射 $T$ 存在。注意到，取
+
+	$ v_1 &= (3, 1, 0, 0, 0) \
+		v_2 &= (0, 0, 1, 1, 1) $
+
+	#tab 则 $null T = span(v_1, v_2)$，因此 $dim null T = 2$。根据线性映射基本定理（原书3.21），
+
+	$ dim FF^5 = dim null T + dim range T $
+
+	#tab 解得 $dim range T = 3$，然而 $dim FF^2 = 2$，根据“子空间的维数不超过该空间的维数”（原书2.37），$range T subset.eq FF^2$，因此 $dim range T <= dim FF^2 = 2$，矛盾。因此不存在这样的线性映射。
 ]
