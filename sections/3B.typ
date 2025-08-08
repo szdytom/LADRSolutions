@@ -334,3 +334,28 @@
 
 	#tab 由于 $w_1, dots, w_n$ 是线性无关的，故 $b_1 = dots.c = b_n = 0$，即 $v in U$。因此 $null T subset.eq U$。另一方面，显然 $U subset.eq null T$，因此 $null T = U$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $W$ 是有限维向量空间，$T in LinearMap(V, W)$。证明：$T$ 是单射，当且仅当，存在 $S in LinearMap(W, V)$，使得 $S T$ 是 $V$ 上的恒等映射。
+][
+	首先假设 $T$ 是单射。根据“映射到更低维空间上的线性映射不是单射”（原书3.22）的逆否命题，可知 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组线性无关向量组。根据线性映射引理（原书3.4），存在 $R in LinearMap(span(w_1, dots, w_n), V)$，使得对于任意 $i in {1, dots, n}$，有 $R w_i = v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $S in LinearMap(W, V)$，使得对于任意 $w in span(w_1, dots, w_n)$，有 $S w = R w$。
+
+	#tab 设 $v in V$，则可以将 $v$ 表示为
+
+	$ v = a_1 v_1 + dots.c + a_n v_n $
+
+	#tab 其中 $a_1, dots, a_n in FF$。则
+
+	$ S T v &= S (a_1 T v_1 + dots.c + a_n T v_n) 
+		&= S(a_1 w_1 + dots.c + a_n w_n) \
+		&= a_1 S w_1 + dots.c + a_n S w_n 
+		&= a_1 v_1 + dots.c + a_n v_n = v $
+
+	#tab 这说明 $S T$ 确实是 $V$ 上的恒等映射。
+
+	#tab 现在假设存在 $S in LinearMap(W, V)$，使得 $S T$ 是 $V$ 上的恒等映射。设 $v in null T$，根据“线性映射将 $0$ 映射到 $0$”（原书3.10），有
+	
+	$ v = S T v = S 0 = 0 $
+
+	#tab 这说明 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射。
+]
