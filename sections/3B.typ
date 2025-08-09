@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, tab, exercise_ref
+#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering
 #import "../math.typ": null, range, LinearMap, span, restricted
 
 #exercise_sol(type: "answer")[
@@ -426,4 +426,50 @@
 	$ dim V_U = dim null restricted(T, V_U) + dim range restricted(T, V_U) $
 
 	#tab 代入上面的结果，得到 $dim V_U = dim null T + dim (U inter range T)$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $V$ 都是有限维向量空间，$S in LinearMap(V, W)$，$T in LinearMap(U, V)$. 证明：
+
+	$ dim null S T <= dim null S + dim null T $
+][
+	#let TN = $restricted(T, N)$
+	#show: math_numbering(true)
+	令 $N = null S T$。由于 $S T in LinearMap(U, W)$，故 $N$ 是 $U$ 的子空间。设 $u_1, dots, u_m$ 是 $N$ 的一组基。根据线性映射引理（原书3.4），存在 $TN in LinearMap(N, V)$，使得 $TN u_i = T u_i$。设 $u in N$，根据零空间的定义（原书3.11），有 $S T u = 0$，故 $range TN subset.eq null S$，即
+	
+	$ dim range TN <= dim null S $ <3B-c-range-TN-leq-null-S>
+
+	#tab 根据线性映射基本定理（原书3.21），有
+
+	$ dim N = dim null TN + dim range TN $ <3B-c-dim-N-eq-null-TN-plus-range-TN>
+
+	#tab 注意到
+
+	$ null TN = {u in N : TN u = 0} = {u in N : T u = 0} = N inter null T $ <3B-c-null-TN-eq-N-inter-null-T>
+
+	#tab 将@3B-c-range-TN-leq-null-S 和@3B-c-null-TN-eq-N-inter-null-T 代入@3B-c-dim-N-eq-null-TN-plus-range-TN，得到
+	#show: math_numbering(false)	
+
+	$ dim N <= dim (N inter null T) + dim null S $
+
+	#tab 由于 $N inter null T subset.eq null T$，根据子空间的维数（原书2.37），$dim (N inter null T) <= dim null T$，因此 $dim null S T <= dim null T + dim null S$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $U$ 和 $V$ 都是有限维向量空间，$S in LinearMap(V, W)$，$T in LinearMap(U, V)$. 证明：
+
+	$ dim range S T <= min{dim range S, dim range T} $
+][
+	首先证明 $dim range S T <= dim range S$。设 $u in U$，则 $S T u = S (T u) in range S$，故 $range S T subset.eq range S$，即$dim range S T <= dim range S$。
+
+	#let SI = $restricted(S, I)$
+	#tab 现在证明 $dim range S T <= dim range T$。令 $I = range T$，则 $I$ 是 $V$ 的子空间。根据线性映射引理（原书3.4），存在 $SI in LinearMap(I, W)$，使得对于任意 $v in I$，有 $SI v = S v$。设 $u in U$，则 $T u in I$，因此 $S T u = SI (T u)$。故 $range S T = range SI T subset.eq range SI$，即 $dim range S T <= dim range SI$。
+
+	#tab 由于 $SI$ 是从 $I$ 到 $W$ 的线性映射，根据线性映射基本定理（原书3.21），有
+
+	$ dim I = dim null SI + dim range SI $
+
+	#tab 即 $dim I >= dim range SI$，又因为 $dim range S T <= dim range SI$，故 $dim range S T <= dim range T$。
+
+	#tab 综上所述，$dim range S T <= min{dim range S, dim range T}$。
 ]
