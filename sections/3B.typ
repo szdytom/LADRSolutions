@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, tab, exercise_ref
-#import "../math.typ": null, range, LinearMap, span
+#import "../math.typ": null, range, LinearMap, span, restricted
 
 #exercise_sol(type: "answer")[
 	给出一例：满足 $dim null T = 3$ 且 $dim range T = 2$ 的线性映射 $T$。
@@ -391,4 +391,39 @@
 	#tab 这说明 $T S$ 确实是 $W$ 上的恒等映射。
 
 	#tab 现在假设存在 $S in LinearMap(W, V)$，使得 $T S$ 是 $W$ 上的恒等映射。设 $w in W$，则可取 $v = S w in V$，使得 $T v = T S w = w$。这说明对于任意 $w in W$，都存在一个向量在 $V$ 中，使得其通过 $T$ 映射到该向量。因此 $T$ 是满射。
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$T in LinearMap(V, W)$，$U$ 是 $W$ 的子空间。证明：${v in V : T v in U}$ 是 $V$ 的子空间，且
+
+	$ dim {v in V : T v in U} = dim null T + dim (U inter range T) $
+][
+	记 $V_U = {v in V : T v in U}$。为了说明 $V_U$ 是 $V$ 的子空间，我们逐条验证“子空间的条件”（原书1.34）中给出的要求：
+
+	/ 加法单位元: $0 in V_U$。 \
+		证明：根据“线性映射将 $0$ 映射到 $0$”（原书3.10），有 $T 0 = 0 in U$，因此 $0 in V_U$。
+
+	/ 加法封闭性: $u, w in V_U$ 意味着 $u + w in V_U$。 \
+		证明：设 $u, w in V_U$，则 $T u in U$ 且 $T w in U$。因此 $T (u + w) = T u + T w in U$，即 $u + w in V_U$。
+
+	/ 乘法封闭性: $lambda in FF$ 且 $v in V_U$ 意味着 $lambda v in V_U$。 \
+		证明：设 $v in V_U$，则 $T v in U$。因此 $T (lambda v) = lambda T v in U$，即 $lambda v in V_U$。
+
+	#tab 这说明 $V_U$ 是 $V$ 的子空间。
+
+	#tab 现在证明 $dim V_U = dim null T + dim (U inter range T)$。设 $v_1, dots, v_m$ 是 $V_U$ 的一组基，根据“每个线性无关组都可以扩展为基”（原书2.31），存在 $v_(m+1), dots, v_n in V$，使得向量组 $v_1, dots, v_n$ 是 $V$ 的一组基。
+
+	#tab 根据线性映射引理（原书3.4），存在 $restricted(T, V_U) in LinearMap(V_U, U)$，使得对于任意 $i in {1, dots, m}$，有 $restricted(T, V_U) v_i = T v_i$。
+
+	#tab 首先，我们证明 $dim null restricted(T, V_U) = dim null T$。设 $v in null restricted(T, V_U)$，则 $restricted(T, V_U) v = 0$，因此 $T v = 0$，即 $v in null T$。这说明 $null restricted(T, V_U) subset.eq null T$。另一方面，设 $v in null T$，则 $T v = 0 in U$，因此 $v in V_U$，故 $restricted(T, V_U) v = 0$，即 $v in null restricted(T, V_U)$。这说明 $null T subset.eq null restricted(T, V_U)$。因此 $dim null restricted(T, V_U) = dim null T$。
+
+	#tab 其次，我们证明 $dim range restricted(T, V_U) = dim (U inter range T)$。设 $w in range restricted(T, V_U)$，则存在 $v in V_U$，使得 $restricted(T, V_U) v = w$。因此 $T v = w$，且 $T v in U$，即 $w in U inter range T$。这说明 $range restricted(T, V_U) subset.eq U inter range T$。
+
+	#tab 另一方面，设 $w in U inter range T$，则存在 $v in V$，使得 $T v = w$ 且 $w in U$。由于 $v in V_U$，因此 $restricted(T, V_U) v = w$。这说明 $U inter range T subset.eq range restricted(T, V_U)$。因此 $dim range restricted(T, V_U) = dim (U inter range T)$。
+
+	#tab 现在根据线性映射基本定理（原书3.21），有
+
+	$ dim V_U = dim null restricted(T, V_U) + dim range restricted(T, V_U) $
+
+	#tab 代入上面的结果，得到 $dim V_U = dim null T + dim (U inter range T)$。
 ]
