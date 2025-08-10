@@ -473,3 +473,51 @@
 
 	#tab 综上所述，$dim range S T <= min{dim range S, dim range T}$。
 ]
+
+#exercise_sol(type: "answer")[
+	+ 设 $dim V = 5$，且 $S, T in LinearMap(V)$，使得 $S T = 0$。证明 $dim range T S <= 2$；
+	+ 给出一例：$S, T in LinearMap(V)$，使得 $S T = 0$ 且 $dim range T S = 2$。
+][
+	对于（a），根据线性映射基本定理（原书3.21），有
+
+	$ dim V &= dim null S + dim range S \
+		dim V &= dim null T + dim range T $
+
+	#tab 设 $v in V$，则 $S (T v) = S T v = 0$，故 $range T subset.eq null S$，即 $dim range T <= dim null S$。再代入 $dim V = 5$，整理得
+
+	$ dim range T + dim range S <= dim null S + dim range S = 5 $
+
+	#tab 注意到 $3 + 3 = 6 > 5$，故 $dim range T < 3$ 或 $dim range S < 3$。分类讨论：当 $dim range T < 3$ 时，即 $dim range T <= 2$。考虑到
+
+	$ range T S = {T v : v in range S} subset.eq range T $
+
+	#tab 这说明 $dim range T S <= dim range T <= 2$。
+	
+	#tab 另一方面，当 $dim range S < 3$ 时，即 $dim range S <= 2$，故 $dim null S >= 3$。根据“线性映射将 $0$ 映射到 $0$”（原书3.10），$0 in null T$，故
+
+	$ null S = {v in V : S v = 0} subset.eq {v in V : S v in null T} = null T S $
+
+	#tab 这说明 $3 <= dim null S <= dim null T S$，再根据线性映射基本定理（原书3.21），可得 $dim range T S <= 2$。
+
+	#tab 对于（b），设 $v_1, dots, v_5$ 是 $V$ 的一组基。根据线性映射引理（原书3.4），存在 $S, T in LinearMap(V)$，使得 $S v_1 = S v_2 = S v_3 = 0$，$S v_4 = v_4$，$S v_5 = v_5$，以及 $T v_1 = T v_2 = T v_3 = 0$，$T v_4 = v_1$，$T v_5 = v_2$。
+
+	#tab 设 $v in V$，将 $v$ 表示为
+
+	$ v = a_1 v_1 + dots.c + a_5 v_5 $
+
+	#tab 其中 $a_1, dots, a_5 in FF$。则
+
+	$ S T v &= S (a_1 T v_1 + dots.c + a_5 T v_5) \
+		&= S (a_4 v_1 + a_5 v_2) \
+		&= a_4 S v_1 + a_5 S v_2 \
+		&= 0 $
+
+	#tab 这说明 $S T = 0$。而
+
+	$ T S v &= T (a_1 S v_1 + dots.c + a_5 S v_5) \
+		&= T (a_4 v_4 + a_5 v_5) \
+		&= a_4 T v_4 + a_5 T v_5 \
+		&= a_4 v_1 + a_5 v_2 $
+
+	#tab 这说明 $range T S = span(v_1, v_2)$，因此 $dim range T S = 2$。综上所述，$S, T in LinearMap(V)$，使得 $S T = 0$ 且 $dim range T S = 2$。
+]
