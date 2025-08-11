@@ -347,7 +347,7 @@
 	#tab 其中 $a_1, dots, a_n in FF$。根据单射的定义（原书3.14），$T$ 是单射，因此 $u in span(u_1, dots, u_n)$。因此向量组 $u_1, dots, u_n$ 张成 $V$。故 $V$ 是有限维向量空间。
 
 	#tab 故可设 $v_1, dots, v_n$ 是 $V$ 的一组基。对于 $i in {1, dots, n}$，令 $w_i = T v_i$。根据@E-indep-preservance-under-inj，$w_1, dots, w_n$ 是线性无关的。
-	
+
 	#tab 根据线性映射引理（原书3.4），存在 $R in LinearMap(span(w_1, dots, w_n), V)$，使得对于任意 $i in {1, dots, n}$，有 $R w_i = v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $S in LinearMap(W, V)$，使得对于任意 $w in span(w_1, dots, w_n)$，有 $S w = R w$。
 
 	#tab 设 $v in V$，则可以将 $v$ 表示为
@@ -364,7 +364,7 @@
 	#tab 这说明 $S T$ 确实是 $V$ 上的恒等映射。
 
 	#tab 现在假设存在 $S in LinearMap(W, V)$，使得 $S T$ 是 $V$ 上的恒等映射。设 $v in null T$，根据“线性映射将 $0$ 映射到 $0$”（原书3.10），有
-	
+
 	$ v = S T v = S 0 = 0 $
 
 	#tab 这说明 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射。
@@ -378,11 +378,11 @@
 	#tab 现在对于 $i in {1, dots, n}$，令 $w_i = T v_i$。根据@E-indep-preservance-under-inj，$w_1, dots, w_n$ 是线性无关的。进一步，根据“长度恰当的线性无关组是基”（原书2.38），$w_1, dots, w_n$ 是 $W$ 的一组基。于是，根据线性映射引理（原书3.4），存在 $S in LinearMap(W, V)$，使得对于任意 $i in {1, dots, n}$，有 $S w_i = v_i$。
 
 	#tab 设 $w in W$，则可以将 $w$ 表示为
-	
+
 	$ w = a_1 w_1 + dots.c + a_n w_n $
 
 	#tab 其中 $a_1, dots, a_n in FF$。则
-	
+
 	$ T S w &= T (a_1 S w_1 + dots.c + a_n S w_n) \
 		&= T (a_1 v_1 + dots.c + a_n v_n) \
 		&= a_1 T v_1 + dots.c + a_n T v_n \
@@ -436,7 +436,7 @@
 	#let TN = $restricted(T, N)$
 	#show: math_numbering(true)
 	令 $N = null S T$。由于 $S T in LinearMap(U, W)$，故 $N$ 是 $U$ 的子空间。设 $u_1, dots, u_m$ 是 $N$ 的一组基。根据线性映射引理（原书3.4），存在 $TN in LinearMap(N, V)$，使得 $TN u_i = T u_i$。设 $u in N$，根据零空间的定义（原书3.11），有 $S T u = 0$，故 $range TN subset.eq null S$，即
-	
+
 	$ dim range TN <= dim null S $ <3B-c-range-TN-leq-null-S>
 
 	#tab 根据线性映射基本定理（原书3.21），有
@@ -448,7 +448,7 @@
 	$ null TN = {u in N : TN u = 0} = {u in N : T u = 0} = N inter null T $ <3B-c-null-TN-eq-N-inter-null-T>
 
 	#tab 将@3B-c-range-TN-leq-null-S 和@3B-c-null-TN-eq-N-inter-null-T 代入@3B-c-dim-N-eq-null-TN-plus-range-TN，得到
-	#show: math_numbering(false)	
+	#show: math_numbering(false)
 
 	$ dim N <= dim (N inter null T) + dim null S $
 
@@ -460,7 +460,7 @@
 
 	$ dim range S T <= min{dim range S, dim range T} $
 ][
-	首先证明 $dim range S T <= dim range S$。设 $u in U$，则 $S T u = S (T u) in range S$，故 $range S T subset.eq range S$，即$dim range S T <= dim range S$。
+	首先证明 $dim range S T <= dim range S$。设 $u in U$，则 $S T u = S (T u) in range S$，故 $range S T subset.eq range S$，即 $dim range S T <= dim range S$。
 
 	#let SI = $restricted(S, I)$
 	#tab 现在证明 $dim range S T <= dim range T$。令 $I = range T$，则 $I$ 是 $V$ 的子空间。根据线性映射引理（原书3.4），存在 $SI in LinearMap(I, W)$，使得对于任意 $v in I$，有 $SI v = S v$。设 $u in U$，则 $T u in I$，因此 $S T u = SI (T u)$。故 $range S T = range SI T subset.eq range SI$，即 $dim range S T <= dim range SI$。
@@ -492,7 +492,7 @@
 	$ range T S = {T v : v in range S} subset.eq range T $
 
 	#tab 这说明 $dim range T S <= dim range T <= 2$。
-	
+
 	#tab 另一方面，当 $dim range S < 3$ 时，即 $dim range S <= 2$，故 $dim null S >= 3$。根据“线性映射将 $0$ 映射到 $0$”（原书3.10），$0 in null T$，故
 
 	$ null S = {v in V : S v = 0} subset.eq {v in V : S v in null T} = null T S $
