@@ -507,3 +507,23 @@
 
 	#tab 综上所述，$null S subset.eq null T$，当且仅当，存在 $E in LinearMap(W)$，使得 $T = E S$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$S, T in LinearMap(V)$。证明：$range S subset.eq range T$，当且仅当，存在 $E in LinearMap(V)$，使得 $S = T E$。
+][
+	首先假设 $range S subset.eq range T$。设 $v_1, dots, v_m$ 是 $V$ 的一组基。对于每个 $i in {1, dots, m}$，由于 $S v_i in range S subset.eq range T$，因此存在 $u_i in V$，使得 $T u_i = S v_i$。
+
+	#tab 根据线性映射引理（原书3.4），存在 $E in LinearMap(V, V)$，使得对于任意 $i in {1, dots, m}$，有 $E v_i = u_i$。设 $v in V$，将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_m v_m$，其中 $a_1, dots, a_m in FF$。则
+
+	$ S v = S (sum_(k = 1)^m a_k v_k) = T (sum_(k = 1)^m a_k u_k) = T (sum_(k = 1)^m a_k E v_k) = T E v $
+
+	#tab 这说明 $S = T E$。
+
+	#tab 另一方面，现在假设存在 $E in LinearMap(V)$，使得 $S = T E$。设 $w in range S$，则存在 $v in V$，使得 $S v = w$。因此
+
+	$ w = S v = T E v = T (E v) in range T $
+
+	#tab 这说明 $range S subset.eq range T$。
+
+	#tab 综上所述，$range S subset.eq range T$，当且仅当，存在 $E in LinearMap(V)$，使得 $S = T E$。
+]
