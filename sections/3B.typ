@@ -476,7 +476,7 @@
 
 #exercise_sol(type: "answer")[
 	+ 设 $dim V = 5$，且 $S, T in LinearMap(V)$，使得 $S T = 0$。证明 $dim range T S <= 2$；
-	+ 给出一例：$S, T in LinearMap(V)$，使得 $S T = 0$ 且 $dim range T S = 2$。
+	+ 给出一例：$S, T in LinearMap(FF^5)$，使得 $S T = 0$ 且 $dim range T S = 2$。
 ][
 	对于（a），根据线性映射基本定理（原书3.21），有
 
@@ -499,9 +499,9 @@
 
 	#tab 这说明 $3 <= dim null S <= dim null T S$，再根据线性映射基本定理（原书3.21），可得 $dim range T S <= 2$。
 
-	#tab 对于（b），设 $v_1, dots, v_5$ 是 $V$ 的一组基。根据线性映射引理（原书3.4），存在 $S, T in LinearMap(V)$，使得 $S v_1 = S v_2 = S v_3 = 0$，$S v_4 = v_4$，$S v_5 = v_5$，以及 $T v_1 = T v_2 = T v_3 = 0$，$T v_4 = v_1$，$T v_5 = v_2$。
+	#tab 对于（b），设 $v_1, dots, v_5$ 是 $FF^5$ 的一组基。根据线性映射引理（原书3.4），存在 $S, T in LinearMap(V)$，使得 $S v_1 = S v_2 = S v_3 = 0$，$S v_4 = v_4$，$S v_5 = v_5$，以及 $T v_1 = T v_2 = T v_3 = 0$，$T v_4 = v_1$，$T v_5 = v_2$。
 
-	#tab 设 $v in V$，将 $v$ 表示为
+	#tab 设 $v in FF^5$，将 $v$ 表示为
 
 	$ v = a_1 v_1 + dots.c + a_5 v_5 $
 
@@ -519,5 +519,33 @@
 		&= a_4 T v_4 + a_5 T v_5 \
 		&= a_4 v_1 + a_5 v_2 $
 
-	#tab 这说明 $range T S = span(v_1, v_2)$，因此 $dim range T S = 2$。综上所述，$S, T in LinearMap(V)$，使得 $S T = 0$ 且 $dim range T S = 2$。
+	#tab 这说明 $range T S = span(v_1, v_2)$，因此 $dim range T S = 2$。综上所述，$S, T in LinearMap(FF^5)$，使得 $S T = 0$ 且 $dim range T S = 2$。
+]
+
+#exercise_sol(type: "proof", label: "tricky")[
+	设 $W$ 是有限维向量空间，$S, T in LinearMap(V, W)$。证明：$null S subset.eq null T$，当且仅当，存在 $E in LinearMap(W)$，使得 $T = E S$。
+][
+	首先假设 $null S subset.eq null T$。令 $U = range S$，设 $w_1, dots, w_m$ 是 $U$ 的一组基。可以找到 $v_1, dots, v_m in V$，使得对于 $i in {1, dots, m}$， $S v_i = w_i$。
+
+	#let EU = $restricted(E, U)$
+	#tab 根据线性映射引理（原书3.4），存在 $EU in LinearMap(U, W)$，使得对于任意 $i in {1, dots, m}$，有 $EU w_i = T v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $E in LinearMap(W)$，使得对于任意 $u in U$，有 $E u = EU u$。
+
+	#tab 设 $v in V$，将 $S v$ 表示为 $S v = a_1 w_1 + dots.c + a_m w_m$，其中 $a_1, dots, a_m in FF$。则
+
+	$ S v = u = sum_(k = 1)^m c_k w_k = sum_(k = 1)^m c_k S v_k = S (sum_(k = 1)^m c_k v_k) $
+
+	#let vd = $v_Delta$
+	#tab 令 $vd = v - sum_(k = 1)^m c_k v_k$，则 $S vd = 0$，即 $vd in null S subset.eq null T$，故 $T vd = 0$，即
+
+	$ T v &= T (sum_(k = 1)^m c_k v_k) \
+		&= sum_(k = 1)^m c_k T v_k \
+		&= sum_(k = 1)^m c_k E w_k \
+		&= E (sum_(k = 1)^m c_k w_k) \
+		&= E S v $
+
+	#tab 这说明 $T = E S$。
+
+	#tab 另一方面，现在假设存在 $E in LinearMap(W)$，使得 $T = E S$。设 $v in null S$，即 $S v = 0$，则 $T v = E S v = E 0 = 0$，故 $v in null T$。这说明 $null S subset.eq null T$。
+
+	#tab 综上所述，$null S subset.eq null T$，当且仅当，存在 $E in LinearMap(W)$，使得 $T = E S$。
 ]
