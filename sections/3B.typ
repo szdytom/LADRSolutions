@@ -527,3 +527,19 @@
 
 	#tab 综上所述，$range S subset.eq range T$，当且仅当，存在 $E in LinearMap(V)$，使得 $S = T E$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $P in LinearMap(V)$，且 $P^2 = P$。证明：$V = null P plus.circle range P$。
+][
+	设 $v in V$，则 $P v = P (P v)$，故 $P (v - P v) = 0$，即 $v - P v in null P$，另一方面，$P v in range P$，即
+
+	$ v = (v - P v) + P v $
+
+	#tab 其中 $v - P v in null N$ 且 $P v in range P$，故 $V = null P + range P$。
+
+	#tab 下面说明这个和是直和。设 $v in null P inter range P$，则 $P v = 0$ 且存在 $w in V$，使得 $v = P w$。故
+	
+	$ 0 = P v = P^2 w = P w = v $
+	
+	#tab 即 $null P inter range P = {0}$。因此，根据“两个子空间的直和”（原书1.46），得 $V = null P plus.circle range P$。
+]
