@@ -87,13 +87,9 @@
 ][
 	记 $S = {T in LinearMap(V, W) : T "不是单射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $n >= m = dim V >= 2$。
 
-	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。设 $v in V$。假设 $T v = 0$，将 $v$ 表示为
+	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$。设 $v in V$。假设 $T v = 0$，将 $v$ 表示为 $v = z_1 v_1 + dots.c + z_m v_m$，其中 $z_1, dots, z_m in FF$。则
 
-	$ v = z_1 v_1 + dots.c + z_m v_m $
-
-	#tab 其中 $z_1, dots, z_m in FF$。则
-
-	$ T v = z_1 T v_1 + dots.c + z_m T v_m = z_1 w_1 + dots.c + z_m w_m = 0$
+	$ T v = z_1 T v_1 + dots.c + z_m T v_m = z_1 w_1 + dots.c + z_m w_m = 0 $
 
 	#tab 由于 $w_1, dots, w_m$ 是线性无关的，因此 $z_1 = dots.c = z_m = 0$，即 $v = 0$。因此 $null T = {0}$，根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$T$ 是单射，即 $T in.not S$。
 
@@ -115,11 +111,7 @@
 ][
 	记 $S = {T in LinearMap(V, W) : T "不是满射"}$。设 $v_1, dots, v_m$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 的一组基，其中 $m >= n = dim W >= 2$。
 
-	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$，且对于任意 $i in {n+1, dots, m}$，$T v_i = 0$。设 $w in W$。将 $w$ 表示为
-
-	$ w = z_1 w_1 + dots.c + z_n w_n $
-
-	#tab 其中 $z_1, dots, z_m in FF$。则
+	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$，且对于任意 $i in {n+1, dots, m}$，$T v_i = 0$。设 $w in W$。将 $w$ 表示为 $w = z_1 w_1 + dots.c + z_n w_n$，其中 $z_1, dots, z_m in FF$。则
 
 	$ w = z_1 T v_1 + dots.c + z_n T v_n = T (z_1 v_1 + dots.c + z_n v_n) $
 
@@ -127,16 +119,12 @@
 
 	#tab 再次利用线性映射引理（原书3.4），存在 $R in LinearMap(V, W)$，使得 $R v_1 = w_1$，且对于任意 $i in {2, dots, n}$，$R v_i = 0$。由于 $n >= 2$，$w_1, w_2$ 线性无关，根据#exercise_ref(<E-when-1-or-2-vectors-indep>)，不存在 $lambda in FF$，使得 $w_2 = lambda w_1$，即 $w in.not range R$，故 $R$ 不是满射。
 
-	#tab 反证假设 $T - R$ 是满射，则存在 $v in V$ 使得 $(T - R) v = w_1$。将 $v$ 表示为
-
-	$ v = z_1 v_1 + dots.c + z_m v_m $
-
-	#tab 其中 $z_1, dots, z_m in FF$。则
+	#tab 反证假设 $T - R$ 是满射，则存在 $v in V$ 使得 $(T - R) v = w_1$。将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_m v_m$，其中 $a_1, dots, a_m in FF$。则
 
 	$ w_1 = (T - R) v &= T v - R v \
-		&= z_1 T v_1 + dots.c + z_m T v_m + z_1 R v_1 + dots.c + z_m R v_m \
-		&= z_1 w_1 + dots.c + z_n w_n - z_1 w_1 \
-		&= z_2 w_2 + dots.c + z_n w_n in span(w_2, dots, w_m) $
+		&= a_1 T v_1 + dots.c + a_m T v_m + a_1 R v_1 + dots.c + a_m R v_m \
+		&= a_1 w_1 + dots.c + a_n w_n - a_1 w_1 \
+		&= a_2 w_2 + dots.c + a_n w_n in span(w_2, dots, w_m) $
 
 	#tab 根据#exercise_ref(<E-when-vector-list-append-remains-indep>)，$w_2, dots, w_n, w_1$ 不是线性无关的，矛盾。故 $T - R$ 不是满射。现在 $R, T - R in S$，注意到
 
@@ -164,13 +152,9 @@
 #exercise_sol(type: "proof", ref: <E-domain-span-to-range-span>)[
 	设向量组 $v_1, dots, v_n$ 张成 $V$，$T in LinearMap(V, W)$，证明：$T v_1, dots, T v_n$ 张成 $range T$。
 ][
-	设 $w in range T$，则可设 $v in V$，使得 $T v = w$。将 $v$ 表示为
+	设 $w in range T$，则可设 $v in V$，使得 $T v = w$。将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_n v_n$，其中 $a_1, dots, a_n in FF$。则
 
-	$ v = z_1 v_1 + dots.c + z_n v_n $
-
-	#tab 其中 $z_1, dots, z_n in FF$。则
-
-	$ w = T v = T (z_1 v_1 + dots.c + z_n v_n) = z_1 T v_1 + dots.c + z_n T v_n $
+	$ w = T v = T (a_1 v_1 + dots.c + a_n v_n) = a_1 T a_1 + dots.c + a_n T a_n $
 
 	#tab 这说明 $w$ 可以表示为向量组 $T v_1, dots, T v_n$ 的线性组合，根据张成的定义（原书2.7），可得 $T v_1, dots, T v_n$ 张成 $range T$。
 ]
@@ -244,13 +228,9 @@
 ][
 	设 $T in LinearMap(V)$，使得 $dim null T = m$ 且 $dim range T = n$。进一步可设 $u_1, dots, u_m$ 是 $null T$ 的一组基，$T v_1, dots, T v_n$ 是 $range T$ 的一组基，其中 $v_1, dots, v_n in V$。
 
-	#tab 设 $w in V$，则 $T w in range T$，因此可以将 $T w$ 表示为
+	#tab 设 $w in V$，则 $T w in range T$，因此存在 $a_1, dots, a_n in FF$，使得
 
-	$ T w = a_1 T v_1 + dots.c + a_n T v_n $
-
-	#tab 其中 $a_1, dots, a_n in FF$。因此
-
-	$ T w = T (a_1 v_1 + dots.c + a_n v_n) $
+	$ T w = a_1 T v_1 + dots.c + a_n T v_n = T (a_1 v_1 + dots.c + a_n v_n) $
 
 	#tab 记 $v = a_1 v_1 + dots.c + a_n v_n$，则 $T (w - v) = 0$，故 $w - v in null T$，即存在 $b_1, dots, b_m in FF$，使得
 
@@ -274,11 +254,7 @@
 
 	#tab 现在假设 $dim V <= dim W$。设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_n$ 是 $W$ 上的一个线性无关组。根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, n}$，有 $T v_i = w_i$。
 
-	#tab 设 $v in V$，使得 $T v = 0$。将 $v$ 表示为
-
-	$ v = a_1 v_1 + dots.c + a_n v_n $
-
-	#tab 其中 $a_1, dots, a_n in FF$。则
+	#tab 设 $v in V$，使得 $T v = 0$。将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_n v_n$，其中 $a_1, dots, a_n in FF$。则
 
 	$ 0 = T v = a_1 T v_1 + dots.c + a_n T v_n = a_1 w_1 + dots.c + a_n w_n $
 
@@ -296,11 +272,7 @@
 
 	#tab 现在假设 $dim V >= dim W$。设 $w_1, dots, w_n$ 是 $W$ 的一组基，$v_1, dots, v_n$ 是 $V$ 上的一个线性无关向量组。根据线性映射引理（原书3.4），存在 $S in LinearMap(span(v_1, dots, v_n), W)$，使得对于任意 $i in {1, dots, n}$，有 $S v_i = w_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $T in LinearMap(V, W)$，使得对于任意 $v in span(v_1, dots, v_n)$，有 $T v = S v$。
 
-	#tab 设 $w in W$，则可以将 $w$ 表示为
-
-	$ w = a_1 w_1 + dots.c + a_n w_n $
-
-	#tab 其中 $a_1, dots, a_n in FF$。则
+	#tab 设 $w in W$，则可以将 $w$ 表示为 $w = a_1 w_1 + dots.c + a_n w_n$，其中 $a_1, dots, a_n in FF$。则
 
 	$ w = a_1 T v_1 + dots.c + a_n T v_n = T (a_1 v_1 + dots.c + a_n v_n) $
 
@@ -350,11 +322,7 @@
 
 	#tab 根据线性映射引理（原书3.4），存在 $R in LinearMap(span(w_1, dots, w_n), V)$，使得对于任意 $i in {1, dots, n}$，有 $R w_i = v_i$。进一步，根据#exercise_ref(<E-extend-linear-map>)，存在 $S in LinearMap(W, V)$，使得对于任意 $w in span(w_1, dots, w_n)$，有 $S w = R w$。
 
-	#tab 设 $v in V$，则可以将 $v$ 表示为
-
-	$ v = a_1 v_1 + dots.c + a_n v_n $
-
-	#tab 其中 $a_1, dots, a_n in FF$。则
+	#tab 设 $v in V$，则可以将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_n v_n$，其中 $a_1, dots, a_n in FF$。则
 
 	$ S T v &= S (a_1 T v_1 + dots.c + a_n T v_n) \
 		&= S(a_1 w_1 + dots.c + a_n w_n) \
@@ -377,11 +345,7 @@
 
 	#tab 现在对于 $i in {1, dots, n}$，令 $w_i = T v_i$。根据@E-indep-preservance-under-inj，$w_1, dots, w_n$ 是线性无关的。进一步，根据“长度恰当的线性无关组是基”（原书2.38），$w_1, dots, w_n$ 是 $W$ 的一组基。于是，根据线性映射引理（原书3.4），存在 $S in LinearMap(W, V)$，使得对于任意 $i in {1, dots, n}$，有 $S w_i = v_i$。
 
-	#tab 设 $w in W$，则可以将 $w$ 表示为
-
-	$ w = a_1 w_1 + dots.c + a_n w_n $
-
-	#tab 其中 $a_1, dots, a_n in FF$。则
+	#tab 设 $w in W$，则可以将 $w$ 表示为 $w = a_1 w_1 + dots.c + a_n w_n$，其中 $a_1, dots, a_n in FF$。则
 
 	$ T S w &= T (a_1 S w_1 + dots.c + a_n S w_n) \
 		&= T (a_1 v_1 + dots.c + a_n v_n) \
@@ -501,11 +465,7 @@
 
 	#tab 对于（b），设 $v_1, dots, v_5$ 是 $FF^5$ 的一组基。根据线性映射引理（原书3.4），存在 $S, T in LinearMap(V)$，使得 $S v_1 = S v_2 = S v_3 = 0$，$S v_4 = v_4$，$S v_5 = v_5$，以及 $T v_1 = T v_2 = T v_3 = 0$，$T v_4 = v_1$，$T v_5 = v_2$。
 
-	#tab 设 $v in FF^5$，将 $v$ 表示为
-
-	$ v = a_1 v_1 + dots.c + a_5 v_5 $
-
-	#tab 其中 $a_1, dots, a_5 in FF$。则
+	#tab 设 $v in FF^5$，将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_5 v_5$，其中 $a_1, dots, a_5 in FF$。则
 
 	$ S T v &= S (a_1 T v_1 + dots.c + a_5 T v_5) \
 		&= S (a_4 v_1 + a_5 v_2) \
@@ -538,8 +498,6 @@
 	#tab 令 $vd = v - sum_(k = 1)^m c_k v_k$，则 $S vd = 0$，即 $vd in null S subset.eq null T$，故 $T vd = 0$，即
 
 	$ T v &= T (sum_(k = 1)^m c_k v_k) \
-		&= sum_(k = 1)^m c_k T v_k \
-		&= sum_(k = 1)^m c_k E w_k \
 		&= E (sum_(k = 1)^m c_k w_k) \
 		&= E S v $
 
