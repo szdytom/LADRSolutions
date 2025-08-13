@@ -497,9 +497,9 @@
 	#let vd = $v_Delta$
 	#tab 令 $vd = v - sum_(k = 1)^m c_k v_k$，则 $S vd = 0$，即 $vd in null S subset.eq null T$，故 $T vd = 0$，即
 
-	$ T v &= T (sum_(k = 1)^m c_k v_k) \
-		&= E (sum_(k = 1)^m c_k w_k) \
-		&= E S v $
+	$ T v = T (sum_(k = 1)^m c_k v_k)
+		= E (sum_(k = 1)^m c_k w_k)
+		= E S v $
 
 	#tab 这说明 $T = E S$。
 
@@ -544,16 +544,26 @@
 	#tab 即 $null P inter range P = {0}$。因此，根据“两个子空间的直和”（原书1.46），得 $V = null P plus.circle range P$。
 ]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", label: "tricky", ref: <E-Poly-lower-const-degree-surj>)[
 	设 $D in LinearMap(Poly(RR))$，满足对于任意非常数多项式 $p in Poly(RR)$，都有 $deg D p = (deg p) - 1$。证明：$D$ 是满射。
 
 	#note[上面的记号 $D$ 是用来让你想起微分映射#footnote[注意，微分映射是满足题设条件的映射，但并非满足题设条件的映射就一定是微分映射。]，它将多项式 $p$ 映射到其导数 $p'$。]
 ][
-	对于 $k in NN^+$，令 $p_k in Poly(RR)$ 为 $z -> z^k$，以及 $q_(k - 1) = D p_k$。于是 $deg p_k = k$，故 $deg q_k = deg q_(k + 1) - 1 = k$。设 $r in Poly(RR)$，使得 $deg r = m$，故 $r in Poly_m (RR)$。
+	对于 $k in NN^+$，令 $p_k in Poly(RR)$ 为 $z |-> z^k$，以及 $q_(k - 1) = D p_k$。于是 $deg p_k = k$，故 $deg q_k = deg q_(k + 1) - 1 = k$。设 $r in Poly(RR)$，使得 $deg r = m$，故 $r in Poly_m (RR)$。
 
 	#tab 根据#exercise_ref(<E-Poly-space-basis>)，$q_0, dots, q_m$ 是 $Poly_m (RR)$ 的一组基。故存在 $a_0, dots, a_m in RR$，使得
 	
 	$ r = sum_(k = 0)^m a_k q_k = sum_(k = 0)^m a_k D p(k + 1) = D (sum_(k = 0)^m a_k p_(k + 1)) $
 
 	#tab 这说明 $r$ 可以被 $sum_(k = 0)^m a_k p_(k + 1) in Poly(RR)$ 映射到，因此 $D$ 是满射。
+]
+
+#exercise_sol(type: "proof")[
+	设 $p in Poly(RR)$。证明：存在多项式 $q in Poly(RR)$，使得 $5 q'' + 3q' = p$。
+
+	#note[这道题不一定要用线性代数，但是线性代数的解答更有趣。]
+][
+	令 $Poly(RR)$ 上的映射 $T$ 为 $p |-> 5p'' + 3p'$，容易验证 $T$ 为线性映射，且对于任意 $p in Poly(RR)$，$deg T p = deg p - 1$。于是，根据@E-Poly-lower-const-degree-surj，$T$ 是满射。
+
+	#tab 这说明，对于任意 $p in Poly(RR)$，都存在$q in Poly(RR)$，使得 $T q = p$，即 $5 q'' + 3q' = p$。
 ]
