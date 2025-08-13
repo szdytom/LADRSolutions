@@ -258,7 +258,7 @@
 
 #note[可以验证，上面结论等号成立，当且仅当存在 $i,j in {1, dots, m}$（$i != j$），使得 $w = lambda v_i + mu v_j$，其中 $lambda, mu in FF$，满足 $lambda + mu = -1$。]
 
-#exercise_sol(type: "proof")[
+#exercise_sol(type: "proof", ref: <E-Poly-space-basis>)[
 	设 $m$ 是正整数，$p_0, dots, p_m in Poly(FF)$，其中 $p_k$ 的次数为 $k$，证明： $p_0, dots, p_m$ 是 $Poly_m (FF)$ 的基。
 ][
 	我们首先论证：对于任意自然数 $m$，$p_0, dots, p_m$ 是线性无关的。我们关于 $m$ 使用数学归纳法。

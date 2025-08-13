@@ -1,5 +1,5 @@
-#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering
-#import "../math.typ": null, range, LinearMap, span, restricted
+#import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering, note
+#import "../math.typ": null, range, LinearMap, span, restricted, Poly
 
 #exercise_sol(type: "answer")[
 	给出一例：满足 $dim null T = 3$ 且 $dim range T = 2$ 的线性映射 $T$。
@@ -542,4 +542,18 @@
 	$ 0 = P v = P^2 w = P w = v $
 	
 	#tab 即 $null P inter range P = {0}$。因此，根据“两个子空间的直和”（原书1.46），得 $V = null P plus.circle range P$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $D in LinearMap(Poly(RR))$，满足对于任意非常数多项式 $p in Poly(RR)$，都有 $deg D p = (deg p) - 1$。证明：$D$ 是满射。
+
+	#note[上面的记号 $D$ 是用来让你想起微分映射#footnote[注意，微分映射是满足题设条件的映射，但并非满足题设条件的映射就一定是微分映射。]，它将多项式 $p$ 映射到其导数 $p'$。]
+][
+	对于 $k in NN^+$，令 $p_k in Poly(RR)$ 为 $z -> z^k$，以及 $q_(k - 1) = D p_k$。于是 $deg p_k = k$，故 $deg q_k = deg q_(k + 1) - 1 = k$。设 $r in Poly(RR)$，使得 $deg r = m$，故 $r in Poly_m (RR)$。
+
+	#tab 根据#exercise_ref(<E-Poly-space-basis>)，$q_0, dots, q_m$ 是 $Poly_m (RR)$ 的一组基。故存在 $a_0, dots, a_m in RR$，使得
+	
+	$ r = sum_(k = 0)^m a_k q_k = sum_(k = 0)^m a_k D p(k + 1) = D (sum_(k = 0)^m a_k p_(k + 1)) $
+
+	#tab 这说明 $r$ 可以被 $sum_(k = 0)^m a_k p_(k + 1) in Poly(RR)$ 映射到，因此 $D$ 是满射。
 ]
