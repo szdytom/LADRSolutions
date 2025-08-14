@@ -567,3 +567,19 @@
 
 	#tab 这说明，对于任意 $p in Poly(RR)$，都存在$q in Poly(RR)$，使得 $T q = p$，即 $5 q'' + 3q' = p$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $phi in LinearMap(V, FF)$，$u in V$，满足 $phi != 0$ 且 $u in.not null phi$。证明：
+
+	$ V = null phi plus.circle {a u : a in FF} $
+][
+	设 $v in V$，满足 $phi v != 0$。令 $k = (phi v) / (phi u) in FF$，则 $phi (k u) = phi v$，故 $phi (v - k u) = 0$，即 $v - k u in null phi$。因此
+
+	$ v = (v - k u) + k u $
+
+	#tab 其中 $v - k u in null phi$ 且 $k u in {a u : a in FF}$，故 $V = null phi + {a u : a in FF}$。现在说明这个和是直和：将 $0$ 表示为 $0 = v + w$，其中 $v in null phi$ 且 $w in {a u : a in FF}$，于是
+
+	$ phi 0 = phi (v + w) = phi w $
+
+	#tab 设 $w = a u$，则 $phi w = a phi u$，由于 $phi u != 0$，故 $a = 0$，即 $w = 0$。进一步，由于 $0 = v + w$，故 $v = 0$。根据直和的条件（原书1.45），得 $V = null phi plus.circle {a u : a in FF}$。
+]
