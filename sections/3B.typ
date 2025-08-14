@@ -583,3 +583,35 @@
 
 	#tab 设 $w = a u$，则 $phi w = a phi u$，由于 $phi u != 0$，故 $a = 0$，即 $w = 0$。进一步，由于 $0 = v + w$，故 $v = 0$。根据直和的条件（原书1.45），得 $V = null phi plus.circle {a u : a in FF}$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$X$ 是 $V$ 的子空间，$Y$ 是 $W$ 的有限维子空间。证明：存在 $T in LinearMap(V, W)$ 使得 $null T = X$ 且 $range T = Y$，当且仅当，$dim X + dim Y = dim V$。
+][
+	首先，假设存在 $T in LinearMap(V, W)$ 使得 $null T = X$ 且 $range T = Y$。根据线性映射基本定理（原书3.21），立即可得 $dim X + dim Y = dim V$。
+
+	#tab 现在假设 $dim X + dim Y = dim V$。令 $n = dim V$。设 $w_1, dots, w_m$ 是 $Y$ 的一组基，$v_(m + 1), dots, v_n$ 是 $X$ 的一组基，根据“每个线性无关组都可被扩充成基”（原书2.32），可以找到 $v_1, dots, v_m in V$，使得 $v_1, dots, v_n$ 是 $V$ 的一组基。
+	
+	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$，且对于任意 $i in {m + 1, dots, n}$，有 $T v_i = 0$。
+
+	#tab 设 $v in X$，则存在 $a_(m + 1), dots, a_n in FF$，使得 $v = a_(m + 1) v_(m + 1) + dots.c + a_n v_n$。因此
+
+	$ T v = T (sum_(k = m + 1)^n a_k v_k) = sum_(k = m + 1)^n a_k T v_k = 0 $
+
+	#tab 这说明 $X subset.eq null T$。另一方面，设 $v in null T$，将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_n v_n$，其中 $a_1, dots, a_n in FF$。由于 $T v = 0$，因此
+
+	$ 0 = T v = T (sum_(k = 1)^n a_k v_k) = sum_(k = 1)^n a_k T v_k = sum_(k = 1)^m a_k w_k $
+
+	#tab 由于 $w_1, dots, w_m$ 是线性无关的，故 $a_1 = dots.c = a_m = 0$，即 $v in X$。因此 $null T subset.eq X$，故 $null T = X$。
+
+	#tab 设 $w in Y$，则存在 $b_1, dots, b_m in FF$，使得 $w = b_1 w_1 + dots.c + b_m w_m$。注意到
+
+	$ T (sum_(k = 1)^m b_k v_k) = sum_(k = 1)^m b_k T v_k = sum_(k = 1)^m b_k w_k = w $
+
+	#tab 这说明 $Y subset.eq range T$。另一方面，设 $w in range T$，则存在 $v in V$，使得 $T v = w$。将 $v$ 表示为 $v = a_1 v_1 + dots.c + a_n v_n$，其中 $a_1, dots, a_n in FF$。则
+
+	$ w = T v = T (sum_(k = 1)^n a_k v_k) = sum_(k = 1)^m a_k T v_k + sum_(k = m + 1)^n a_k T v_k = sum_(k = 1)^m a_k w_k $
+
+	#tab 这说明 $w in span(w_1, dots, w_m) = Y$。因此 $range T subset.eq Y$，故 $range T = Y$。
+
+	#tab 综上所述，存在 $T in LinearMap(V, W)$ 使得 $null T = X$ 且 $range T = Y$，当且仅当，$dim X + dim Y = dim V$。
+]
