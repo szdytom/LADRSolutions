@@ -422,7 +422,7 @@
 		&= f(v) u $
 
 	#tab 现在，设 $T in LinearMap(V)$，$i, j in {1, dots, m}$。我们将 $T u_j$ 表示为 $T u_j = A_(1, j) u_1 + dots.c + A_(m, j) u_m$，其中 $A_(i, j) in FF$。同时，将 $v$ 表示为 $v = a_1 u_1 + dots.c + a_m u_m$，其中 $a_1, dots, a_m in FF$。
-	
+
 	#tab 现在，对于任意 $i in {1, dots, m}$，根据线性映射引理（原书3.4），我们可以找到线性映射 $f_i in LinearMap(V, FF)$，使得对于任意 $j in {1, dots, m}$，$f_i (v_j) = A_(i, j)$，即
 
 	$ f_i (v) = sum_(j = 1)^m A_(i, j) a_j $

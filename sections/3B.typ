@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, tab, exercise_ref, math_numbering, note
-#import "../math.typ": null, range, LinearMap, span, restricted, Poly
+#import "../math.typ": null, range, LinearMap, span, restricted, Poly, complexification, ii
 
 #exercise_sol(type: "answer")[
 	给出一例：满足 $dim null T = 3$ 且 $dim range T = 2$ 的线性映射 $T$。
@@ -538,9 +538,9 @@
 	#tab 其中 $v - P v in null N$ 且 $P v in range P$，故 $V = null P + range P$。
 
 	#tab 下面说明这个和是直和。设 $v in null P inter range P$，则 $P v = 0$ 且存在 $w in V$，使得 $v = P w$。故
-	
+
 	$ 0 = P v = P^2 w = P w = v $
-	
+
 	#tab 即 $null P inter range P = {0}$。因此，根据“两个子空间的直和”（原书1.46），得 $V = null P plus.circle range P$。
 ]
 
@@ -552,7 +552,7 @@
 	对于 $k in NN^+$，令 $p_k in Poly(RR)$ 为 $z |-> z^k$，以及 $q_(k - 1) = D p_k$。于是 $deg p_k = k$，故 $deg q_k = deg q_(k + 1) - 1 = k$。设 $r in Poly(RR)$，使得 $deg r = m$，故 $r in Poly_m (RR)$。
 
 	#tab 根据#exercise_ref(<E-Poly-space-basis>)，$q_0, dots, q_m$ 是 $Poly_m (RR)$ 的一组基。故存在 $a_0, dots, a_m in RR$，使得
-	
+
 	$ r = sum_(k = 0)^m a_k q_k = sum_(k = 0)^m a_k D p(k + 1) = D (sum_(k = 0)^m a_k p_(k + 1)) $
 
 	#tab 这说明 $r$ 可以被 $sum_(k = 0)^m a_k p_(k + 1) in Poly(RR)$ 映射到，因此 $D$ 是满射。
@@ -565,7 +565,7 @@
 ][
 	令 $Poly(RR)$ 上的映射 $T$ 为 $p |-> 5p'' + 3p'$，容易验证 $T$ 为线性映射，且对于任意 $p in Poly(RR)$，$deg T p = deg p - 1$。于是，根据@E-Poly-lower-const-degree-surj，$T$ 是满射。
 
-	#tab 这说明，对于任意 $p in Poly(RR)$，都存在$q in Poly(RR)$，使得 $T q = p$，即 $5 q'' + 3q' = p$。
+	#tab 这说明，对于任意 $p in Poly(RR)$，都存在 $q in Poly(RR)$，使得 $T q = p$，即 $5 q'' + 3q' = p$。
 ]
 
 #exercise_sol(type: "proof")[
@@ -590,7 +590,7 @@
 	首先，假设存在 $T in LinearMap(V, W)$ 使得 $null T = X$ 且 $range T = Y$。根据线性映射基本定理（原书3.21），立即可得 $dim X + dim Y = dim V$。
 
 	#tab 现在假设 $dim X + dim Y = dim V$。令 $n = dim V$。设 $w_1, dots, w_m$ 是 $Y$ 的一组基，$v_(m + 1), dots, v_n$ 是 $X$ 的一组基，根据“每个线性无关组都可被扩充成基”（原书2.32），可以找到 $v_1, dots, v_m in V$，使得 $v_1, dots, v_n$ 是 $V$ 的一组基。
-	
+
 	#tab 根据线性映射引理（原书3.4），存在 $T in LinearMap(V, W)$，使得对于任意 $i in {1, dots, m}$，有 $T v_i = w_i$，且对于任意 $i in {m + 1, dots, n}$，有 $T v_i = 0$。
 
 	#tab 设 $v in X$，则存在 $a_(m + 1), dots, a_n in FF$，使得 $v = a_(m + 1) v_(m + 1) + dots.c + a_n v_n$。因此
@@ -624,4 +624,46 @@
 	设 $S in null T$，$T in LinearMap(V)$，则 $phi(S) = 0$，故 $phi (S T) = phi (T S) = phi(S)phi(T) = 0$，即 $S T, T S in null T$，故 $null T$ 是 $LinearMap(V)$ 的双边理想。根据#exercise_ref(<E-two-sided-ideal>)，$null T = {0}$ 或 $null T = LinearMap(V)$。
 
 	#tab 由于 $dim V > 1$，容易验证 $dim LinearMap(V) > 1 = dim FF$，根据“映到更低维空间上的线性映射不是单射”（原书3.22），可知 $T$ 不是单射。再根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T != {0}$，因此 $null T = LinearMap(V)$。这说明对于任意 $S in LinearMap(V)$，都有 $S in null T$，即 $phi(S) = 0$。故 $phi = 0$。
+]
+
+#let Tc = $complexification(T)$
+#let Vc = $complexification(V)$
+#let Wc = $complexification(W)$
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 都是实向量空间，$T in LinearMap(V, W)$。定义 $Tc: Vc -> Wc$ 为对于任意 $u, v in V$，
+
+	$ Tc (u + ii v) = T u + ii T v $
+
+	+ 证明：$Tc$ 是 $Vc -> Wc$ 的（复）线性映射；
+	+ 证明：$Tc$ 是单射，当且仅当 $T$ 是单射；
+	+ 证明：$range Tc = Wc$，当且仅当 $range T = W$。
+
+	#note[复化 $Vc$ 定义于#exercise_ref(<E-vector-dspace-complexification>)，线性映射 $Tc$ 被称为线性映射 $T$ 的*复化（complexification）*。]
+][
+	对于（a），我们逐条验证线性映射的定义（原书3.1）中给出的要求：
+
+	/ 可加性: 对于任意 $u, v in Vc$，均有 $Tc (u + v) = Tc u + Tc v$。 \
+		证明：设 $u = u_1 + ii u_2$，$v = v_1 + ii v_2$，其中 $u_1, u_2, v_1, v_2 in V$。则
+		$ Tc (u + v) &= Tc ((u_1 + v_1) + ii (u_2 + v_2)) \
+			&= T (u_1 + v_1) + ii T (u_2 + v_2) \
+			&= T u_1 + ii T u_2 + T v_1 + ii T v_2 \
+			&= Tc u + Tc v $
+
+	/ 齐次性: 对于任意 $lambda in CC$，$u in Vc$，均有 $Tc (lambda u) = lambda Tc u$。 \
+		证明：设 $u = u_1 + ii u_2$，其中 $u_1, u_2 in V$。则
+		$ Tc (lambda u) &= Tc (lambda (u_1 + ii u_2)) \
+			&= T (lambda u_1) + ii T (lambda u_2) \
+			&= lambda T u_1 + ii lambda T u_2 \
+			&= lambda (T u_1 + ii T u_2) \
+			&= lambda Tc u $
+
+	#tab 这说明 $Tc$ 确实是 $Vc -> Wc$ 的线性映射。
+
+	#tab 对于（b），首先假设 $Tc$ 是单射。根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），可得 $null Tc = {0}$。设 $v in null T$，则根据“线性映射将 $0$ 映射为 $0$”（原书3.10），可得 $0 = T v = T v + ii T 0 = Tc (v + ii 0)$，因此 $v = 0$，即 $null T = {0}$，故 $T$ 是单射。
+
+	#tab 另一方面，假设 $T$ 是单射。设 $u + ii v in null Tc$，则 $0 = Tc (u + ii v) = T u + ii T v$，故 $T u = T v = 0$。又因为 $null T = {0}$，只能有 $u = v = 0$，即 $null Tc = {0}$，因此 $Tc$ 是单射。
+
+	#tab 对于（c），首先假设 $range Tc = Wc$。设 $w in W$，则存在 $u + ii v in Vc$，使得 $T (u + ii v) = w + ii 0$，即 $T u + ii T v = w + ii 0$，故 $T u = w$。于是 $W subset.eq range T$，即 $range T = W$。
+
+	#tab 另一方面，假设 $range T = W$。设 $w + ii v in Wc$，则存在 $u in V$，使得 $T u = w$。因此 $Tc (u + ii v) = T u + ii T v = w + ii T v$，即 $w + ii v in range Tc$。这说明 $Wc subset.eq range Tc$，即 $range Tc = Wc$。
 ]
