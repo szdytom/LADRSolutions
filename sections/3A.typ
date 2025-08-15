@@ -394,7 +394,7 @@
 
 #let Es = $cal(E)$
 
-#exercise_sol(type: "proof", label: "hard")[
+#exercise_sol(type: "proof", label: "hard", ref: <E-two-sided-ideal>)[
 	设 $V$ 是有限维向量空间。
 
 	- $LinearMap(V)$ 的子空间 $Es$ 被称为*双边理想（two-sided ideal）*，是指 $T E in Es$ 和 $E T in Es$，对于任意 $E in Es$ 和 $T in LinearMap(V)$ 都成立。
@@ -403,8 +403,8 @@
 ][
 	验证 ${0}$ 是 $LinearMap(V)$ 的双边理想是平凡的。现在假设 $Es$ 是 $LinearMap(V)$ 的双边理想，且 $Es != {0}$。故存在 $E in Es$ 使得 $E != 0$，即可设 $w_0 in V$，使得 $E w_0 != 0$。令 $w = E w_0$。
 
-	#let Rr = $restricted(R, span(w))$
-	#tab 根据线性映射引理（原书3.4），可以找到线性映射#footnote[这里有时将 $FF$ 视为一个向量空间，即我们不对 $FF$ 和 $FF^1$ 进行明确地区分。] $Rr: span(w) -> FF$，满足 $Rr(w) = 1$。进一步地，根据@E-extend-linear-map，存在线性映射 $R in LinearMap(V, FF)$，使得对于任意 $u in span(w)$，都有 $R u = Rr(u)$。
+	#let Rr = $restricted(R, W)$
+	#tab 令 $W = span(w)$。根据线性映射引理（原书3.4），可以找到线性映射#footnote[这里有时将 $FF$ 视为一个向量空间，即我们不对 $FF$ 和 $FF^1$ 进行明确地区分。] $Rr: W -> FF$，满足 $Rr(w) = 1$。再根据@E-extend-linear-map，存在线性映射 $R in LinearMap(V, FF)$，使得 $R w = Rr(w) = 1$。
 
 	#tab 现在，对于任意 $u in W$ 和 $f in LinearMap(V, FF)$，定义
 
@@ -421,15 +421,9 @@
 		&= f(v) R(w) u \
 		&= f(v) u $
 
-	#tab 现在，设 $T in LinearMap(V)$，$i, j in {1, dots, m}$。我们将 $T u_j$ 表示为
-
-	$ T u_j = A_(1, j) u_1 + dots.c + A_(m, j) u_m $
-
-	#tab 其中 $A_(i, j) in FF$。同时，对于任意 $v in V$，将其表示为
-
-	$ v = a_1 u_1 + dots.c + a_m u_m $
-
-	#tab 其中 $a_1, dots, a_m in FF$。现在，对于任意 $i in {1, dots, m}$，根据线性映射引理（原书3.4），我们可以找到线性映射 $f_i in LinearMap(V, FF)$，使得对于任意 $j in {1, dots, m}$，$f_i (v_j) = A_(i, j)$，即
+	#tab 现在，设 $T in LinearMap(V)$，$i, j in {1, dots, m}$。我们将 $T u_j$ 表示为 $T u_j = A_(1, j) u_1 + dots.c + A_(m, j) u_m$，其中 $A_(i, j) in FF$。同时，将 $v$ 表示为 $v = a_1 u_1 + dots.c + a_m u_m$，其中 $a_1, dots, a_m in FF$。
+	
+	#tab 现在，对于任意 $i in {1, dots, m}$，根据线性映射引理（原书3.4），我们可以找到线性映射 $f_i in LinearMap(V, FF)$，使得对于任意 $j in {1, dots, m}$，$f_i (v_j) = A_(i, j)$，即
 
 	$ f_i (v) = sum_(j = 1)^m A_(i, j) a_j $
 

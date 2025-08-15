@@ -615,3 +615,13 @@
 
 	#tab 综上所述，存在 $T in LinearMap(V, W)$ 使得 $null T = X$ 且 $range T = Y$，当且仅当，$dim X + dim Y = dim V$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 是有限维向量空间，$dim V > 1$。证明：若 $phi: LinearMap(V) -> FF$ 是线性映射，使得对于任意 $S, T in LinearMap(V)$，$phi(S T) = phi(S) phi(T)$，则 $phi = 0$。
+
+	#note(supplement: "提示")[#exercise_ref(<E-two-sided-ideal>)中给出了关于 $LinearMap(V)$ 的双边理想的描述，或许有用。]
+][
+	设 $S in null T$，$T in LinearMap(V)$，则 $phi(S) = 0$，故 $phi (S T) = phi (T S) = phi(S)phi(T) = 0$，即 $S T, T S in null T$，故 $null T$ 是 $LinearMap(V)$ 的双边理想。根据#exercise_ref(<E-two-sided-ideal>)，$null T = {0}$ 或 $null T = LinearMap(V)$。
+
+	#tab 由于 $dim V > 1$，容易验证 $dim LinearMap(V) > 1 = dim FF$，根据“映到更低维空间上的线性映射不是单射”（原书3.22），可知 $T$ 不是单射。再根据“单射性 $<==>$ 零空间为 ${0}$”（原书3.15），$null T != {0}$，因此 $null T = LinearMap(V)$。这说明对于任意 $S in LinearMap(V)$，都有 $S in null T$，即 $phi(S) = 0$。故 $phi = 0$。
+]
