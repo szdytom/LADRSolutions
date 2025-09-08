@@ -1,5 +1,5 @@
 #import "../styles.typ": exercise_sol, note, tab
-#import "../math.typ": LinearMap, range, Matrix, null, span
+#import "../math.typ": LinearMap, range, Matrix, null, span, Poly
 
 #exercise_sol(type: "proof", label: "tricky")[
 	设 $T in LinearMap(V, W)$。证明：对于 $V$ 和 $W$ 的任意基，$T$ 所对应的矩阵至少有 $dim range T$ 个非零元素。
@@ -60,4 +60,23 @@
 	$ sum_(k=1)^m B_(k, j) w_k = (lambda T) v_j = lambda (T v_j) = sum_(k=1)^m (lambda A_(k, j)) w_k $
 
 	#tab 故 $B_(k, j) = lambda A_(k, j)$，即 $B = lambda A$。
+]
+
+#exercise_sol(type: "answer")[
+	设 $D in LinearMap(Poly_3(RR), Poly_2(RR))$ 是微分映射，定义为 $p |-> p'$。求 $Poly_3(RR)$ 的一个基和 $Poly_2(RR)$ 的一个基，使得 $Matrix(D)$ 为
+
+	$ mat(1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0) $
+
+	#note[和原书3.33比较一下。下一题拓展了本题。]
+][
+	取 $Poly_3(RR)$ 的基为 $x^3, x^2, x, 1$，$Poly_2(RR)$ 的基为 $3 x^2, 2 x, 1$。则
+
+	$ D x^3 &= 3 x^2 &= 1 dot.c (3 x^2) + 0 dot.c (2 x) + 0 dot.c 1 \
+		D x^2 &= 2 x &= 0 dot.c (3 x^2) + 1 dot.c (2 x) + 0 dot.c 1 \
+		D x &= 1 &= 0 dot.c (3 x^2) + 0 dot.c (2 x) + 1 dot.c 1 \
+		D 1 &= 1 &= 0 dot.c (3 x^2) + 0 dot.c (2 x) + 0 dot.c 1 $
+
+	#tab 故
+
+	$ Matrix(D) = mat(1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0) $
 ]
