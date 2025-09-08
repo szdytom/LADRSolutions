@@ -40,3 +40,24 @@
 
 	#tab 由于 $w_1, dots, w_m$ 线性无关，因此对于 $k in {1, dots, m}$，都有 $A_(k, j) = 1$。因此，$Matrix(T)$ 的所有元素都是 $1$。
 ]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_n$ 是 $V$ 的一组基，$w_1, dots, w_m$ 是 $W$ 的一组基。证明：
+
+	+ 若 $S, T in LinearMap(V, W)$，则 $M(S + T) = M(S) + M(T)$；
+	+ 若 $lambda in FF$，$T in LinearMap(V, W)$，则 $M(lambda T) = lambda M(T) $。
+
+	#note[本题是在让你验证原书3.35和3.38。]
+][
+	对于（a），记 $A = M(S)$，$B = M(T)$，$C = M(S + T)$。则对于 $j in {1, dots, n}$，有
+
+	$ sum_(k=1)^m C_(k, j) w_k = (S + T) v_j = S v_j + T v_j = sum_(k=1)^m (A_(k, j) + B_(k, j)) w_k $
+
+	#tab 故 $C_(k, j) = A_(k, j) + B_(k, j)$，即 $C = A + B$。
+
+	#tab 对于（b），记 $A = M(T)$，$B = M(lambda T)$。则对于 $j in {1, dots, n}$，有
+
+	$ sum_(k=1)^m B_(k, j) w_k = (lambda T) v_j = lambda (T v_j) = sum_(k=1)^m (lambda A_(k, j)) w_k $
+
+	#tab 故 $B_(k, j) = lambda A_(k, j)$，即 $B = lambda A$。
+]
