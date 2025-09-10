@@ -62,7 +62,7 @@
 	#tab 故 $B_(k, j) = lambda A_(k, j)$，即 $B = lambda A$。
 ]
 
-#exercise_sol(type: "answer")[
+#exercise_sol(type: "answer", ref: <E-mat-of-derivation-of-poly3>)[
 	设 $D in LinearMap(Poly_3(RR), Poly_2(RR))$ 是微分映射，定义为 $p |-> p'$。求 $Poly_3(RR)$ 的一个基和 $Poly_2(RR)$ 的一个基，使得 $Matrix(D)$ 为
 
 	$ mat(1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0) $
@@ -97,4 +97,24 @@
 	$ T v_(ell + j) = u_j = 0 dot.c u_1 + dots.c + 0 dot.c u_(j-1) + 1 dot.c u_j + 0 dot.c u_(j+1) + dots.c + 0 dot.c u_n $
 
 	#tab 而对于 $j in {m - ell + 1, dots, m}$，$T v_j = 0$。因此，关于这些基的 $Matrix(T)$ 的第 $k$ 行第 $k$ 列元素为 $1$，其余元素为 $0$，其中 $k in {1, dots, dim range T}$。
+]
+
+#exercise_sol(type: "proof")[
+	设 $v_1, dots, v_m$ 是 $V$ 的一组基，$W$ 是有限维向量空间。设 $T in LinearMap(V, W)$。证明：存在 $W$ 的一组基 $w_1, dots, w_n$，使得关于基 $v_1, dots, v_m$ 和 $w_1, dots, w_n$ 的 $Matrix(T)$ 的第一行第一列的元素为 $1$ 或 $0$，且第一列的其余元素均为 $0$。
+
+	#note[不同于@E-mat-of-derivation-of-poly3，在本题中，$V$ 的基是给定的而不是由你给定的。]
+][
+	分类讨论，当 $T v_1 = 0$ 时，任取 $W$ 的一组基为 $w_1, dots, w_n$，则
+
+	$ T v_1 = 0 = 0 dot.c w_1 + dots.c + 0 dot.c w_n $
+
+	#tab 于是 $Matrix(T)$ 的第一列的元素均为 $0$。
+
+	#tab 当 $T v_1 != 0$ 时，取 $w_1 = T v_1$。根据“每个线性无关组都可被扩充成基”（原书2.32），可以将 $w_1$ 扩充为 $W$ 的一组基 $w_1, dots, w_n$。则
+
+	$ T v_1 = w_1 = 1 dot.c w_1 + 0 dot.c w_2 + dots.c + 0 dot.c w_n $
+
+	#tab 于是 $Matrix(T)$ 的第一行第一列的元素为 $1$，且第一列的其余元素均为 $0$。
+
+	#tab 综上所述，存在 $W$ 的一组基 $w_1, dots, w_n$，使得关于基 $v_1, dots, v_m$ 和 $w_1, dots, w_n$ 的 $Matrix(T)$ 的第一行第一列的元素为 $1$ 或 $0$，且第一列的其余元素均为 $0$。
 ]
