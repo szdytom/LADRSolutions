@@ -1,4 +1,4 @@
-#import "../styles.typ": exercise_sol, note, tab
+#import "../styles.typ": exercise_sol, note, tab, exercise_ref
 #import "../math.typ": LinearMap, range, Matrix, null, span, Poly
 
 #exercise_sol(type: "proof", label: "tricky")[
@@ -79,4 +79,22 @@
 	#tab 故
 
 	$ Matrix(D) = mat(1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0) $
+]
+
+#exercise_sol(type: "proof")[
+	设 $V$ 和 $W$ 都是有限维向量空间，$T in LinearMap(V, W)$。证明：存在 $V$ 的一组基和 $W$ 的一组基，使得关于这些基的 $Matrix(T)$ 的第 $k$ 行第 $k$ 列元素为 $1$，其余元素为 $0$，其中 $k in {1, dots, dim range T}$。
+][
+	设向量组 $v_1, dots, v_ell$ 是 $null T$ 的一组基，根据“每个线性无关组都可被扩充成基“（原书2.32），可以找到 $v_(ell + 1), dots, v_m$，使得 $v_1, dots, v_m$ 是 $V$ 的一组基。对于 $j in {1, dots, m}$，令 $w_j = T v_j$，则根据#exercise_ref(<E-domain-span-to-range-span>)，$w_1, dots, w_m$ 张成 $range T$。
+
+	#tab 另一方面，注意到 $w_1 = dots.c = w_ell = 0$，因此根据线性相关性引理（原书2.19），可得 $w_(ell + 1), dots, w_m$ 张成 $range T$。根据线性映射基本定理（原书3.21），
+
+	$ dim range T = dim V - dim null T = m - ell $
+
+	#tab 再根据“长度恰当的张成组是基”（原书2.42），可知 $w_(ell + 1), dots, w_m$ 是 $range T$ 的一组基。
+
+	#tab 现在，将 $w_(ell + 1), dots, w_m$ 扩充为 $W$ 的一组基 $u_1, dots, u_n$，其中 $u_1 = w_(ell + 1), dots, u_(m - ell) = w_m$。现在考虑关于基 $v_(ell + 1), dots, v_m, v_1, dots, v_ell$（注意顺序）和基 $u_1, dots, u_n$ 的 $Matrix(T)$，则对于 $j in {1, dots, m - ell}$，
+
+	$ T v_(ell + j) = u_j = 0 dot.c u_1 + dots.c + 0 dot.c u_(j-1) + 1 dot.c u_j + 0 dot.c u_(j+1) + dots.c + 0 dot.c u_n $
+
+	#tab 而对于 $j in {m - ell + 1, dots, m}$，$T v_j = 0$。因此，关于这些基的 $Matrix(T)$ 的第 $k$ 行第 $k$ 列元素为 $1$，其余元素为 $0$，其中 $k in {1, dots, dim range T}$。
 ]
